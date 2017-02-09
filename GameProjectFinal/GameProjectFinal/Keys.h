@@ -1,0 +1,221 @@
+#pragma once
+
+
+
+enum Keys
+{
+	NONE		= 0x00,
+
+	// MOUSE
+	MOUSE_BEGIN = 0x01,
+
+	LBUTTON		= 0x01,
+	RBUTTON		= 0x02,
+	CANCEL		= 0x03,
+	MBUTTON		= 0x04,
+	XBUTTON_1	= 0x05,
+	XBUTTON_2	= 0x06,
+
+	MOUSE_END	= XBUTTON_2,
+
+	// KEYBOARD
+
+	KEYBOARD_BEGIN = 0x08,
+
+	BACKSPACE	= 0x08,
+	TAB			= 0x09,
+	/* 0x0A & 0x0B Reserved. */
+	CLEAR		= 0x0C,
+	RETURN		= 0x0D,
+	/* 0x0E & 0x0F Undefined. */
+	SHIFT		= 0x10,
+	CONTROL		= 0x11,
+	ALT			= 0x12,
+	PAUSE		= 0x13,
+	CAPS_LOCK	= 0x14,
+	KANA		= 0x15,
+	HANGUEL		= 0x15,
+	HANGUL		= 0x15,
+	/* 0x16 Undefined. */
+	JUNJA		= 0x17,
+	FINAL		= 0x18,
+	HANJA		= 0x19,
+	KANJI		= 0x19,
+	/* 0x1A Undefined. */
+	ESCAPE		= 0x1B,
+	CONVERT		= 0x1C,
+	NONCONVERT	= 0x1D,
+	ACCEPT		= 0x1E,
+	MODECHANGE	= 0x1F,
+	SPACEBAR	= 0x20,
+	PAGE_UP		= 0x21,
+	PAGE_DOWN	= 0x22,
+	END			= 0x23,
+	HOME		= 0x24,
+	ARR_LEFT	= 0x25,
+	ARR_UP		= 0x26,
+	ARR_RIGHT	= 0x27,
+	ARR_DOWN	= 0x28,
+	SELECT		= 0x29,
+	PRINT		= 0x2A,
+	EXECUTE		= 0x2B,
+	PRINTSCREEN	= 0x2C,
+	INSERT		= 0x2D,
+	DELETE_KEY	= 0x2E,
+	HELP		= 0x2F,
+
+	// Numbers
+	NUM_0		= 0x30,
+	NUM_1		= 0x31,
+	NUM_2		= 0x32,
+	NUM_3		= 0x33,
+	NUM_4		= 0x34,
+	NUM_5		= 0x35,
+	NUM_6		= 0x36,
+	NUM_7		= 0x37,
+	NUM_8		= 0x38,
+	NUM_9		= 0x39,
+
+	/* 0x3A - 0x40 Undefined. */
+
+	// Letters
+	KEY_A		= 0x41,
+	KEY_B		= 0x42,
+	KEY_C		= 0x43,
+	KEY_D		= 0x44,
+	KEY_E		= 0x45,
+	KEY_F		= 0x46,
+	KEY_G		= 0x47,
+	KEY_H		= 0x48,
+	KEY_I		= 0x49,
+	KEY_J		= 0x4A,
+	KEY_K		= 0x4B,
+	KEY_L		= 0x4C,
+	KEY_M		= 0x4D,
+	KEY_N		= 0x4E,
+	KEY_O		= 0x4F,
+	KEY_P		= 0x50,
+	KEY_Q		= 0x51,
+	KEY_R		= 0x52,
+	KEY_S		= 0x53,
+	KEY_T		= 0x54,
+	KEY_U		= 0x55,
+	KEY_V		= 0x56,
+	KEY_W		= 0x57,
+	KEY_X		= 0x58,
+	KEY_Y		= 0x59,
+	KEY_Z		= 0x5A,
+
+	LWINDOWS	= 0x5B,
+	RWINDOWS	= 0x5C,
+	APPS		= 0x5D,
+	/* 0x5E Reserved. */
+	SLEEP		= 0x5F,
+	NUMPAD_0	= 0x60,
+	NUMPAD_1	= 0x61,
+	NUMPAD_2	= 0x62,
+	NUMPAD_3	= 0x63,
+	NUMPAD_4	= 0x64,
+	NUMPAD_5	= 0x65,
+	NUMPAD_6	= 0x66,
+	NUMPAD_7	= 0x67,
+	NUMPAD_8	= 0x68,
+	NUMPAD_9	= 0x69,
+	MULTIPLY	= 0x6A,
+	ADD			= 0x6B,
+	SEPARATOR	= 0x6C,
+	SUBSTRACT	= 0x6D,
+	DECIMAL_KEY	= 0x6E,
+	DIVIDE		= 0x6F,
+	F1			= 0x70,
+	F2			= 0x71,
+	F3			= 0x72,
+	F4			= 0x73,
+	F5			= 0x74,
+	F6			= 0x75,
+	F7			= 0x76,
+	F8			= 0x77,
+	F9			= 0x78,
+	F10			= 0x79,
+	F11			= 0x7A,
+	F12			= 0x7B,
+	F13			= 0x7C,
+	F14			= 0x7D,
+	F15			= 0x7E,
+	F16			= 0x7F,
+	F17			= 0x80,
+	F18			= 0x81,
+	F19			= 0x82,
+	F20			= 0x83,
+	F21			= 0x84,
+	F22			= 0x85,
+	F23			= 0x86,
+	F24			= 0x87,
+	/* 0x88 - 8F Unassigned. */
+	NUMLOCK		= 0x90,
+	SCROLL_LOCK	= 0x91,
+	/* 0x92 - 96 OEM specific. */
+	/* 0x97 - 9F Unassigned. */
+	LSHIFT		= 0xA0,
+	RSHIFT		= 0xA1,
+	LCONTROL	= 0xA2,
+	RCONTROL	= 0xA3,
+	LMENU		= 0xA4,
+	RMENU		= 0xA5,
+
+	BROWS_BACK		= 0xA6,
+	BROWS_FORWARD	= 0xA7,
+	BROWS_REFRESH	= 0xA8,
+	BROWS_STOP		= 0xA9,
+	BROWS_SEARCH	= 0xAA,
+	BROWS_FAVORITES = 0xAB,
+	BROWS_HOME		= 0xAC,
+
+	VOLUME_MUTE		= 0xAD,
+	VOLUME_DOWN		= 0XAE,
+	VOLUME_UP		= 0xAF,
+	MEDIA_NEXT_TRACK= 0xB0,
+	MEDIA_PREV_TRACK= 0XB1,
+	MEDIA_STOP		= 0xB2,
+	MEDIA_PLAY_PAUSE= 0xB3,
+	LAUNCH_MAIL		= 0xB4,
+	LAUNCH_MEDIA	= 0xB5,
+	LAUNCH_APP1		= 0xB6,
+	LAUNCH_APP2		= 0xB7,
+	/* 0xB8 - B9 Reserved. */
+	OEM_1			= 0xBA,
+	OEM_PLUS		= 0xBB,
+	OEM_COMMA		= 0xBC,
+	OEM_MINUS		= 0xBD,
+	OEM_PERIOD		= 0xBE,
+	OEM_2			= 0xBF,
+	OEM_3			= 0xC0,
+	/* 0xC1 - D7 Reserved. */
+	/* 0xD8 - DA Unassigned. */
+	OEM_4			= 0xDB,
+	OEM_5			= 0xDC,
+	OEM_6			= 0xDD, 
+	OEM_7			= 0xDE,
+	OEM_8			= 0xDF,
+	/* 0xE0 Reserved */
+	/* 0xE1 OEM Specific. */
+	OEM_102			= 0xE2,
+	/* 0xE3 - E4 OEM Specific. */
+	PROCESSKEY		= 0xE5,
+	/* 0xE6 OEM Specific. */
+	PACKET			= 0xE7,
+	/* 0xE8 Unassigned. */
+	/* 0xE9 - F5 OEM Specific. */
+	ATTN			= 0xF6,
+	CRSEL			= 0xF7,
+	EXSEL			= 0xF8,
+	EREOF			= 0xF9,
+	PLAY			= 0xFA,
+	ZOOM			= 0xFB,
+	NONAME			= 0xFC,
+	PA1				= 0xFD,
+	OEM_CLEAR		= 0xFE,
+
+	KEYBOARD_END	= OEM_CLEAR,
+	ENUM_END		= OEM_CLEAR
+};

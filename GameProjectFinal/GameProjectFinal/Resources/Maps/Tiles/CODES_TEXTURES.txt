@@ -1,0 +1,30 @@
+Code pour les textures.
+
+Floor tiles: 
+
+01-XX-XX = Floor tiles
+01-01-XX = Grass
+01-01-01 = Grass 01
+01-01-02 = Grass 02
+
+
+01-02-01 = Stone 01
+01-02-02 = Stone 02
+
+01-03-01 = Dirt 01
+01-03-02 = Dirt 02
+
+Grass 
+Stone 
+Wood 
+Water
+LAVA
+Dirt
+Sand
+
+
+mountain
+cliff
+valley
+
+
