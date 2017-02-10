@@ -1,38 +1,34 @@
 
-
+#include "RessourceManager.h"
 #include "WorldClass.h"
 
 WorldClass::WorldClass()
 {
-	for (int y = -1; y < 1; ++y)
-	{
-		for (int x = -1; x < 1; ++x)
-		{
-			ObjectClass* const obj = new ObjectClass;
 
-			obj->SetPosition(x, y);
-
-			m_Map.push_back(obj);
-		}
-	}
 }
 
 
 
-bool WorldClass::Initialize(ID3D11Device* device, ID3D11DeviceContext* deviceContext, char* filename)
+void WorldClass::Initialize(ID3D11Device* device, ID3D11DeviceContext* deviceContext)
 {
-	bool result;
+	RessourceManager::get().Make(device, deviceContext, "../GameProjectFinal/Resources/Maps/Tiles/stone01.tga");
+	Model2DClass* model = RessourceManager::get().Get("../GameProjectFinal/Resources/Maps/Tiles/stone01.tga");
 
-	for (auto& ptr : m_Map)
+
+	for (int y = -2; y < 2; ++y)
 	{
-		result = ptr->Initialize(device, deviceContext, filename);
-		if (!result)
+		for (int x = -2; x < 2; ++x)
 		{
-			return result;
+			ObjectClass* const obj = new ObjectClass{ model };
+
+			obj->SetPosition(x, y);
+
+			obj->Initialize();
+
+			m_Map.push_back(obj);
 		}
 	}
 
-	return result;
 }
 
 void WorldClass::Shutdown()
