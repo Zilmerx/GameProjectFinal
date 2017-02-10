@@ -209,7 +209,7 @@ void SystemClass::InitializeWindows()
 	SetFocus(m_hwnd);
 
 	// Hide the mouse cursor.
-	ShowCursor(false);
+	//ShowCursor(false);
 
 	return;
 }

@@ -27,7 +27,7 @@ TextureClass::~TextureClass()
 {
 }
 
-bool TextureClass::Initialize(ID3D11Device* device, ID3D11DeviceContext* deviceContext, char* filename, D3D11_USAGE usage = D3D11_USAGE::D3D11_USAGE_DEFAULT)
+bool TextureClass::Initialize(ID3D11Device* device, ID3D11DeviceContext* deviceContext, char* filename, D3D11_USAGE usage)
 {
 	m_usage = usage;
 

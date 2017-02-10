@@ -5,7 +5,8 @@
 #include "InputManager.h"
 
 
-Model2DClass::Model2DClass()
+Model2DClass::Model2DClass(D3D11_USAGE usage) :
+	m_Usage{ usage }
 {
 	m_vertexBuffer = 0;
 	m_indexBuffer = 0;
@@ -41,11 +42,12 @@ bool Model2DClass::Initialize(ID3D11Device* device, ID3D11DeviceContext* deviceC
 	}
 
 	// Load the texture for this model.
-	result = LoadTexture(device, deviceContext, textureFilename);
+	result = LoadTexture(device, deviceContext, textureFilename, m_Usage);
 	if (!result)
 	{
 		return false;
 	}
+	m_Name = textureFilename;
 
 	return true;
 }
@@ -131,16 +133,16 @@ bool Model2DClass::InitializeBuffers(ID3D11Device* device)
 	}
 
 	// Load the vertex array with data.
-	vertices[0].position = XMFLOAT3(-1.0f, -1.0f, 0.0f);  // Bottom left.
+	vertices[0].position = XMFLOAT3(-0.5f, -0.5f, 0.0f);  // Bottom left.
 	vertices[0].texture = XMFLOAT2(0.0f, 1.0f);
 
-	vertices[1].position = XMFLOAT3(-1.0f, +1.0f, 0.0f);  // Top left.
+	vertices[1].position = XMFLOAT3(-0.5f, +0.5f, 0.0f);  // Top left.
 	vertices[1].texture = XMFLOAT2(0.0f, 0.0f);
 
-	vertices[2].position = XMFLOAT3(+1.0f, +1.0f, 0.0f);  // top right.
+	vertices[2].position = XMFLOAT3(+0.5f, +0.5f, 0.0f);  // top right.
 	vertices[2].texture = XMFLOAT2(1.0f, 0.0f);
 
-	vertices[3].position = XMFLOAT3(+1.0f, -1.0f, 0.0f);  // Bottom right.
+	vertices[3].position = XMFLOAT3(+0.5f, -0.5f, 0.0f);  // Bottom right.
 	vertices[3].texture = XMFLOAT2(1.0f, 1.0f);
 
 	// Load the index array with data.
@@ -153,7 +155,7 @@ bool Model2DClass::InitializeBuffers(ID3D11Device* device)
 	indices[5] = 3;  // Bottom right.
 
 					 // Set up the description of the static vertex buffer.
-	vertexBufferDesc.Usage = D3D11_USAGE_DEFAULT;
+	vertexBufferDesc.Usage = m_Usage;
 	vertexBufferDesc.ByteWidth = sizeof(VertexType) * m_vertexCount;
 	vertexBufferDesc.BindFlags = D3D11_BIND_VERTEX_BUFFER;
 	vertexBufferDesc.CPUAccessFlags = 0;
@@ -173,7 +175,7 @@ bool Model2DClass::InitializeBuffers(ID3D11Device* device)
 	}
 
 	// Set up the description of the static index buffer.
-	indexBufferDesc.Usage = D3D11_USAGE_DEFAULT;
+	indexBufferDesc.Usage = m_Usage;
 	indexBufferDesc.ByteWidth = sizeof(unsigned long) * m_indexCount;
 	indexBufferDesc.BindFlags = D3D11_BIND_INDEX_BUFFER;
 	indexBufferDesc.CPUAccessFlags = 0;
@@ -223,7 +225,7 @@ void Model2DClass::ShutdownBuffers()
 }
 
 
-bool Model2DClass::LoadTexture(ID3D11Device* device, ID3D11DeviceContext* deviceContext, char* filename)
+bool Model2DClass::LoadTexture(ID3D11Device* device, ID3D11DeviceContext* deviceContext, char* filename, D3D11_USAGE usage)
 {
 	bool result;
 
@@ -236,7 +238,7 @@ bool Model2DClass::LoadTexture(ID3D11Device* device, ID3D11DeviceContext* device
 	}
 
 	// Initialize the texture object.
-	result = m_Texture->Initialize(device, deviceContext, filename, D3D11_USAGE::D3D11_USAGE_DEFAULT);
+	result = m_Texture->Initialize(device, deviceContext, filename, usage);
 	if (!result)
 	{
 		return false;

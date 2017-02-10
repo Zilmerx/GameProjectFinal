@@ -69,6 +69,9 @@
     <ClCompile Include="CameraClass.cpp">
       <Filter>Source Files\System\Graphics</Filter>
     </ClCompile>
+    <ClCompile Include="RessourceManager.cpp">
+      <Filter>Source Files\System\Graphics</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Aligned.h">
@@ -179,14 +182,14 @@
     <ClInclude Include="WorldClass.h">
       <Filter>Header Files\System\Graphics</Filter>
     </ClInclude>
-    <ClInclude Include="TileSize.h">
-      <Filter>Header Files\Other</Filter>
-    </ClInclude>
     <ClInclude Include="ColorShaderClass.h">
       <Filter>Shaders</Filter>
     </ClInclude>
     <ClInclude Include="TextureShaderClass.h">
       <Filter>Shaders</Filter>
+    </ClInclude>
+    <ClInclude Include="RessourceManager.h">
+      <Filter>Header Files\System\Graphics</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

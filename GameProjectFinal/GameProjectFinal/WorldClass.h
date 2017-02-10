@@ -11,7 +11,7 @@ public:
 	WorldClass();
 	~WorldClass();
 
-	bool Initialize(ID3D11Device* device, ID3D11DeviceContext* deviceContext, char* filename);
+	void Initialize(ID3D11Device* device, ID3D11DeviceContext* deviceContext);
 
 	void Shutdown();
 

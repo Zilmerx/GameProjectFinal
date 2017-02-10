@@ -99,13 +99,10 @@ bool GraphicsClass::Initialize(HWND hwnd)
 		return false;
 	}
 
+
+
 	// Initialize the model object.
-	result = m_World->Initialize(m_Direct3D->GetDevice(), m_Direct3D->GetDeviceContext(), "../GameProjectFinal/Resources/Maps/Tiles/MT-GR-02.tga");
-	if (!result)
-	{
-		MessageBox(hwnd, L"Could not initialize the model object.", L"Error", MB_OK);
-		return false;
-	}
+	m_World->Initialize(m_Direct3D->GetDevice(), m_Direct3D->GetDeviceContext());
 
 	// Create the color shader object.
 	m_ColorShader = new ColorShaderClass;
@@ -224,7 +221,12 @@ bool GraphicsClass::Render()
 		ptr->Render(m_Direct3D->GetDevice(), m_Direct3D->GetDeviceContext());
 
 		Model2DClass* model = ptr->GetModel();
-		XMMATRIX objectMat = ptr->GetRotationMatrix() * ptr->GetScaleMatrix() * ptr->GetTranslationMatrix();
+
+		XMMATRIX rot = ptr->GetRotationMatrix();
+		XMMATRIX tra = ptr->GetTranslationMatrix();
+		XMMATRIX sca = ptr->GetScaleMatrix();
+
+		XMMATRIX objectMat = rot * tra * sca;
 
 		// Render the model using the texture shader.
 		result = m_TextureShader->Render(m_Direct3D->GetDeviceContext(), model->GetIndexCount(), worldMatrix * objectMat, viewMatrix, projectionMatrix, model->GetTexture()->GetTexture());

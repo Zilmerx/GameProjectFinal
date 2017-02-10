@@ -2,12 +2,12 @@
 #include "ObjectClass.h"
 #include "InputManager.h"
 
-ObjectClass::ObjectClass() :
-	m_Position{ 0,0 },
-	m_Rotation{ 0 },
-	m_Scale{ 1,1 }
+ObjectClass::ObjectClass(Model2DClass* model) :
+	m_Position{ 0,0,0 },
+	m_Rotation{ 0,0,0 },
+	m_Scale{ 1,1,1 },
+	m_Model{ model }
 {
-	m_Model = new Model2DClass();
 }
 
 ObjectClass::ObjectClass(const ObjectClass& other)
@@ -21,10 +21,9 @@ ObjectClass::ObjectClass(const ObjectClass& other)
 
 ObjectClass::~ObjectClass()
 {
-	delete m_Model;
 }
 
-bool ObjectClass::Initialize(ID3D11Device* device, ID3D11DeviceContext* deviceContext, char* filename)
+void ObjectClass::Initialize()
 {
 	InputManager::get().AddHandler(
 		InputEventHandler::Gen_DefaultHandler<Keys::KEY_W>(
@@ -66,7 +65,7 @@ bool ObjectClass::Initialize(ID3D11Device* device, ID3D11DeviceContext* deviceCo
 		InputEventHandler::Gen_DefaultHandler<Keys::KEY_E>(
 			[this](SHORT)
 	{
-		m_Rotation += 0.1f;
+		m_Rotation.x += 0.1f;
 	}
 			)
 	);
@@ -75,7 +74,16 @@ bool ObjectClass::Initialize(ID3D11Device* device, ID3D11DeviceContext* deviceCo
 		InputEventHandler::Gen_DefaultHandler<Keys::KEY_Q>(
 			[this](SHORT)
 	{
-		m_Rotation -= 0.1f;
+		m_Rotation.y -= 0.1f;
+	}
+			)
+	);
+
+	InputManager::get().AddHandler(
+		InputEventHandler::Gen_DefaultHandler<Keys::KEY_R>(
+			[this](SHORT)
+	{
+		m_Rotation.z -= 0.1f;
 	}
 			)
 	);
@@ -99,9 +107,6 @@ bool ObjectClass::Initialize(ID3D11Device* device, ID3D11DeviceContext* deviceCo
 	}
 			)
 	);
-
-
-	return m_Model->Initialize(device, deviceContext, filename);
 }
 
 void ObjectClass::Shutdown()
