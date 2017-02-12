@@ -18,14 +18,15 @@ using namespace DirectX;
 #include "Aligned.h"
 
 ////////////////////////////////////////////////////////////////////////////////
-// Class name: D3DClass
-////////////////////////////////////////////////////////////////////////////////
-class D3DClass : public Aligned_
+/*
+*/
+/////////////////////////////////////////////////////////////////////////////////
+class Direct3D : public Aligned_
 {
 public:
-	D3DClass();
-	D3DClass(const D3DClass&);
-	~D3DClass();
+	Direct3D();
+	Direct3D(const Direct3D&);
+	~Direct3D();
 
 	bool Initialize(HWND);
 	void Shutdown();
@@ -33,12 +34,12 @@ public:
 	void BeginScene(float, float, float, float);
 	void EndScene();
 
-	ID3D11Device* GetDevice();
-	ID3D11DeviceContext* GetDeviceContext();
+	ID3D11Device* GetDevice() const;
+	ID3D11DeviceContext* GetDeviceContext() const;
 
-	XMMATRIX GetProjectionMatrix();
-	XMMATRIX GetWorldMatrix();
-	XMMATRIX GetOrthoMatrix();
+	XMMATRIX GetProjectionMatrix() const;
+	XMMATRIX GetWorldMatrix() const;
+	XMMATRIX GetOrthoMatrix() const;
 
 	void GetVideoCardInfo(char*, int&);
 

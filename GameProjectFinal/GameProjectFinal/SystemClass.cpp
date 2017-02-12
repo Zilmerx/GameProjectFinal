@@ -11,7 +11,7 @@ SystemClass::SystemClass()
 	m_Graphics = nullptr;
 }
 
-SystemClass::SystemClass(const SystemClass& other)
+SystemClass::SystemClass(const SystemClass&)
 {
 }
 
@@ -33,7 +33,7 @@ bool SystemClass::Initialize()
 	InitializeWindows();
 
 	// Create the graphics object.  This object will handle rendering all the graphics for this application.
-	m_Graphics = new GraphicsClass;
+	m_Graphics = new Graphics;
 	if (!m_Graphics)
 	{
 		return false;
@@ -48,7 +48,7 @@ bool SystemClass::Initialize()
 
 	// Initialize keyboard and mouse events.
 	InputManager::get().AddHandler(InputEventHandler::Gen_DefaultHandler<Keys::ESCAPE>(
-		[](SHORT key)
+		[](SHORT)
 	{
 		Settings::get().QUIT = true;
 	}
@@ -120,7 +120,7 @@ bool SystemClass::Frame()
 	bool result;
 
 	// Do the frame processing for the graphics object.
-	result = m_Graphics->Frame();
+	result = m_Graphics->Render();
 	if (!result)
 	{
 		return false;

@@ -1,0 +1,27 @@
+#pragma once
+
+//////////////
+// INCLUDES //
+//////////////
+#include <vector>
+#include <memory>
+#include "Object.h"
+
+
+////////////////////////////////////////////////////////////////////////////////
+/*
+*/
+/////////////////////////////////////////////////////////////////////////////////
+class World
+{
+public:
+	std::vector<std::unique_ptr<Object>> m_Map;
+
+	World();
+	~World();
+
+	void Initialize(ID3D11Device* device, ID3D11DeviceContext* deviceContext);
+
+	void Shutdown();
+
+};

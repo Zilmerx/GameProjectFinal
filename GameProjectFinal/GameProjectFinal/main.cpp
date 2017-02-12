@@ -5,7 +5,7 @@
 #include "Systemclass.h"
 
 
-int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PSTR pScmdline, int iCmdshow)
+int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PSTR pScmdline, int)
 {
 	SystemClass* System;
 	bool result;

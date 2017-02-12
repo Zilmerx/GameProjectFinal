@@ -28,49 +28,49 @@
     <Filter Include="Header Files\System\Keyboard/Mouse">
       <UniqueIdentifier>{f43419a0-a3f8-4d4c-b708-841c0a3148eb}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\System">
-      <UniqueIdentifier>{292ca3b7-5bc1-4d6c-9d3e-65e6310b1c25}</UniqueIdentifier>
+    <Filter Include="Header Files\System\Graphics\World">
+      <UniqueIdentifier>{f74b98a8-1830-4f4c-93bd-7a528aed3f79}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\System\Graphics">
-      <UniqueIdentifier>{0206b782-74a0-487a-8cc0-33f6c443ee96}</UniqueIdentifier>
+    <Filter Include="Header Files\System\Graphics\Resources">
+      <UniqueIdentifier>{80cb338f-52cc-42bc-b2a8-197b3a805fa1}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="SystemClass.cpp">
-      <Filter>Source Files\System</Filter>
+    <ClCompile Include="Camera.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="WorldClass.cpp">
-      <Filter>Source Files\System\Graphics</Filter>
+    <ClCompile Include="ColorShader.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Model2DClass.cpp">
-      <Filter>Source Files\System\Graphics</Filter>
+    <ClCompile Include="Direct3D.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="ObjectClass.cpp">
-      <Filter>Source Files\System\Graphics</Filter>
+    <ClCompile Include="Graphics.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="TextureClass.cpp">
-      <Filter>Source Files\System\Graphics</Filter>
+    <ClCompile Include="Model2D.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="TextureShaderClass.cpp">
-      <Filter>Source Files\System\Graphics</Filter>
-    </ClCompile>
-    <ClCompile Include="GraphicsClass.cpp">
-      <Filter>Source Files\System\Graphics</Filter>
-    </ClCompile>
-    <ClCompile Include="D3dClass.cpp">
-      <Filter>Source Files\System\Graphics</Filter>
-    </ClCompile>
-    <ClCompile Include="ColorShaderClass.cpp">
-      <Filter>Source Files\System\Graphics</Filter>
-    </ClCompile>
-    <ClCompile Include="CameraClass.cpp">
-      <Filter>Source Files\System\Graphics</Filter>
+    <ClCompile Include="Object.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="RessourceManager.cpp">
-      <Filter>Source Files\System\Graphics</Filter>
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Texture.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="TextureShader.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="World.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="SystemClass.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -161,35 +161,35 @@
     <ClInclude Include="SystemClass.h">
       <Filter>Header Files\System</Filter>
     </ClInclude>
-    <ClInclude Include="CameraClass.h">
+    <ClInclude Include="Graphics.h">
       <Filter>Header Files\System\Graphics</Filter>
     </ClInclude>
-    <ClInclude Include="D3dClass.h">
+    <ClInclude Include="Direct3D.h">
       <Filter>Header Files\System\Graphics</Filter>
     </ClInclude>
-    <ClInclude Include="GraphicsClass.h">
+    <ClInclude Include="Camera.h">
       <Filter>Header Files\System\Graphics</Filter>
     </ClInclude>
-    <ClInclude Include="Model2DClass.h">
-      <Filter>Header Files\System\Graphics</Filter>
-    </ClInclude>
-    <ClInclude Include="ObjectClass.h">
-      <Filter>Header Files\System\Graphics</Filter>
-    </ClInclude>
-    <ClInclude Include="TextureClass.h">
-      <Filter>Header Files\System\Graphics</Filter>
-    </ClInclude>
-    <ClInclude Include="WorldClass.h">
-      <Filter>Header Files\System\Graphics</Filter>
-    </ClInclude>
-    <ClInclude Include="ColorShaderClass.h">
+    <ClInclude Include="ColorShader.h">
       <Filter>Shaders</Filter>
     </ClInclude>
-    <ClInclude Include="TextureShaderClass.h">
+    <ClInclude Include="TextureShader.h">
       <Filter>Shaders</Filter>
+    </ClInclude>
+    <ClInclude Include="World.h">
+      <Filter>Header Files\System\Graphics\World</Filter>
+    </ClInclude>
+    <ClInclude Include="Model2D.h">
+      <Filter>Header Files\System\Graphics\Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="Texture.h">
+      <Filter>Header Files\System\Graphics\Resources</Filter>
     </ClInclude>
     <ClInclude Include="RessourceManager.h">
-      <Filter>Header Files\System\Graphics</Filter>
+      <Filter>Header Files\System\Graphics\Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="Object.h">
+      <Filter>Header Files\System\Graphics\Resources</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

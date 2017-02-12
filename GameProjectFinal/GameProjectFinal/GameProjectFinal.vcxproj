@@ -142,18 +142,18 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="CameraClass.cpp" />
-    <ClCompile Include="ColorShaderClass.cpp" />
-    <ClCompile Include="D3dClass.cpp" />
-    <ClCompile Include="GraphicsClass.cpp" />
+    <ClCompile Include="Camera.cpp" />
+    <ClCompile Include="ColorShader.cpp" />
+    <ClCompile Include="Direct3D.cpp" />
+    <ClCompile Include="Graphics.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="Model2DClass.cpp" />
-    <ClCompile Include="ObjectClass.cpp" />
+    <ClCompile Include="Model2D.cpp" />
+    <ClCompile Include="Object.cpp" />
     <ClCompile Include="RessourceManager.cpp" />
     <ClCompile Include="SystemClass.cpp" />
-    <ClCompile Include="TextureClass.cpp" />
-    <ClCompile Include="TextureShaderClass.cpp" />
-    <ClCompile Include="WorldClass.cpp" />
+    <ClCompile Include="Texture.cpp" />
+    <ClCompile Include="TextureShader.cpp" />
+    <ClCompile Include="World.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Aligned.h" />
@@ -161,23 +161,23 @@
     <ClInclude Include="ByteLiterals.h" />
     <ClInclude Include="ByteTraits.h" />
     <ClInclude Include="ByteTypes.h" />
-    <ClInclude Include="CameraClass.h" />
+    <ClInclude Include="Camera.h" />
     <ClInclude Include="ChronoSuffix.h" />
-    <ClInclude Include="ColorShaderClass.h" />
+    <ClInclude Include="ColorShader.h" />
     <ClInclude Include="Constexpr.h" />
-    <ClInclude Include="D3dClass.h" />
+    <ClInclude Include="Direct3D.h" />
     <ClInclude Include="Exception.h" />
     <ClInclude Include="FrameTime.h" />
-    <ClInclude Include="GraphicsClass.h" />
+    <ClInclude Include="Graphics.h" />
     <ClInclude Include="Incopiable.h" />
     <ClInclude Include="InputEventHandler.h" />
     <ClInclude Include="InputManager.h" />
     <ClInclude Include="Keys.h" />
     <ClInclude Include="Mallocator.h" />
     <ClInclude Include="MallocatorEmptyType.h" />
-    <ClInclude Include="Model2DClass.h" />
+    <ClInclude Include="Model2D.h" />
     <ClInclude Include="MyDebug.h" />
-    <ClInclude Include="ObjectClass.h" />
+    <ClInclude Include="Object.h" />
     <ClInclude Include="Position.h" />
     <ClInclude Include="Random.h" />
     <ClInclude Include="Rect.h" />
@@ -190,11 +190,11 @@
     <ClInclude Include="StackAllocatorEmptyType.h" />
     <ClInclude Include="SystemClass.h" />
     <ClInclude Include="TestTimer.h" />
-    <ClInclude Include="TextureClass.h" />
-    <ClInclude Include="TextureShaderClass.h" />
+    <ClInclude Include="Texture.h" />
+    <ClInclude Include="TextureShader.h" />
     <ClInclude Include="TypeDefs.h" />
     <ClInclude Include="TypeLists.h" />
-    <ClInclude Include="WorldClass.h" />
+    <ClInclude Include="World.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="color.ps" />

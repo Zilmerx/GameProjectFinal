@@ -1,7 +1,7 @@
 #pragma once
 
 template<class T>
-class Point3D;
+struct Point3D;
 
 template<class T>
 struct Point2D

@@ -1,10 +1,10 @@
 ////////////////////////////////////////////////////////////////////////////////
 // Filename: d3dclass.cpp
 ////////////////////////////////////////////////////////////////////////////////
-#include "d3dclass.h"
+#include "Direct3D.h"
 #include "ScreenSize.h"
 
-D3DClass::D3DClass()
+Direct3D::Direct3D()
 {
 	m_swapChain = nullptr;
 	m_device = nullptr;
@@ -18,16 +18,16 @@ D3DClass::D3DClass()
 }
 
 
-D3DClass::D3DClass(const D3DClass& other)
+Direct3D::Direct3D(const Direct3D&)
 {
 }
 
 
-D3DClass::~D3DClass()
+Direct3D::~Direct3D()
 {
 }
 
-bool D3DClass::Initialize(HWND hwnd)
+bool Direct3D::Initialize(HWND hwnd)
 {
 	HRESULT result;
 	IDXGIFactory* factory;
@@ -377,7 +377,7 @@ bool D3DClass::Initialize(HWND hwnd)
 	return true;
 }
 
-void D3DClass::Shutdown()
+void Direct3D::Shutdown()
 {
 	// Before shutting down set to windowed mode or when you release the swap chain it will throw an exception.
 	if (m_swapChain)
@@ -442,7 +442,7 @@ void D3DClass::Shutdown()
 	return;
 }
 
-void D3DClass::BeginScene(float red, float green, float blue, float alpha)
+void Direct3D::BeginScene(float red, float green, float blue, float alpha)
 {
 	float color[4];
 
@@ -463,7 +463,7 @@ void D3DClass::BeginScene(float red, float green, float blue, float alpha)
 }
 
 
-void D3DClass::EndScene()
+void Direct3D::EndScene()
 {
 	// Present the back buffer to the screen since rendering is complete.
 	if (m_vsync_enabled)
@@ -480,49 +480,49 @@ void D3DClass::EndScene()
 	return;
 }
 
-ID3D11Device* D3DClass::GetDevice()
+ID3D11Device* Direct3D::GetDevice() const
 {
 	return m_device;
 }
 
 
-ID3D11DeviceContext* D3DClass::GetDeviceContext()
+ID3D11DeviceContext* Direct3D::GetDeviceContext() const
 {
 	return m_deviceContext;
 }
 
-XMMATRIX D3DClass::GetProjectionMatrix()
+XMMATRIX Direct3D::GetProjectionMatrix() const
 {
 	return m_projectionMatrix;
 }
 
 
-XMMATRIX D3DClass::GetWorldMatrix()
+XMMATRIX Direct3D::GetWorldMatrix() const
 {
 	return m_worldMatrix;
 }
 
 
-XMMATRIX D3DClass::GetOrthoMatrix()
+XMMATRIX Direct3D::GetOrthoMatrix() const
 {
 	return m_orthoMatrix;
 }
 
-void D3DClass::GetVideoCardInfo(char* cardName, int& memory)
+void Direct3D::GetVideoCardInfo(char* cardName, int& memory)
 {
 	strcpy_s(cardName, 128, m_videoCardDescription);
 	memory = m_videoCardMemory;
 	return;
 }
 
-void D3DClass::TurnZBufferOn()
+void Direct3D::TurnZBufferOn()
 {
 	m_deviceContext->OMSetDepthStencilState(m_depthStencilState, 1);
 	return;
 }
 
 
-void D3DClass::TurnZBufferOff()
+void Direct3D::TurnZBufferOff()
 {
 	m_deviceContext->OMSetDepthStencilState(m_depthDisabledStencilState, 1);
 	return;

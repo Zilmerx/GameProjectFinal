@@ -1,9 +1,9 @@
 ////////////////////////////////////////////////////////////////////////////////
 // Filename: textureclass.cpp
 ////////////////////////////////////////////////////////////////////////////////
-#include "textureclass.h"
+#include "Texture.h"
 
-TextureClass::TextureClass()
+Texture::Texture()
 {
 	m_usage = D3D11_USAGE_DEFAULT;
 	m_targaData = nullptr;
@@ -13,7 +13,7 @@ TextureClass::TextureClass()
 }
 
 
-TextureClass::TextureClass(const TextureClass& other)
+Texture::Texture(const Texture& other)
 {
 	m_usage = other.m_usage;
 	m_targaData = other.m_targaData;
@@ -23,11 +23,11 @@ TextureClass::TextureClass(const TextureClass& other)
 }
 
 
-TextureClass::~TextureClass()
+Texture::~Texture()
 {
 }
 
-bool TextureClass::Initialize(ID3D11Device* device, ID3D11DeviceContext* deviceContext, char* filename, D3D11_USAGE usage)
+bool Texture::Initialize(ID3D11Device* device, ID3D11DeviceContext* deviceContext, char* filename, D3D11_USAGE usage)
 {
 	m_usage = usage;
 
@@ -94,7 +94,7 @@ bool TextureClass::Initialize(ID3D11Device* device, ID3D11DeviceContext* deviceC
 	return true;
 }
 
-void TextureClass::Shutdown()
+void Texture::Shutdown()
 {
 	// Release the texture view resource.
 	if (m_textureView)
@@ -120,19 +120,30 @@ void TextureClass::Shutdown()
 	return;
 }
 
-ID3D11ShaderResourceView* TextureClass::GetTexture()
+ID3D11ShaderResourceView* Texture::GetTexture()
 {
 	return m_textureView;
 }
 
-D3D11_USAGE TextureClass::GetCurrUsage()
+D3D11_USAGE Texture::GetCurrUsage()
 {
 	return m_usage;
 }
 
-bool TextureClass::LoadTarga(char* filename, int& height, int& width)
+unsigned short Texture::GetWidth() const
 {
-	int error, bpp, imageSize, index, i, j, k;
+	return m_targaHeader.width;
+}
+
+unsigned short Texture::GetHeight() const
+{
+	return m_targaHeader.height;
+}
+
+bool Texture::LoadTarga(char* filename, int& height, int& width)
+{
+	int error, bpp, index, i, j, k;
+	unsigned int imageSize;
 	FILE* filePtr;
 	unsigned int count;
 	unsigned char* targaImage;

@@ -1,8 +1,4 @@
-////////////////////////////////////////////////////////////////////////////////
-// Filename: textureclass.h
-////////////////////////////////////////////////////////////////////////////////
-#ifndef _TEXTURECLASS_H_
-#define _TEXTURECLASS_H_
+#pragma once
 
 
 //////////////
@@ -13,9 +9,10 @@
 
 
 ////////////////////////////////////////////////////////////////////////////////
-// Class name: TextureClass
-////////////////////////////////////////////////////////////////////////////////
-class TextureClass
+/*
+*/
+/////////////////////////////////////////////////////////////////////////////////
+class Texture
 {
 private:
 
@@ -30,9 +27,9 @@ private:
 
 public:
 
-	TextureClass();
-	TextureClass(const TextureClass&);
-	~TextureClass();
+	Texture();
+	Texture(const Texture&);
+	~Texture();
 
 	bool Initialize(ID3D11Device*, ID3D11DeviceContext*, char*, D3D11_USAGE);
 	void Shutdown();
@@ -40,14 +37,8 @@ public:
 	ID3D11ShaderResourceView* GetTexture();
 	D3D11_USAGE GetCurrUsage();
 
-	unsigned short GetWidth()
-	{
-		return m_targaHeader.width;
-	}
-	unsigned short GetHeight()
-	{
-		return m_targaHeader.height;
-	}
+	unsigned short GetWidth() const;
+	unsigned short GetHeight() const;
 
 private:
 
@@ -62,6 +53,3 @@ private:
 	ID3D11ShaderResourceView* m_textureView;
 
 };
-
-
-#endif

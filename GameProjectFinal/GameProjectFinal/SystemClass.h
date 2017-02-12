@@ -14,7 +14,7 @@
 // MY CLASS INCLUDES //
 ///////////////////////
 #include "InputManager.h"
-#include "graphicsclass.h"
+#include "Graphics.h"
 
 ////////////////////////////////////////////////////////////////////////////////
 // Class name: SystemClass
@@ -42,7 +42,7 @@ private:
 	HINSTANCE m_hinstance;
 	HWND m_hwnd;
 
-	GraphicsClass* m_Graphics;
+	Graphics* m_Graphics;
 };
 
 

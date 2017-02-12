@@ -1,61 +1,83 @@
 ////////////////////////////////////////////////////////////////////////////////
 // Filename: cameraclass.cpp
 ////////////////////////////////////////////////////////////////////////////////
-#include "cameraclass.h"
+#include "Camera.h"
 #include "Settings.h"
 
-CameraClass::CameraClass()
+Camera::Camera()
 {
-	m_positionX = 0.0f;
-	m_positionY = 0.0f;
-	m_positionZ = 0.0f;
-
-	m_rotationX = 0.0f;
-	m_rotationY = 0.0f;
-	m_rotationZ = 0.0f;
+	m_position = { 0.0f, 0.0f, 0.0f };
+	m_rotation = { 0.0f, 0.0f, 0.0f };
 }
 
 
-CameraClass::CameraClass(const CameraClass& other)
+Camera::Camera(const Camera&)
 {
 }
 
 
-CameraClass::~CameraClass()
+Camera::~Camera()
 {
 }
 
-void CameraClass::SetPosition(float x, float y, float z)
+void Camera::SetPosition(float x, float y, float z)
 {
-	m_positionX = x;
-	m_positionY = y;
-	m_positionZ = z;
+	m_position = { x,y,z };
 	m_Dirty = true;
 	return;
 }
 
-
-void CameraClass::SetRotation(float x, float y, float z)
+void Camera::SetPositionX(float x)
 {
-	m_rotationX = x;
-	m_rotationY = y;
-	m_rotationZ = z;
+	m_position.x = x;
+	m_Dirty = true;
+}
+
+void Camera::SetPositionY(float y)
+{
+	m_position.y = y;
+	m_Dirty = true;
+}
+
+void Camera::SetPositionZ(float z)
+{
+	m_position.z = z;
+	m_Dirty = true;
+}
+
+
+void Camera::SetRotation(float x, float y, float z)
+{
+	m_rotation = { x,y,z };
 	m_Dirty = true;
 	return;
 }
 
-XMFLOAT3 CameraClass::GetPosition()
+void Camera::SetRotationX(float x)
 {
-	return XMFLOAT3(m_positionX, m_positionY, m_positionZ);
+	m_rotation.x = x;
+}
+void Camera::SetRotationY(float y)
+{
+	m_rotation.y = y;
+}
+void Camera::SetRotationZ(float z)
+{
+	m_rotation.z = z;
+}
+
+XMFLOAT3 Camera::GetPosition() const
+{
+	return m_position;
 }
 
 
-XMFLOAT3 CameraClass::GetRotation()
+XMFLOAT3 Camera::GetRotation() const
 {
-	return XMFLOAT3(m_rotationX, m_rotationY, m_rotationZ);
+	return m_rotation;
 }
 
-void CameraClass::Render()
+void Camera::Render()
 {
 	if(m_Dirty)
 	{
@@ -87,9 +109,9 @@ void CameraClass::Render()
 		lookAtVector = XMLoadFloat3(&lookAt);
 
 		// Set the yaw (Y axis), pitch (X axis), and roll (Z axis) rotations in radians.
-		pitch = m_rotationX * ONE_DEGREE;
-		yaw = m_rotationY * ONE_DEGREE;
-		roll = m_rotationZ * ONE_DEGREE;
+		pitch = m_rotation.x * ONE_DEGREE;
+		yaw = m_rotation.y * ONE_DEGREE;
+		roll = m_rotation.z * ONE_DEGREE;
 
 		// Create the rotation matrix from the yaw, pitch, and roll values.
 		rotationMatrix = XMMatrixRotationRollPitchYaw(pitch, yaw, roll);
@@ -108,7 +130,7 @@ void CameraClass::Render()
 	return;
 }
 
-XMMATRIX CameraClass::GetViewMatrix()
+XMMATRIX Camera::GetViewMatrix() const
 {
 	return m_viewMatrix;
 }

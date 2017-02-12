@@ -1,11 +1,11 @@
 ////////////////////////////////////////////////////////////////////////////////
 // Filename: Model2DClass.cpp
 ////////////////////////////////////////////////////////////////////////////////
-#include "Model2DClass.h"
+#include "Model2D.h"
 #include "InputManager.h"
 
 
-Model2DClass::Model2DClass(D3D11_USAGE usage) :
+Model2D::Model2D(D3D11_USAGE usage) :
 	m_Usage{ usage }
 {
 	m_vertexBuffer = 0;
@@ -14,7 +14,7 @@ Model2DClass::Model2DClass(D3D11_USAGE usage) :
 }
 
 
-Model2DClass::Model2DClass(const Model2DClass& other)
+Model2D::Model2D(const Model2D& other)
 {
 	m_vertexBuffer = other.m_vertexBuffer;
 	m_indexBuffer = other.m_indexBuffer;
@@ -24,12 +24,12 @@ Model2DClass::Model2DClass(const Model2DClass& other)
 }
 
 
-Model2DClass::~Model2DClass()
+Model2D::~Model2D()
 {
 }
 
 
-bool Model2DClass::Initialize(ID3D11Device* device, ID3D11DeviceContext* deviceContext, char* textureFilename)
+bool Model2D::Initialize(ID3D11Device* device, ID3D11DeviceContext* deviceContext, char* textureFilename)
 {
 	bool result;
 
@@ -53,7 +53,7 @@ bool Model2DClass::Initialize(ID3D11Device* device, ID3D11DeviceContext* deviceC
 }
 
 
-void Model2DClass::Shutdown()
+void Model2D::Shutdown()
 {
 	// Release the model texture.
 	ReleaseTexture();
@@ -65,7 +65,7 @@ void Model2DClass::Shutdown()
 }
 
 
-void Model2DClass::Render(ID3D11Device* device, ID3D11DeviceContext* deviceContext)
+void Model2D::Render(ID3D11Device*, ID3D11DeviceContext* deviceContext)
 {
 	unsigned int stride;
 	unsigned int offset;
@@ -87,23 +87,27 @@ void Model2DClass::Render(ID3D11Device* device, ID3D11DeviceContext* deviceConte
 }
 
 
-int Model2DClass::GetIndexCount()
+int Model2D::GetIndexCount() const
 {
 	return m_indexCount;
 }
 
+char* Model2D::GetName() const
+{
+	return m_Name;
+}
 
-TextureClass* Model2DClass::GetTexture()
+Texture* Model2D::GetTexture() const
 {
 	return m_Texture;
 }
 
-ID3D11ShaderResourceView* Model2DClass::GetTextureView()
+ID3D11ShaderResourceView* Model2D::GetTextureView() const
 {
 	return m_Texture->GetTexture();
 }
 
-bool Model2DClass::InitializeBuffers(ID3D11Device* device)
+bool Model2D::InitializeBuffers(ID3D11Device* device)
 {
 	VertexType* vertices;
 	unsigned long* indices;
@@ -205,7 +209,7 @@ bool Model2DClass::InitializeBuffers(ID3D11Device* device)
 }
 
 
-void Model2DClass::ShutdownBuffers()
+void Model2D::ShutdownBuffers()
 {
 	// Release the index buffer.
 	if (m_indexBuffer)
@@ -225,13 +229,13 @@ void Model2DClass::ShutdownBuffers()
 }
 
 
-bool Model2DClass::LoadTexture(ID3D11Device* device, ID3D11DeviceContext* deviceContext, char* filename, D3D11_USAGE usage)
+bool Model2D::LoadTexture(ID3D11Device* device, ID3D11DeviceContext* deviceContext, char* filename, D3D11_USAGE usage)
 {
 	bool result;
 
 
 	// Create the texture object.
-	m_Texture = new TextureClass;
+	m_Texture = new Texture;
 	if (!m_Texture)
 	{
 		return false;
@@ -248,7 +252,7 @@ bool Model2DClass::LoadTexture(ID3D11Device* device, ID3D11DeviceContext* device
 }
 
 
-void Model2DClass::ReleaseTexture()
+void Model2D::ReleaseTexture()
 {
 	// Release the texture object.
 	if (m_Texture)

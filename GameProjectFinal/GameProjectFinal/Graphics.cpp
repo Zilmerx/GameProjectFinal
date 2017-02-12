@@ -1,12 +1,12 @@
 ////////////////////////////////////////////////////////////////////////////////
 // Filename: graphicsclass.cpp
 ////////////////////////////////////////////////////////////////////////////////
-#include "graphicsclass.h"
+#include "Graphics.h"
 #include "ScreenSize.h"
 #include "InputManager.h"
 
 
-GraphicsClass::GraphicsClass()
+Graphics::Graphics()
 {
 	m_Direct3D = nullptr;
 	m_Camera = nullptr;
@@ -16,22 +16,22 @@ GraphicsClass::GraphicsClass()
 }
 
 
-GraphicsClass::GraphicsClass(const GraphicsClass& other)
+Graphics::Graphics(const Graphics&)
 {
 }
 
 
-GraphicsClass::~GraphicsClass()
+Graphics::~Graphics()
 {
 }
 
 
-bool GraphicsClass::Initialize(HWND hwnd)
+bool Graphics::Initialize(HWND hwnd)
 {
 	bool result;
 
 	// Create the Direct3D object.
-	m_Direct3D = new D3DClass;
+	m_Direct3D = new Direct3D;
 	if (!m_Direct3D)
 	{
 		return false;
@@ -47,7 +47,7 @@ bool GraphicsClass::Initialize(HWND hwnd)
 
 
 	// Create the camera object.
-	m_Camera = new CameraClass;
+	m_Camera = new Camera;
 	if (!m_Camera)
 	{
 		return false;
@@ -93,7 +93,7 @@ bool GraphicsClass::Initialize(HWND hwnd)
 	);
 
 	// Create the model object.
-	m_World = new WorldClass;
+	m_World = new World;
 	if (!m_World)
 	{
 		return false;
@@ -105,7 +105,7 @@ bool GraphicsClass::Initialize(HWND hwnd)
 	m_World->Initialize(m_Direct3D->GetDevice(), m_Direct3D->GetDeviceContext());
 
 	// Create the color shader object.
-	m_ColorShader = new ColorShaderClass;
+	m_ColorShader = new ColorShader;
 	if (!m_ColorShader)
 	{
 		return false;
@@ -120,7 +120,7 @@ bool GraphicsClass::Initialize(HWND hwnd)
 	}
 
 	// Create the texture shader object.
-	m_TextureShader = new TextureShaderClass;
+	m_TextureShader = new TextureShader;
 	if (!m_TextureShader)
 	{
 		return false;
@@ -138,7 +138,7 @@ bool GraphicsClass::Initialize(HWND hwnd)
 }
 
 
-void GraphicsClass::Shutdown()
+void Graphics::Shutdown()
 {
 	// Release the texture shader object.
 	if (m_TextureShader)
@@ -183,22 +183,7 @@ void GraphicsClass::Shutdown()
 }
 
 
-bool GraphicsClass::Frame()
-{
-	bool result;
-
-	// Render the graphics scene.
-	result = Render();
-	if (!result)
-	{
-		return false;
-	}
-
-	return true;
-}
-
-
-bool GraphicsClass::Render()
+bool Graphics::Render()
 {
 	bool result;
 
@@ -219,7 +204,7 @@ bool GraphicsClass::Render()
 	{
 		ptr->Render(m_Direct3D->GetDevice(), m_Direct3D->GetDeviceContext());
 
-		Model2DClass* model = ptr->GetModel();
+		Model2D* model = ptr->GetModel();
 
 		XMMATRIX rot = ptr->GetRotationMatrix();
 		XMMATRIX tra = ptr->GetTranslationMatrix();
