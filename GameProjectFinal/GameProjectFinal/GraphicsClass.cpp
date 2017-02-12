@@ -200,7 +200,6 @@ bool GraphicsClass::Frame()
 
 bool GraphicsClass::Render()
 {
-	XMMATRIX worldMatrix, viewMatrix, projectionMatrix;
 	bool result;
 
 
@@ -211,12 +210,12 @@ bool GraphicsClass::Render()
 	m_Camera->Render();
 
 	// Get the world, view, and projection matrices from the camera and d3d objects.
-	m_Direct3D->GetWorldMatrix(worldMatrix);
-	m_Camera->GetViewMatrix(viewMatrix);
-	m_Direct3D->GetProjectionMatrix(projectionMatrix);
+	XMMATRIX worldMatrix = m_Direct3D->GetWorldMatrix();
+	XMMATRIX viewMatrix = m_Camera->GetViewMatrix();
+	XMMATRIX projectionMatrix = m_Direct3D->GetProjectionMatrix();
 
 	// Put the model vertex and index buffers on the graphics pipeline to prepare them for drawing.
-	for (auto ptr : m_World->m_Map)
+	for (auto& ptr : m_World->m_Map)
 	{
 		ptr->Render(m_Direct3D->GetDevice(), m_Direct3D->GetDeviceContext());
 
@@ -226,7 +225,8 @@ bool GraphicsClass::Render()
 		XMMATRIX tra = ptr->GetTranslationMatrix();
 		XMMATRIX sca = ptr->GetScaleMatrix();
 
-		XMMATRIX objectMat = rot * tra * sca;
+		XMMATRIX objectMat = rot * sca * tra;
+		//XMMATRIX objectMat = rot * tra * sca;
 
 		// Render the model using the texture shader.
 		result = m_TextureShader->Render(m_Direct3D->GetDeviceContext(), model->GetIndexCount(), worldMatrix * objectMat, viewMatrix, projectionMatrix, model->GetTexture()->GetTexture());

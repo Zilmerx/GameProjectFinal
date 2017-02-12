@@ -1,12 +1,13 @@
 #pragma once
 
 #include <vector>
+#include <memory>
 #include "ObjectClass.h"
 
 class WorldClass
 {
 public:
-	std::vector<ObjectClass*> m_Map;
+	std::vector<std::unique_ptr<ObjectClass>> m_Map;
 
 	WorldClass();
 	~WorldClass();

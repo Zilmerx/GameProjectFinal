@@ -31,7 +31,7 @@ public:
 	XMFLOAT3 GetRotation();
 
 	void Render();
-	void GetViewMatrix(XMMATRIX&);
+	XMMATRIX GetViewMatrix();
 
 private:
 	bool m_Dirty;
