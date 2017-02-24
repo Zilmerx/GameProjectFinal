@@ -56,61 +56,14 @@ bool Graphics::Initialize(HWND hwnd)
 	// Set the initial position of the camera.
 	m_Camera->SetPosition(0.0f, 0.0f, -28.0f); // -28.0f corresponds à 
 
-	InputManager::get().AddHandler(
-		InputEventHandler::Gen_DefaultHandler<Keys::ARR_UP>(
-			[this](SHORT)
-			{
-				m_Camera->SetPosition(0.0f, 1.0f, -1.0f);
-			}
-		)
-	);
-
-	InputManager::get().AddHandler(
-		InputEventHandler::Gen_DefaultHandler<Keys::ARR_DOWN>(
-			[this](SHORT)
-			{
-				m_Camera->SetPosition(0.0f, -1.0f, -1.0f);
-			}
-			)
-	);
-
-	InputManager::get().AddHandler(
-		InputEventHandler::Gen_DefaultHandler<Keys::ARR_LEFT>(
-			[this](SHORT)
-			{
-				m_Camera->SetPosition(-1.0f, 0.0f, -1.0f);
-			}
-			)
-	);
-
-	InputManager::get().AddHandler(
-		InputEventHandler::Gen_DefaultHandler<Keys::ARR_RIGHT>(
-			[this](SHORT)
-			{
-				m_Camera->SetPosition(1.0f, 0.0f, -1.0f);
-			}
-			)
-	);
-
-	InputManager::get().AddHandler(
-		InputEventHandler::Gen_DefaultHandler<Keys::KEY_O>(
-			[this](SHORT)
+	m_Context = new ContextMenu{ this };
+	if (!m_Context)
 	{
-		SwitchContext<ContextMenu>();
+		return false;
 	}
-			)
-	);
 
-	InputManager::get().AddHandler(
-		InputEventHandler::Gen_DefaultHandler<Keys::KEY_P>(
-			[this](SHORT)
-	{
-		SwitchContext<ContextWorld>();
-	}
-			)
-	);
-
-	SwitchContext<ContextWorld>();
+	// Initialize the model object.
+	m_Context->Initialize(m_Direct3D->GetDevice(), m_Direct3D->GetDeviceContext());
 
 	// Create the color shader object.
 	m_ColorShader = new ColorShader;
@@ -193,9 +146,6 @@ void Graphics::Shutdown()
 
 bool Graphics::Render()
 {
-	bool result;
-
-
 	// Clear the buffers to begin the scene.
 	m_Direct3D->BeginScene(0.0f, 0.0f, 0.0f, 1.0f);
 
@@ -218,6 +168,8 @@ bool Graphics::Render()
 
 	// Present the rendered scene to the screen.
 	m_Direct3D->EndScene();
+
+	m_Context->ProcessInputs();
 
 	return true;
 }

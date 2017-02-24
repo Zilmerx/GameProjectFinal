@@ -14,9 +14,8 @@
 /*
 */
 /////////////////////////////////////////////////////////////////////////////////
-class InputManager : public Singleton<InputManager>
+class InputManager
 {
-
 	// Vector of keys for which the values have to be updated in m_KeyValues.
 	std::vector<Keys> m_KeysToUpdate;
 
@@ -35,9 +34,16 @@ public:
 		m_EventHandlers.push_back(handler);
 	}
 
+
 	void RemoveHandler(InputEventHandler* handler)
 	{
-
+		for (std::vector<InputEventHandler>::iterator i = m_EventHandlers.begin(); i != m_EventHandlers.end(); ++i)
+		{
+			if (&*i == handler) 
+			{ 
+				m_EventHandlers.erase(i); break; 
+			}
+		}
 	}
 
 	void ClearHandlers()
@@ -52,14 +58,12 @@ public:
 		ExecuteHandlers();
 	}
 
-private:
-
-	friend struct Singleton<InputManager>;
-
 	InputManager()
 	{
 		std::fill_n(m_KeyStates, (int)KeyStatesSize, 0);
 	}
+
+private:
 
 	// Updates the state of the keys with the current info.
 	void UpdateKeyStates()

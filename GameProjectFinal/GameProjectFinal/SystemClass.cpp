@@ -46,15 +46,6 @@ bool SystemClass::Initialize()
 		return false;
 	}
 
-	// Initialize keyboard and mouse events.
-	InputManager::get().AddHandler(InputEventHandler::Gen_DefaultHandler<Keys::ESCAPE>(
-		[](SHORT)
-	{
-		Settings::get().QUIT = true;
-	}
-	));
-
-
 	return true;
 }
 
@@ -106,8 +97,6 @@ void SystemClass::Run()
 			{
 				Settings::get().QUIT = true;
 			}
-
-			InputManager::get().CheckEvents();
 		}
 
 	}

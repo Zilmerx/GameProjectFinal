@@ -40,4 +40,19 @@ private:
 		m_Handler{ handler }
 	{
 	}
+
+public:
+
+	InputEventHandler(const InputEventHandler& other) :
+		m_Key{ other.m_Key },
+		m_Predicate{ other.m_Predicate },
+		m_Handler{ other.m_Handler }
+	{
+	}
+
+	InputEventHandler& operator=(InputEventHandler other) // copy assignment
+	{
+		std::swap(*this, other);
+		return *this; // old resources now in copy, released in its dtor
+	}
 };

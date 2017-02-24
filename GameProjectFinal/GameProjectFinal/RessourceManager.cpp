@@ -39,3 +39,8 @@ Model2D* ResourceManager::Get(char* fileName) const
 
 	return model;
 }
+
+void ResourceManager::Reset()
+{
+	m_Map.clear();
+}

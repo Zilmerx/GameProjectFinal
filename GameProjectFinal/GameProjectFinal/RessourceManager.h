@@ -27,5 +27,6 @@ public:
 
 	void Make(ID3D11Device* device, ID3D11DeviceContext* deviceContext, char* fileName);
 	Model2D* Get(char* fileName) const;
+	void Reset();
 
 };

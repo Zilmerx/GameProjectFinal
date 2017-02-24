@@ -30,7 +30,9 @@ public:
 	template<class ContextType>
 	bool SwitchContext()
 	{
-		m_Context = new ContextType;
+		m_Context->Shutdown();
+
+		m_Context = new ContextType{ this };
 		if (!m_Context)
 		{
 			return false;

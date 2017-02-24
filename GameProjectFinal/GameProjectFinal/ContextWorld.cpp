@@ -1,10 +1,17 @@
 
 #include "RessourceManager.h"
 #include "ContextWorld.h"
+#include "Graphics.h"
 
-
-void ContextWorld::Initialize(ID3D11Device* device, ID3D11DeviceContext* deviceContext)
+void ContextWorld::InitializeDef(ID3D11Device* device, ID3D11DeviceContext* deviceContext)
 {
+	m_Manager->AddHandler(InputEventHandler::Gen_DefaultHandler<Keys::KEY_O>(
+		[this](SHORT)
+	{
+		m_Parent->SwitchContext<ContextMenu>();
+	}
+	));
+
 	ResourceManager::get().Make(device, deviceContext, "../GameProjectFinal/Resources/Maps/Tiles/stone01.tga");
 	Model2D* model1 = ResourceManager::get().Get("../GameProjectFinal/Resources/Maps/Tiles/stone01.tga");
 
