@@ -8,7 +8,7 @@
 #include "Object.h"
 #include "InputManager.h"
 #include "Settings.h"
-#include "RessourceManager.h"
+#include "ResourceManager.h"
 
 class Graphics;
 

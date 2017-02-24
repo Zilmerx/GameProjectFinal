@@ -150,7 +150,7 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Model2D.cpp" />
     <ClCompile Include="Object.cpp" />
-    <ClCompile Include="RessourceManager.cpp" />
+    <ClCompile Include="ResourceManager.cpp" />
     <ClCompile Include="SystemClass.cpp" />
     <ClCompile Include="Texture.cpp" />
     <ClCompile Include="TextureShader.cpp" />
@@ -185,7 +185,7 @@
     <ClInclude Include="Random.h" />
     <ClInclude Include="Rect.h" />
     <ClInclude Include="resource.h" />
-    <ClInclude Include="RessourceManager.h" />
+    <ClInclude Include="ResourceManager.h" />
     <ClInclude Include="ScreenSize.h" />
     <ClInclude Include="Settings.h" />
     <ClInclude Include="Singleton.h" />
