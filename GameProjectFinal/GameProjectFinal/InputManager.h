@@ -35,6 +35,17 @@ public:
 		m_EventHandlers.push_back(handler);
 	}
 
+	void RemoveHandler(InputEventHandler* handler)
+	{
+
+	}
+
+	void ClearHandlers()
+	{
+		m_KeysToUpdate.clear();
+		m_EventHandlers.clear();
+	}
+
 	void CheckEvents()
 	{
 		UpdateKeyStates();

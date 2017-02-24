@@ -144,6 +144,7 @@
   <ItemGroup>
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="ColorShader.cpp" />
+    <ClCompile Include="ContextMenu.cpp" />
     <ClCompile Include="Direct3D.cpp" />
     <ClCompile Include="Graphics.cpp" />
     <ClCompile Include="main.cpp" />
@@ -153,10 +154,11 @@
     <ClCompile Include="SystemClass.cpp" />
     <ClCompile Include="Texture.cpp" />
     <ClCompile Include="TextureShader.cpp" />
-    <ClCompile Include="World.cpp" />
+    <ClCompile Include="ContextWorld.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Aligned.h" />
+    <ClInclude Include="BaseContext.h" />
     <ClInclude Include="ByteAmount.h" />
     <ClInclude Include="ByteLiterals.h" />
     <ClInclude Include="ByteTraits.h" />
@@ -165,6 +167,7 @@
     <ClInclude Include="ChronoSuffix.h" />
     <ClInclude Include="ColorShader.h" />
     <ClInclude Include="Constexpr.h" />
+    <ClInclude Include="ContextMenu.h" />
     <ClInclude Include="Direct3D.h" />
     <ClInclude Include="Exception.h" />
     <ClInclude Include="FrameTime.h" />
@@ -194,7 +197,7 @@
     <ClInclude Include="TextureShader.h" />
     <ClInclude Include="TypeDefs.h" />
     <ClInclude Include="TypeLists.h" />
-    <ClInclude Include="World.h" />
+    <ClInclude Include="ContextWorld.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="color.ps" />

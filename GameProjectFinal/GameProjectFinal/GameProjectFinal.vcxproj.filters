@@ -28,11 +28,11 @@
     <Filter Include="Header Files\System\Keyboard/Mouse">
       <UniqueIdentifier>{f43419a0-a3f8-4d4c-b708-841c0a3148eb}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\System\Graphics\World">
-      <UniqueIdentifier>{f74b98a8-1830-4f4c-93bd-7a528aed3f79}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Header Files\System\Graphics\Resources">
       <UniqueIdentifier>{80cb338f-52cc-42bc-b2a8-197b3a805fa1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\System\Graphics\Contexts">
+      <UniqueIdentifier>{f74b98a8-1830-4f4c-93bd-7a528aed3f79}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -66,10 +66,13 @@
     <ClCompile Include="TextureShader.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="World.cpp">
+    <ClCompile Include="SystemClass.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="SystemClass.cpp">
+    <ClCompile Include="ContextWorld.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ContextMenu.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -176,9 +179,6 @@
     <ClInclude Include="TextureShader.h">
       <Filter>Shaders</Filter>
     </ClInclude>
-    <ClInclude Include="World.h">
-      <Filter>Header Files\System\Graphics\World</Filter>
-    </ClInclude>
     <ClInclude Include="Model2D.h">
       <Filter>Header Files\System\Graphics\Resources</Filter>
     </ClInclude>
@@ -190,6 +190,15 @@
     </ClInclude>
     <ClInclude Include="Object.h">
       <Filter>Header Files\System\Graphics\Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="BaseContext.h">
+      <Filter>Header Files\System\Graphics\Contexts</Filter>
+    </ClInclude>
+    <ClInclude Include="ContextWorld.h">
+      <Filter>Header Files\System\Graphics\Contexts</Filter>
+    </ClInclude>
+    <ClInclude Include="ContextMenu.h">
+      <Filter>Header Files\System\Graphics\Contexts</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
