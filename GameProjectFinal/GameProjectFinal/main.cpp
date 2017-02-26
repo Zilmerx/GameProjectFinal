@@ -4,13 +4,10 @@
 
 #include "Systemclass.h"
 
-
 int WINAPI WinMain(HINSTANCE hInstance, HINSTANCE hPrevInstance, PSTR pScmdline, int)
 {
 	SystemClass* System;
 	bool result;
-
-
 
 	// Create the system object.
 	System = new SystemClass;

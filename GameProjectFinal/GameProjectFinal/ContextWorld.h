@@ -5,6 +5,10 @@
 //////////////
 #include "BaseContext.h"
 
+#include "Map.h"
+
+#include "Grass.h"
+#include "Stones.h"
 
 ////////////////////////////////////////////////////////////////////////////////
 /*
@@ -12,19 +16,20 @@
 /////////////////////////////////////////////////////////////////////////////////
 class ContextWorld : public BaseContext
 {
-	std::vector<std::unique_ptr<Object>>* m_Map;
-	std::vector<std::unique_ptr<Object>>* m_Characters;
+	Map m_Map;
+	std::vector<std::unique_ptr<Object>> m_Characters;
 
 public:
 
 	ContextWorld(Graphics* parent) :
 		BaseContext{ 2 , parent }
 	{
-		m_Map = &m_Objects[0];
-		m_Characters = &m_Objects[1];
 	}
 	~ContextWorld() {}
 
 	void InitializeDef(ID3D11Device* device, ID3D11DeviceContext* deviceContext) override;
 
+	virtual void Render(Graphics& gfx) override;
+
+	virtual void Shutdown() override;
 };

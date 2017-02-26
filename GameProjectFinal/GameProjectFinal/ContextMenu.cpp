@@ -21,21 +21,39 @@ void ContextMenu::InitializeDef(ID3D11Device* device, ID3D11DeviceContext* devic
 	{
 		for (int x = -3; x <= 3; x++) // -3 to 3, 7 values.
 		{
-			std::unique_ptr<Object> obj;
+			std::unique_ptr<MapTile> obj;
 			if (x % 2) // Is Even
 			{
-				obj = std::make_unique<Object>(model1); // Stones
+				obj = std::make_unique<MapTile>(model1); // Stones
 			}
 			else                // Is Odd
 			{
-				obj = std::make_unique<Object>(model2); // Grass
+				obj = std::make_unique<MapTile>(model2); // Grass
 			}
 
 			obj->SetPosition(x, y);
 
 			obj->Initialize();
 
-			m_Map->push_back(std::move(obj));
+			m_Map.push_back(std::move(obj));
 		}
 	}
+}
+
+void ContextMenu::Render(Graphics& gfx)
+{
+	for (auto& tile : m_Map)
+	{
+		gfx.RenderObject(*tile);
+	}
+
+	for (auto& character : m_Characters)
+	{
+		gfx.RenderObject(*character);
+	}
+}
+
+void ContextMenu::Shutdown()
+{
+
 }

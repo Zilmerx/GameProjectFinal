@@ -54,7 +54,7 @@ bool Graphics::Initialize(HWND hwnd)
 	}
 
 	// Set the initial position of the camera.
-	m_Camera->SetPosition(0.0f, 0.0f, -28.0f); // -28.0f corresponds à 
+	m_Camera->SetPosition(0.0f, 0.0f);
 
 	m_Context = new ContextMenu{ this };
 	if (!m_Context)
@@ -158,13 +158,7 @@ bool Graphics::Render()
 	XMMATRIX projectionMatrix = m_Direct3D->GetProjectionMatrix();
 
 	// Put the model vertex and index buffers on the graphics pipeline to prepare them for drawing.
-	for (auto& vec : m_Context->m_Objects)
-	{
-		for (auto& ptr : vec)
-		{
-			RenderObject(*ptr);
-		}
-	}
+	m_Context->Render(*this);
 
 	// Present the rendered scene to the screen.
 	m_Direct3D->EndScene();

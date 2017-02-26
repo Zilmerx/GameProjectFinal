@@ -25,10 +25,7 @@ protected:
 
 public:
 
-	std::vector<std::vector<std::unique_ptr<Object>>> m_Objects;
-
 	BaseContext(size_t ObjectVectorSize, Graphics* parent) :
-		m_Objects{ ObjectVectorSize },
 		m_Manager{ nullptr },
 		m_Parent{ parent }
 	{}
@@ -59,15 +56,19 @@ public:
 		m_Manager->CheckEvents();
 	}
 
-	void Shutdown()
+	virtual void Render(Graphics& gfx)
 	{
-		for (auto& vec : m_Objects)
-		{
-			for (auto& ptr : vec)
-			{
-				ptr->Shutdown();
-			}
-		}
+
+	}
+
+	virtual void Shutdown()
+	{
+
+	}
+
+	InputManager* GetInputManager()
+	{
+		return m_Manager;
 	}
 
 private:

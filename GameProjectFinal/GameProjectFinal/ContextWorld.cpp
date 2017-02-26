@@ -13,31 +13,49 @@ void ContextWorld::InitializeDef(ID3D11Device* device, ID3D11DeviceContext* devi
 	));
 
 	ResourceManager::get().Make(device, deviceContext, "../GameProjectFinal/Resources/Maps/Tiles/stone01.tga");
-	Model2D* model1 = ResourceManager::get().Get("../GameProjectFinal/Resources/Maps/Tiles/stone01.tga");
-
 	ResourceManager::get().Make(device, deviceContext, "../GameProjectFinal/Resources/Maps/Tiles/MT-GR-02.tga");
-	Model2D* model2 = ResourceManager::get().Get("../GameProjectFinal/Resources/Maps/Tiles/MT-GR-02.tga");
+	ResourceManager::get().Make(device, deviceContext, "../GameProjectFinal/Resources/Maps/Tiles/UNUSED_DEBUGE.tga");
 
+	m_Map.SetMap("../GameProjectFinal/Resources/Maps/BitMaps/map01.bmp");
 
+	/*
 	for (int y = -3; y <= 3; y++) // -3 to 3, 7 values.
 	{
 		for (int x = -3; x <= 3; x++) // -3 to 3, 7 values.
 		{
-			std::unique_ptr<Object> obj;
+			std::unique_ptr<MapTile> obj;
 			if (x % 2) // Is Even
 			{
-				obj = std::make_unique<Object>(model1); // Stones
+				obj = std::make_unique<MapTile>(Stones()); // Stones
 			}
-			else                // Is Odd
+			else       // Is Odd
 			{
-				obj = std::make_unique<Object>(model2); // Grass
+				obj = std::make_unique<MapTile>(Grass()); // Grass
 			}
 
 			obj->SetPosition(x, y);
 
 			obj->Initialize();
 
-			m_Map->push_back(std::move(obj));
+			m_Map.push_back(std::move(obj));
 		}
+	}*/
+}
+
+void ContextWorld::Render(Graphics& gfx)
+{
+	for (auto& tile : m_Map)
+	{
+		gfx.RenderObject(*tile);
 	}
+
+	for (auto& character : m_Characters)
+	{
+		gfx.RenderObject(*character);
+	}
+}
+
+void ContextWorld::Shutdown()
+{
+
 }

@@ -172,12 +172,15 @@
     <ClInclude Include="Exception.h" />
     <ClInclude Include="FrameTime.h" />
     <ClInclude Include="Graphics.h" />
+    <ClInclude Include="Grass.h" />
     <ClInclude Include="Incopiable.h" />
     <ClInclude Include="InputEventHandler.h" />
     <ClInclude Include="InputManager.h" />
     <ClInclude Include="Keys.h" />
     <ClInclude Include="Mallocator.h" />
     <ClInclude Include="MallocatorEmptyType.h" />
+    <ClInclude Include="Map.h" />
+    <ClInclude Include="MapTile.h" />
     <ClInclude Include="Model2D.h" />
     <ClInclude Include="MyDebug.h" />
     <ClInclude Include="Object.h" />
@@ -191,6 +194,7 @@
     <ClInclude Include="Singleton.h" />
     <ClInclude Include="StackAllocator.h" />
     <ClInclude Include="StackAllocatorEmptyType.h" />
+    <ClInclude Include="Stones.h" />
     <ClInclude Include="SystemClass.h" />
     <ClInclude Include="TestTimer.h" />
     <ClInclude Include="Texture.h" />
@@ -198,6 +202,7 @@
     <ClInclude Include="TypeDefs.h" />
     <ClInclude Include="TypeLists.h" />
     <ClInclude Include="ContextWorld.h" />
+    <ClInclude Include="Vide.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="color.ps" />

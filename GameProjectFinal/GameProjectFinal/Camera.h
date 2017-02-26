@@ -7,7 +7,7 @@
 using namespace DirectX;
 
 #include "Aligned.h"
-
+#include "InputManager.h"
 
 ////////////////////////////////////////////////////////////////////////////////
 /*
@@ -20,7 +20,9 @@ public:
 	Camera(const Camera&);
 	~Camera();
 
-	void SetPosition(float, float, float);
+	void SetHandlers(InputManager* manager);
+
+	void SetPosition(float, float, float z = -28.0f);
 	void SetPositionX(float);
 	void SetPositionY(float);
 	void SetPositionZ(float);

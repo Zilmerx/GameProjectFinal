@@ -41,6 +41,9 @@ public:
 		// Initialize the model object.
 		m_Context->Initialize(m_Direct3D->GetDevice(), m_Direct3D->GetDeviceContext());
 
+		m_Camera->SetPosition(0.0f, 0.0f);
+		m_Camera->SetHandlers(m_Context->GetInputManager());
+
 		return true;
 	}
 

@@ -34,6 +34,18 @@
     <Filter Include="Header Files\System\Graphics\Contexts">
       <UniqueIdentifier>{f74b98a8-1830-4f4c-93bd-7a528aed3f79}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\System\Graphics\Contexts\Menu">
+      <UniqueIdentifier>{85a13bec-6171-4ab9-a41c-10edd0b2b0ac}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\System\Graphics\Contexts\World">
+      <UniqueIdentifier>{04142dac-d04a-4c61-9a88-342073d50c8e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\System\Graphics\Contexts\World\MapTiles">
+      <UniqueIdentifier>{388acdd0-bb75-4edb-a833-455668e5ccea}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\System\Graphics\Contexts\World\MapTiles\Defs">
+      <UniqueIdentifier>{c1408008-f158-4f17-9410-6f3d24834927}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -191,14 +203,29 @@
     <ClInclude Include="BaseContext.h">
       <Filter>Header Files\System\Graphics\Contexts</Filter>
     </ClInclude>
-    <ClInclude Include="ContextWorld.h">
-      <Filter>Header Files\System\Graphics\Contexts</Filter>
-    </ClInclude>
-    <ClInclude Include="ContextMenu.h">
-      <Filter>Header Files\System\Graphics\Contexts</Filter>
-    </ClInclude>
     <ClInclude Include="ResourceManager.h">
       <Filter>Header Files\System\Graphics\Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="ContextWorld.h">
+      <Filter>Header Files\System\Graphics\Contexts\World</Filter>
+    </ClInclude>
+    <ClInclude Include="ContextMenu.h">
+      <Filter>Header Files\System\Graphics\Contexts\Menu</Filter>
+    </ClInclude>
+    <ClInclude Include="Grass.h">
+      <Filter>Header Files\System\Graphics\Contexts\World\MapTiles\Defs</Filter>
+    </ClInclude>
+    <ClInclude Include="MapTile.h">
+      <Filter>Header Files\System\Graphics\Contexts\World\MapTiles</Filter>
+    </ClInclude>
+    <ClInclude Include="Stones.h">
+      <Filter>Header Files\System\Graphics\Contexts\World\MapTiles\Defs</Filter>
+    </ClInclude>
+    <ClInclude Include="Map.h">
+      <Filter>Header Files\System\Graphics\Contexts\World</Filter>
+    </ClInclude>
+    <ClInclude Include="Vide.h">
+      <Filter>Header Files\System\Graphics\Contexts\World\MapTiles\Defs</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

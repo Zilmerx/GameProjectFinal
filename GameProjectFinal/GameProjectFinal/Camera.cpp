@@ -20,6 +20,52 @@ Camera::~Camera()
 {
 }
 
+void Camera::SetHandlers(InputManager* manager)
+{
+	manager->AddHandler(InputEventHandler::Gen_DefaultHandler<Keys::KEY_W>(
+		[this](SHORT)
+	{
+		SetPositionY(m_position.y += 1);
+	}
+	));
+
+	manager->AddHandler(InputEventHandler::Gen_DefaultHandler<Keys::KEY_S>(
+		[this](SHORT)
+	{
+		SetPositionY(m_position.y -= 1);
+	}
+	));
+
+	manager->AddHandler(InputEventHandler::Gen_DefaultHandler<Keys::KEY_D>(
+		[this](SHORT)
+	{
+		SetPositionX(m_position.x += 1);
+	}
+	));
+
+	manager->AddHandler(InputEventHandler::Gen_DefaultHandler<Keys::KEY_A>(
+		[this](SHORT)
+	{
+		SetPositionX(m_position.x -= 1);
+	}
+	));
+
+	manager->AddHandler(InputEventHandler::Gen_DefaultHandler<Keys::KEY_T>(
+		[this](SHORT)
+	{
+		SetPositionZ(m_position.z -=1);
+	}
+	));
+
+	manager->AddHandler(InputEventHandler::Gen_DefaultHandler<Keys::KEY_G>(
+		[this](SHORT)
+	{
+		SetPositionZ(m_position.z += 1);
+	}
+	));
+
+}
+
 void Camera::SetPosition(float x, float y, float z)
 {
 	m_position = { x,y,z };
