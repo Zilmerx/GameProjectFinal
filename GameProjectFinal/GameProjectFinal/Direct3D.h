@@ -21,7 +21,7 @@ using namespace DirectX;
 /*
 */
 /////////////////////////////////////////////////////////////////////////////////
-class Direct3D : public Aligned_
+class Direct3D : public Aligned
 {
 public:
 	Direct3D();

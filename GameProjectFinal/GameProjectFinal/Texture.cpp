@@ -1,12 +1,14 @@
-////////////////////////////////////////////////////////////////////////////////
-// Filename: textureclass.cpp
-////////////////////////////////////////////////////////////////////////////////
+
+#include <fstream>
+#include <stdio.h>
+
+#include "ARGBColor.h"
+
 #include "Texture.h"
 
 Texture::Texture()
 {
 	m_usage = D3D11_USAGE_DEFAULT;
-	m_targaData = nullptr;
 	m_targaHeader;
 	m_texture = nullptr;
 	m_textureView = nullptr;
@@ -16,7 +18,6 @@ Texture::Texture()
 Texture::Texture(const Texture& other)
 {
 	m_usage = other.m_usage;
-	m_targaData = other.m_targaData;
 	m_targaHeader = other.m_targaHeader;
 	m_texture = other.m_texture;
 	m_textureView = other.m_textureView;
@@ -38,8 +39,10 @@ bool Texture::Initialize(ID3D11Device* device, ID3D11DeviceContext* deviceContex
 	unsigned int rowPitch;
 	D3D11_SHADER_RESOURCE_VIEW_DESC srvDesc;
 
+	unsigned char* targaData = nullptr;
+
 	// Load the targa image data into memory.
-	result = LoadTarga(filename, height, width);
+	result = LoadTarga(filename, height, width, targaData);
 	if (!result)
 	{
 		return false;
@@ -69,13 +72,13 @@ bool Texture::Initialize(ID3D11Device* device, ID3D11DeviceContext* deviceContex
 	rowPitch = (width * 4) * sizeof(unsigned char);
 
 	// Copy the targa image data into the texture.
-	deviceContext->UpdateSubresource(m_texture, 0, NULL, m_targaData, rowPitch, 0);
+	deviceContext->UpdateSubresource(m_texture, 0, NULL, targaData, rowPitch, 0);
 
 	// Setup the shader resource view description.
 	srvDesc.Format = textureDesc.Format;
 	srvDesc.ViewDimension = D3D11_SRV_DIMENSION_TEXTURE2D;
 	srvDesc.Texture2D.MostDetailedMip = 0;
-	srvDesc.Texture2D.MipLevels = -1;
+	srvDesc.Texture2D.MipLevels = 4294967295U;
 
 	// Create the shader resource view for the texture.
 	hResult = device->CreateShaderResourceView(m_texture, &srvDesc, &m_textureView);
@@ -88,8 +91,8 @@ bool Texture::Initialize(ID3D11Device* device, ID3D11DeviceContext* deviceContex
 	deviceContext->GenerateMips(m_textureView);
 
 	// Release the targa image data now that the image data has been loaded into the texture.
-	delete[] m_targaData;
-	m_targaData = 0;
+	delete[] targaData;
+	targaData = 0;
 
 	return true;
 }
@@ -108,13 +111,6 @@ void Texture::Shutdown()
 	{
 		m_texture->Release();
 		m_texture = 0;
-	}
-
-	// Release the targa data.
-	if (m_targaData)
-	{
-		delete[] m_targaData;
-		m_targaData = 0;
 	}
 
 	return;
@@ -140,99 +136,54 @@ unsigned short Texture::GetHeight() const
 	return m_targaHeader.height;
 }
 
-bool Texture::LoadTarga(char* filename, int& height, int& width)
+bool Texture::LoadTarga(char* filename, int& height, int& width, unsigned char*& targaData)
 {
-	int error, bpp, index, i, j, k;
-	unsigned int imageSize;
-	FILE* filePtr;
-	unsigned int count;
-	unsigned char* targaImage;
-
-
-	// Open the targa file for reading in binary.
-	error = fopen_s(&filePtr, filename, "rb");
-	if (error != 0)
-	{
-		return false;
-	}
+	std::ifstream input(filename, std::ios::in | std::ifstream::binary);
 
 	// Read in the file header.
-	count = (unsigned int)fread(&m_targaHeader, sizeof(TargaHeader), 1, filePtr);
-	if (count != 1)
-	{
-		return false;
-	}
-
-	// Get the important information from the header.
-	height = (int)m_targaHeader.height;
-	width = (int)m_targaHeader.width;
-	bpp = (int)m_targaHeader.bpp;
+	input.read(reinterpret_cast<char*>(&m_targaHeader), sizeof(TargaHeader));
 
 	// Check that it is 32 bit and not 24 bit.
-	if (bpp != 32)
+	if (m_targaHeader.bpp != 32)
 	{
 		return false;
 	}
+
+	height = m_targaHeader.height;
+	width = m_targaHeader.width;
 
 	// Calculate the size of the 32 bit image data.
-	imageSize = width * height * 4;
-
-	// Allocate memory for the targa image data.
-	targaImage = new unsigned char[imageSize];
-	if (!targaImage)
-	{
-		return false;
-	}
-
-	// Read in the targa image data.
-	count = (unsigned int)fread(targaImage, 1, imageSize, filePtr);
-	if (count != imageSize)
-	{
-		return false;
-	}
-
-	// Close the file.
-	error = fclose(filePtr);
-	if (error != 0)
-	{
-		return false;
-	}
+	unsigned int imageSize = width * height * 4;
 
 	// Allocate memory for the targa destination data.
-	m_targaData = new unsigned char[imageSize];
-	if (!m_targaData)
-	{
-		return false;
-	}
+	targaData = new unsigned char[imageSize];
+
+	// Read in the targa image data.
+	input.read(reinterpret_cast<char*>(targaData), imageSize);
 
 	// Initialize the index into the targa destination data array.
-	index = 0;
+	int index = 0;
 
-	// Initialize the index into the targa image data.
-	k = (width * height * 4) - (width * 4);
-
-	// Now copy the targa image data into the targa destination array in the correct order since the targa format is stored upside down.
-	for (j = 0; j<height; j++)
+	for (int y = 0; y < height; y++)
 	{
-		for (i = 0; i<width; i++)
+		for (int x = 0; x < width; x++)
 		{
-			m_targaData[index + 0] = targaImage[k + 2];  // Red.
-			m_targaData[index + 1] = targaImage[k + 1];  // Green.
-			m_targaData[index + 2] = targaImage[k + 0];  // Blue
-			m_targaData[index + 3] = targaImage[k + 3];  // Alpha
+			// Temporary to switch from BGRA to RGBA.
+			ARGBColor temp;
 
-														 // Increment the indexes into the targa data.
-			k += 4;
+			temp.blue	= targaData[index + 0];
+			temp.green	= targaData[index + 1];
+			temp.red	= targaData[index + 2];
+			temp.alpha	= targaData[index + 3];
+
+			targaData[index + 0] = temp.red;
+			targaData[index + 1] = temp.green;
+			targaData[index + 2] = temp.blue;
+			targaData[index + 3] = temp.alpha;
+
 			index += 4;
 		}
-
-		// Set the targa image data index back to the preceding row at the beginning of the column since its reading it in upside down.
-		k -= (width * 8);
 	}
-
-	// Release the targa image data now that it was copied into the destination array.
-	delete[] targaImage;
-	targaImage = 0;
 
 	return true;
 }

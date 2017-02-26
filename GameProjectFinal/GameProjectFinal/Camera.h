@@ -6,14 +6,14 @@
 #include <directxmath.h>
 using namespace DirectX;
 
-#include "Aligned.h"
 #include "InputManager.h"
+#include "Aligned.h"
 
 ////////////////////////////////////////////////////////////////////////////////
 /*
 */
 /////////////////////////////////////////////////////////////////////////////////
-class Camera : public Aligned_
+class Camera : public Aligned
 {
 public:
 	Camera();

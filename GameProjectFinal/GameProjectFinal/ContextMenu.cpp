@@ -1,6 +1,16 @@
 
 #include "ContextMenu.h"
-#include "Graphics.h"
+#include "ContextWorld.h"
+
+
+ContextMenu::ContextMenu(Graphics* parent) :
+	BaseContext{ parent }
+{
+}
+
+ContextMenu::~ContextMenu()
+{
+}
 
 void ContextMenu::InitializeDef(ID3D11Device* device, ID3D11DeviceContext* deviceContext)
 {
@@ -12,10 +22,7 @@ void ContextMenu::InitializeDef(ID3D11Device* device, ID3D11DeviceContext* devic
 	));
 
 	ResourceManager::get().Make(device, deviceContext, "../GameProjectFinal/Resources/Maps/Tiles/stone01.tga");
-	Model2D* model2 = ResourceManager::get().Get("../GameProjectFinal/Resources/Maps/Tiles/stone01.tga");
-
 	ResourceManager::get().Make(device, deviceContext, "../GameProjectFinal/Resources/Maps/Tiles/MT-GR-02.tga");
-	Model2D* model1 = ResourceManager::get().Get("../GameProjectFinal/Resources/Maps/Tiles/MT-GR-02.tga");
 
 	for (int y = -3; y <= 3; y++) // -3 to 3, 7 values.
 	{
@@ -24,14 +31,14 @@ void ContextMenu::InitializeDef(ID3D11Device* device, ID3D11DeviceContext* devic
 			std::unique_ptr<MapTile> obj;
 			if (x % 2) // Is Even
 			{
-				obj = std::make_unique<MapTile>(model1); // Stones
+				obj = std::make_unique<Stones>(); // Stones
 			}
-			else                // Is Odd
+			else       // Is Odd
 			{
-				obj = std::make_unique<MapTile>(model2); // Grass
+				obj = std::make_unique<Grass>(); // Grass
 			}
 
-			obj->SetPosition(x, y);
+			obj->SetGridPosition(x, y);
 
 			obj->Initialize();
 
@@ -45,11 +52,6 @@ void ContextMenu::Render(Graphics& gfx)
 	for (auto& tile : m_Map)
 	{
 		gfx.RenderObject(*tile);
-	}
-
-	for (auto& character : m_Characters)
-	{
-		gfx.RenderObject(*character);
 	}
 }
 

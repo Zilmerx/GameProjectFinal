@@ -2,8 +2,11 @@
 // Filename: graphicsclass.cpp
 ////////////////////////////////////////////////////////////////////////////////
 #include "Graphics.h"
+
 #include "ScreenSize.h"
 #include "InputManager.h"
+#include "Object.h"
+#include "ContextMenu.h"
 
 
 Graphics::Graphics()

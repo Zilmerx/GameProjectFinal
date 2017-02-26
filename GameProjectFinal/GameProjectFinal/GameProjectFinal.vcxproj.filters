@@ -46,6 +46,12 @@
     <Filter Include="Header Files\System\Graphics\Contexts\World\MapTiles\Defs">
       <UniqueIdentifier>{c1408008-f158-4f17-9410-6f3d24834927}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Objects">
+      <UniqueIdentifier>{147c1787-ca06-460e-9341-d47e2102e709}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Objects\MapTiles">
+      <UniqueIdentifier>{b6f93a34-bfc4-49cf-bd13-7d3c6e7997e2}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -87,11 +93,26 @@
     <ClCompile Include="ResourceManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="MapTile.cpp">
+      <Filter>Source Files\Objects\MapTiles</Filter>
+    </ClCompile>
+    <ClCompile Include="Grass.cpp">
+      <Filter>Source Files\Objects\MapTiles</Filter>
+    </ClCompile>
+    <ClCompile Include="Stones.cpp">
+      <Filter>Source Files\Objects\MapTiles</Filter>
+    </ClCompile>
+    <ClCompile Include="EmptyTile.cpp">
+      <Filter>Source Files\Objects\MapTiles</Filter>
+    </ClCompile>
+    <ClCompile Include="Map.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="BaseContext.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Aligned.h">
-      <Filter>Header Files\Other</Filter>
-    </ClInclude>
     <ClInclude Include="ByteAmount.h">
       <Filter>Header Files\Other</Filter>
     </ClInclude>
@@ -224,8 +245,20 @@
     <ClInclude Include="Map.h">
       <Filter>Header Files\System\Graphics\Contexts\World</Filter>
     </ClInclude>
-    <ClInclude Include="Vide.h">
+    <ClInclude Include="EmptyTile.h">
       <Filter>Header Files\System\Graphics\Contexts\World\MapTiles\Defs</Filter>
+    </ClInclude>
+    <ClInclude Include="AllMapTileDefs.h">
+      <Filter>Header Files\System\Graphics\Contexts\World\MapTiles\Defs</Filter>
+    </ClInclude>
+    <ClInclude Include="BGRColor.h">
+      <Filter>Header Files\Other</Filter>
+    </ClInclude>
+    <ClInclude Include="Aligned.h">
+      <Filter>Header Files\Other</Filter>
+    </ClInclude>
+    <ClInclude Include="ARGBColor.h">
+      <Filter>Header Files\Other</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

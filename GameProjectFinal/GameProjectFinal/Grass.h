@@ -5,8 +5,5 @@
 
 struct Grass : public MapTile
 {
-	Grass() :
-		MapTile( ResourceManager::get().Get("../GameProjectFinal/Resources/Maps/Tiles/MT-GR-02.tga") )
-	{
-	}
+	Grass();
 };

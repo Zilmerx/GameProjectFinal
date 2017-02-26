@@ -1,7 +1,16 @@
 
-
+#include "ContextMenu.h"
 #include "ContextWorld.h"
-#include "Graphics.h"
+
+
+ContextWorld::ContextWorld(Graphics* parent) :
+	BaseContext{ parent }
+{
+}
+
+ContextWorld::~ContextWorld()
+{
+}
 
 void ContextWorld::InitializeDef(ID3D11Device* device, ID3D11DeviceContext* deviceContext)
 {
@@ -17,29 +26,6 @@ void ContextWorld::InitializeDef(ID3D11Device* device, ID3D11DeviceContext* devi
 	ResourceManager::get().Make(device, deviceContext, "../GameProjectFinal/Resources/Maps/Tiles/UNUSED_DEBUGE.tga");
 
 	m_Map.SetMap("../GameProjectFinal/Resources/Maps/BitMaps/map01.bmp");
-
-	/*
-	for (int y = -3; y <= 3; y++) // -3 to 3, 7 values.
-	{
-		for (int x = -3; x <= 3; x++) // -3 to 3, 7 values.
-		{
-			std::unique_ptr<MapTile> obj;
-			if (x % 2) // Is Even
-			{
-				obj = std::make_unique<MapTile>(Stones()); // Stones
-			}
-			else       // Is Odd
-			{
-				obj = std::make_unique<MapTile>(Grass()); // Grass
-			}
-
-			obj->SetPosition(x, y);
-
-			obj->Initialize();
-
-			m_Map.push_back(std::move(obj));
-		}
-	}*/
 }
 
 void ContextWorld::Render(Graphics& gfx)

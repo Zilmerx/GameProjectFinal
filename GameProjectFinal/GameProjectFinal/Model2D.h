@@ -8,10 +8,7 @@
 #include <directxmath.h>
 using namespace DirectX;
 
-
 #include "Texture.h"
-#include "Position.h"
-
 
 ////////////////////////////////////////////////////////////////////////////////
 /*

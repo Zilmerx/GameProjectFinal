@@ -5,10 +5,12 @@
 //////////////
 #include "Direct3D.h"
 #include "Camera.h"
-#include "ContextWorld.h"
-#include "ContextMenu.h"
 #include "ColorShader.h"
 #include "TextureShader.h"
+
+class Object;
+class BaseContext;
+
 
 ////////////////////////////////////////////////////////////////////////////////
 /*

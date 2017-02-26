@@ -3,7 +3,7 @@
 #include "ResourceManager.h"
 #include "MapTile.h"
 
-struct Stones : public MapTile
+struct EmptyTile : public MapTile
 {
-	Stones();
+	EmptyTile();
 };

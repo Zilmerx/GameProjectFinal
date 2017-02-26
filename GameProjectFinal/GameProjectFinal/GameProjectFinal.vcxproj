@@ -142,15 +142,21 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="BaseContext.cpp" />
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="ColorShader.cpp" />
     <ClCompile Include="ContextMenu.cpp" />
     <ClCompile Include="Direct3D.cpp" />
+    <ClCompile Include="EmptyTile.cpp" />
     <ClCompile Include="Graphics.cpp" />
+    <ClCompile Include="Grass.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Map.cpp" />
+    <ClCompile Include="MapTile.cpp" />
     <ClCompile Include="Model2D.cpp" />
     <ClCompile Include="Object.cpp" />
     <ClCompile Include="ResourceManager.cpp" />
+    <ClCompile Include="Stones.cpp" />
     <ClCompile Include="SystemClass.cpp" />
     <ClCompile Include="Texture.cpp" />
     <ClCompile Include="TextureShader.cpp" />
@@ -158,7 +164,10 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Aligned.h" />
+    <ClInclude Include="AllMapTileDefs.h" />
+    <ClInclude Include="ARGBColor.h" />
     <ClInclude Include="BaseContext.h" />
+    <ClInclude Include="BGRColor.h" />
     <ClInclude Include="ByteAmount.h" />
     <ClInclude Include="ByteLiterals.h" />
     <ClInclude Include="ByteTraits.h" />
@@ -202,7 +211,7 @@
     <ClInclude Include="TypeDefs.h" />
     <ClInclude Include="TypeLists.h" />
     <ClInclude Include="ContextWorld.h" />
-    <ClInclude Include="Vide.h" />
+    <ClInclude Include="EmptyTile.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="color.ps" />

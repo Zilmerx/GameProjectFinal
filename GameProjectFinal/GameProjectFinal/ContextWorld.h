@@ -7,9 +7,6 @@
 
 #include "Map.h"
 
-#include "Grass.h"
-#include "Stones.h"
-
 ////////////////////////////////////////////////////////////////////////////////
 /*
 */
@@ -21,11 +18,9 @@ class ContextWorld : public BaseContext
 
 public:
 
-	ContextWorld(Graphics* parent) :
-		BaseContext{ 2 , parent }
-	{
-	}
-	~ContextWorld() {}
+	ContextWorld(Graphics* parent);
+
+	~ContextWorld();
 
 	void InitializeDef(ID3D11Device* device, ID3D11DeviceContext* deviceContext) override;
 

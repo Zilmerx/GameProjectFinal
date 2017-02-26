@@ -5,12 +5,9 @@
 //////////////
 #include <vector>
 #include <memory>
-#include "Object.h"
-#include "InputManager.h"
-#include "Settings.h"
-#include "ResourceManager.h"
 
-class Graphics;
+#include "Graphics.h"
+#include "InputManager.h"
 
 ////////////////////////////////////////////////////////////////////////////////
 /*
@@ -25,51 +22,19 @@ protected:
 
 public:
 
-	BaseContext(size_t ObjectVectorSize, Graphics* parent) :
-		m_Manager{ nullptr },
-		m_Parent{ parent }
-	{}
+	BaseContext(Graphics* parent);
 
-	~BaseContext() {}
+	~BaseContext();
 	
-	void Initialize(ID3D11Device* device, ID3D11DeviceContext* deviceContext)
-	{
-		ResourceManager::get().Reset();
+	void Initialize(ID3D11Device* device, ID3D11DeviceContext* deviceContext);
 
-		if (m_Manager == nullptr)
-		{
-			m_Manager = new InputManager{};
-		}
+	void ProcessInputs();
 
-		m_Manager->AddHandler(InputEventHandler::Gen_DefaultHandler<Keys::ESCAPE>(
-				[](SHORT)
-		{
-			Settings::get().QUIT = true;
-		}
-		));
+	virtual void Render(Graphics& gfx);
 
-		InitializeDef(device, deviceContext);
-	}
+	virtual void Shutdown();
 
-	void ProcessInputs()
-	{
-		m_Manager->CheckEvents();
-	}
-
-	virtual void Render(Graphics& gfx)
-	{
-
-	}
-
-	virtual void Shutdown()
-	{
-
-	}
-
-	InputManager* GetInputManager()
-	{
-		return m_Manager;
-	}
+	InputManager* GetInputManager();
 
 private:
 

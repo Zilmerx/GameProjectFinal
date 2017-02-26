@@ -4,9 +4,7 @@
 // INCLUDES //
 //////////////
 #include <map>
-#include <algorithm>
 
-#include "MyDebug.h"
 #include "Model2D.h"
 #include "Singleton.h"
 

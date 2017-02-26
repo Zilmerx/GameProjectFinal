@@ -1,9 +1,11 @@
 #pragma once
 
-#include <memory>
-
-class Aligned_
+class Aligned
 {
+
+protected:
+	Aligned() {}
+
 public:
 
 	void* operator new(size_t i)

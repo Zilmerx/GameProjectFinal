@@ -72,7 +72,14 @@ void Object::SetSize(float XScale, float YScale)
 	m_Scale.y = YScale;
 }
 
-void Object::SetPosition(int XPos, int YPos, int ZPos)
+void Object::SetPosition(float XPos, float YPos, float ZPos)
+{
+	m_Position.x = XPos;
+	m_Position.y = YPos;
+	m_Position.z = ZPos;
+}
+
+void Object::SetGridPosition(int XPos, int YPos, int ZPos)
 {
 	m_Position.x = static_cast<float>(XPos);
 	m_Position.y = static_cast<float>(YPos);

@@ -1,7 +1,6 @@
+#include <algorithm>
+
 #include "ResourceManager.h"
-
-
-
 
 ResourceManager::ResourceManager()
 {

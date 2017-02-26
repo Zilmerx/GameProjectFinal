@@ -5,11 +5,8 @@
 
 class MapTile : public Object
 {
-public:
+protected:
 
-	MapTile(Model2D* model) :
-		Object(model)
-	{
-	}
+	MapTile(Model2D* model);
 
 };

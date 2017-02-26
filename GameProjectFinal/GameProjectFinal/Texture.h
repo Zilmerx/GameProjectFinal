@@ -5,7 +5,6 @@
 // INCLUDES //
 //////////////
 #include <d3d11.h>
-#include <stdio.h>
 
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -42,12 +41,11 @@ public:
 
 private:
 
-	bool LoadTarga(char*, int&, int&);
+	bool LoadTarga(char*, int&, int&, unsigned char*&);
 
 private:
 
 	D3D11_USAGE m_usage;
-	unsigned char* m_targaData;
 	TargaHeader m_targaHeader;
 	ID3D11Texture2D* m_texture;
 	ID3D11ShaderResourceView* m_textureView;
