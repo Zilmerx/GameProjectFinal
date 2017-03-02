@@ -98,6 +98,8 @@ bool Graphics::Initialize(HWND hwnd)
 		return false;
 	}
 
+	Globals::get().graphics = this;
+
 	return true;
 }
 

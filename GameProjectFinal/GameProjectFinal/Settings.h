@@ -21,21 +21,26 @@
 
 #define ONE_DEGREE 0.0174532925f
 
+class SystemClass;
+class Graphics;
+class Direct3D;
+class BaseContext;
 
-struct Settings : public Singleton<Settings>
+struct Globals : public Singleton<Globals>
 {
+	bool Shutdown;
 
-	bool QUIT;
-
+	SystemClass* system;
+	Graphics* graphics;
+	Direct3D* direct3d;
+	BaseContext* context;
 
 private:
-	friend struct Singleton<Settings>;
+	friend struct Singleton<Globals>;
 
-	Settings() :
-		QUIT{ false }
+	Globals() :
+		Shutdown{ false }
 	{
 	}
-
-
 
 };

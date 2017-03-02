@@ -53,14 +53,14 @@ void Camera::SetHandlers(InputManager* manager)
 	manager->AddHandler(InputEventHandler::Gen_DefaultHandler<Keys::KEY_T>(
 		[this](SHORT)
 	{
-		SetPositionZ(m_position.z -=1);
+		SetPositionZ(m_position.z /= 1.1f);
 	}
 	));
 
 	manager->AddHandler(InputEventHandler::Gen_DefaultHandler<Keys::KEY_G>(
 		[this](SHORT)
 	{
-		SetPositionZ(m_position.z += 1);
+		SetPositionZ(m_position.z *= 1.1f);
 	}
 	));
 

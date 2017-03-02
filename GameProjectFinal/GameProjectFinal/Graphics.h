@@ -46,6 +46,8 @@ public:
 		m_Camera->SetPosition(0.0f, 0.0f);
 		m_Camera->SetHandlers(m_Context->GetInputManager());
 
+		Globals::get().context = m_Context;
+
 		return true;
 	}
 

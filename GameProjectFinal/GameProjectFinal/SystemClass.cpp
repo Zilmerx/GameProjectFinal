@@ -46,6 +46,8 @@ bool SystemClass::Initialize()
 		return false;
 	}
 
+	Globals::get().system = this;
+
 	return true;
 }
 
@@ -75,7 +77,7 @@ void SystemClass::Run()
 	ZeroMemory(&msg, sizeof(MSG));
 
 	// Loop until there is a quit message from the window or the user.
-	while (!Settings::get().QUIT)
+	while (!Globals::get().Shutdown)
 	{
 		// Handle the windows messages.
 		if (PeekMessage(&msg, NULL, 0, 0, PM_REMOVE))
@@ -87,7 +89,7 @@ void SystemClass::Run()
 		// If windows signals to end the application then exit out.
 		if (msg.message == WM_QUIT)
 		{
-			Settings::get().QUIT = true;
+			Globals::get().Shutdown = true;
 		}
 		else
 		{
@@ -95,7 +97,7 @@ void SystemClass::Run()
 			result = Frame();
 			if (!result)
 			{
-				Settings::get().QUIT = true;
+				Globals::get().Shutdown = true;
 			}
 		}
 
@@ -121,6 +123,11 @@ bool SystemClass::Frame()
 LRESULT CALLBACK SystemClass::MessageHandler(HWND hwnd, UINT umsg, WPARAM wparam, LPARAM lparam)
 {
 	return DefWindowProc(hwnd, umsg, wparam, lparam);
+}
+
+HWND SystemClass::GetHWND()
+{
+	return m_hwnd;
 }
 
 void SystemClass::InitializeWindows()

@@ -32,6 +32,8 @@ public:
 
 	LRESULT CALLBACK MessageHandler(HWND, UINT, WPARAM, LPARAM);
 
+	HWND GetHWND();
+
 private:
 	bool Frame();
 	void InitializeWindows();

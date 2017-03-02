@@ -374,6 +374,8 @@ bool Direct3D::Initialize(HWND hwnd)
 		return false;
 	}
 
+	Globals::get().direct3d = this;
+
 	return true;
 }
 
