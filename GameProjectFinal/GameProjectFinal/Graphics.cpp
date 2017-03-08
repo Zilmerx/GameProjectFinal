@@ -58,6 +58,7 @@ bool Graphics::Initialize(HWND hwnd)
 
 	// Set the initial position of the camera.
 	m_Camera->SetPosition(0.0f, 0.0f);
+	Globals::get().camera = m_Camera;
 
 	m_Context = new ContextMenu{ this };
 	if (!m_Context)

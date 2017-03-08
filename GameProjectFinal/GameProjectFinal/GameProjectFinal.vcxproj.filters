@@ -111,6 +111,12 @@
     <ClCompile Include="BaseContext.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="MouseManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="DebugRedSquare.cpp">
+      <Filter>Source Files\Objects\MapTiles</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ByteAmount.h">
@@ -259,6 +265,12 @@
     </ClInclude>
     <ClInclude Include="ARGBColor.h">
       <Filter>Header Files\Other</Filter>
+    </ClInclude>
+    <ClInclude Include="MouseManager.h">
+      <Filter>Header Files\System\Keyboard/Mouse</Filter>
+    </ClInclude>
+    <ClInclude Include="DebugRedSquare.h">
+      <Filter>Header Files\System\Graphics\Contexts\World\MapTiles\Defs</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

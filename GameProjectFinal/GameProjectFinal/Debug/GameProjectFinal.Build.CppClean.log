@@ -1,7 +1,9 @@
 c:\users\jean-philippe\documents\github\gameprojectfinal\gameprojectfinal\gameprojectfinal\debug\vc140.pdb
 c:\users\jean-philippe\documents\github\gameprojectfinal\gameprojectfinal\gameprojectfinal\debug\vc140.idb
+c:\users\jean-philippe\documents\github\gameprojectfinal\gameprojectfinal\gameprojectfinal\debug\basecontext.obj
 c:\users\jean-philippe\documents\github\gameprojectfinal\gameprojectfinal\gameprojectfinal\debug\camera.obj
 c:\users\jean-philippe\documents\github\gameprojectfinal\gameprojectfinal\gameprojectfinal\debug\colorshader.obj
+c:\users\jean-philippe\documents\github\gameprojectfinal\gameprojectfinal\gameprojectfinal\debug\contextmenu.obj
 c:\users\jean-philippe\documents\github\gameprojectfinal\gameprojectfinal\gameprojectfinal\debug\direct3d.obj
 c:\users\jean-philippe\documents\github\gameprojectfinal\gameprojectfinal\gameprojectfinal\debug\emptytile.obj
 c:\users\jean-philippe\documents\github\gameprojectfinal\gameprojectfinal\gameprojectfinal\debug\graphics.obj
@@ -10,6 +12,7 @@ c:\users\jean-philippe\documents\github\gameprojectfinal\gameprojectfinal\gamepr
 c:\users\jean-philippe\documents\github\gameprojectfinal\gameprojectfinal\gameprojectfinal\debug\map.obj
 c:\users\jean-philippe\documents\github\gameprojectfinal\gameprojectfinal\gameprojectfinal\debug\maptile.obj
 c:\users\jean-philippe\documents\github\gameprojectfinal\gameprojectfinal\gameprojectfinal\debug\model2d.obj
+c:\users\jean-philippe\documents\github\gameprojectfinal\gameprojectfinal\gameprojectfinal\debug\mousemanager.obj
 c:\users\jean-philippe\documents\github\gameprojectfinal\gameprojectfinal\gameprojectfinal\debug\object.obj
 c:\users\jean-philippe\documents\github\gameprojectfinal\gameprojectfinal\gameprojectfinal\debug\resourcemanager.obj
 c:\users\jean-philippe\documents\github\gameprojectfinal\gameprojectfinal\gameprojectfinal\debug\stones.obj
@@ -17,8 +20,7 @@ c:\users\jean-philippe\documents\github\gameprojectfinal\gameprojectfinal\gamepr
 c:\users\jean-philippe\documents\github\gameprojectfinal\gameprojectfinal\gameprojectfinal\debug\texture.obj
 c:\users\jean-philippe\documents\github\gameprojectfinal\gameprojectfinal\gameprojectfinal\debug\textureshader.obj
 c:\users\jean-philippe\documents\github\gameprojectfinal\gameprojectfinal\gameprojectfinal\debug\contextworld.obj
-c:\users\jean-philippe\documents\github\gameprojectfinal\gameprojectfinal\gameprojectfinal\debug\basecontext.obj
-c:\users\jean-philippe\documents\github\gameprojectfinal\gameprojectfinal\gameprojectfinal\debug\contextmenu.obj
+c:\users\jean-philippe\documents\github\gameprojectfinal\gameprojectfinal\gameprojectfinal\debug\debugredsquare.obj
 c:\users\jean-philippe\documents\github\gameprojectfinal\gameprojectfinal\debug\gameprojectfinal.ilk
 c:\users\jean-philippe\documents\github\gameprojectfinal\gameprojectfinal\debug\gameprojectfinal.exe
 c:\users\jean-philippe\documents\github\gameprojectfinal\gameprojectfinal\debug\gameprojectfinal.pdb

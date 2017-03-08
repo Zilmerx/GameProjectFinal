@@ -27,4 +27,22 @@ public:
 	virtual void Render(Graphics& gfx) override;
 
 	virtual void Shutdown() override;
+
+	template<class T>
+	std::unique_ptr<T>& Get(Point2D<size_t> point)
+	{
+		static_assert(false, "BadType");
+	}
+
+	template<>
+	std::unique_ptr<MapTile>& Get<MapTile>(Point2D<size_t> point)
+	{
+		return m_Map.Get(point);
+	}
+	/*
+	template<>
+	Object* Get<Object>(Point2D<size_t> point)
+	{
+
+	}*/
 };

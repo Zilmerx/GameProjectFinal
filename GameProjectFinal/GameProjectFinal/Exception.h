@@ -2,7 +2,9 @@
 #pragma once
 #include <string>
 
-#define THROW_EXCEPTION( note ) throw Exception( _CRT_WIDE(__FILE__), __LINE__, note );
+#define THROW_EXCEPTION( type, note ) throw type( _CRT_WIDE(__FILE__), __LINE__, note );
+
+
 
 class Exception
 {
@@ -33,4 +35,13 @@ private:
 	std::wstring note;
 	std::wstring file;
 	unsigned int line;
+};
+
+
+struct OutOfBoundsException : public Exception
+{
+	OutOfBoundsException(const wchar_t* file, unsigned int line, const std::wstring& note = L"") :
+		Exception(file, line, note)
+	{
+	}
 };

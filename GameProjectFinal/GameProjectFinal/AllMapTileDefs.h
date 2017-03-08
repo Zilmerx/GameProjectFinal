@@ -3,3 +3,4 @@
 #include "Grass.h"
 #include "Stones.h"
 #include "EmptyTile.h"
+#include "DebugRedSquare.h"

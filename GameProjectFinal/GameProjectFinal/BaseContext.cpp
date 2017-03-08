@@ -1,6 +1,7 @@
 
 #include "BaseContext.h"
 
+#include "SystemClass.h"
 #include "ResourceManager.h"
 #include "Settings.h"
 
@@ -27,7 +28,7 @@ void BaseContext::Initialize(ID3D11Device* device, ID3D11DeviceContext* deviceCo
 	m_Manager->AddHandler(InputEventHandler::Gen_DefaultHandler<Keys::ESCAPE>(
 		[](SHORT)
 	{
-		Settings::get().QUIT = true;
+		Globals::get().Shutdown = true;
 	}
 	));
 

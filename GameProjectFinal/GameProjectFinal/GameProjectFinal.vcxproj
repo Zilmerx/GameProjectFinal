@@ -146,6 +146,7 @@
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="ColorShader.cpp" />
     <ClCompile Include="ContextMenu.cpp" />
+    <ClCompile Include="DebugRedSquare.cpp" />
     <ClCompile Include="Direct3D.cpp" />
     <ClCompile Include="EmptyTile.cpp" />
     <ClCompile Include="Graphics.cpp" />
@@ -154,6 +155,7 @@
     <ClCompile Include="Map.cpp" />
     <ClCompile Include="MapTile.cpp" />
     <ClCompile Include="Model2D.cpp" />
+    <ClCompile Include="MouseManager.cpp" />
     <ClCompile Include="Object.cpp" />
     <ClCompile Include="ResourceManager.cpp" />
     <ClCompile Include="Stones.cpp" />
@@ -177,6 +179,7 @@
     <ClInclude Include="ColorShader.h" />
     <ClInclude Include="Constexpr.h" />
     <ClInclude Include="ContextMenu.h" />
+    <ClInclude Include="DebugRedSquare.h" />
     <ClInclude Include="Direct3D.h" />
     <ClInclude Include="Exception.h" />
     <ClInclude Include="FrameTime.h" />
@@ -191,6 +194,7 @@
     <ClInclude Include="Map.h" />
     <ClInclude Include="MapTile.h" />
     <ClInclude Include="Model2D.h" />
+    <ClInclude Include="MouseManager.h" />
     <ClInclude Include="MyDebug.h" />
     <ClInclude Include="Object.h" />
     <ClInclude Include="Position.h" />

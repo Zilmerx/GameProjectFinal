@@ -15,6 +15,7 @@
 #define DEFAULT_WINDOW_WIDTH 1920
 #define DEFAULT_WINDOW_HEIGHT 1080
 */
+
 #define DEFAULT_WINDOW_WIDTH 800
 #define DEFAULT_WINDOW_HEIGHT 600
 
@@ -25,6 +26,7 @@ class SystemClass;
 class Graphics;
 class Direct3D;
 class BaseContext;
+class Camera;
 
 struct Globals : public Singleton<Globals>
 {
@@ -34,6 +36,7 @@ struct Globals : public Singleton<Globals>
 	Graphics* graphics;
 	Direct3D* direct3d;
 	BaseContext* context;
+	Camera* camera;
 
 private:
 	friend struct Singleton<Globals>;

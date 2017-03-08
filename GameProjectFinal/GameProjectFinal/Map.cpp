@@ -27,8 +27,8 @@ void Map::SetMap(char* filename)
 	input.read(header, 54);
 
 	// Extract image height and width from header
-	int width = *(int*)&header[18];
-	int height = *(int*)&header[22];
+	width = *(size_t*)&header[18];
+	height = *(size_t*)&header[22];
 
 	int padding = 0;
 
@@ -71,7 +71,11 @@ void Map::SetMap(char* filename)
 
 std::unique_ptr<MapTile> Map::GetTileFromColor(BGRColor& color)
 {
-	if (color == BGRColor{ 0, 255, 0 })
+	if (color == BGRColor(255, 255, 255))
+	{
+		return std::make_unique<DebugRedSquare>();
+	}
+	else if (color == BGRColor{ 0, 255, 0 })
 	{
 		return std::make_unique<Grass>();
 	}
@@ -79,6 +83,7 @@ std::unique_ptr<MapTile> Map::GetTileFromColor(BGRColor& color)
 	{
 		return std::make_unique<Stones>();
 	}
+
 
 	return std::make_unique<EmptyTile>();
 }
