@@ -1,7 +1,7 @@
 #pragma once
 
 #include "Singleton.h"
-#include "Position.h"
+#include "Point2D.h"
 
 struct MouseManager : Singleton<MouseManager>
 {

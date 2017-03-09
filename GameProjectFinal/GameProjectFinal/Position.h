@@ -1,61 +1,44 @@
 #pragma once
 
-template<class T>
-struct Point3D;
+#include "Point3D.h"
+#include "Direct3D.h"
 
-template<class T>
-struct Point2D
+class Position : private Point3D<float>
 {
-	using value_type = T;
 
-	value_type x, y;
-
-	Point2D() :
-		x{ 0 },
-		y{ 0 }
+public:
+	Position()
 	{
+		SetPosition(0.0f, 0.0f, 0.0f);
 	}
 
-	Point2D(value_type x, value_type y) :
-		x{ x },
-		y{ y }
+	Position(float XPos, float YPos, float ZPos = 0.0f)
 	{
+		SetPosition(XPos, YPos, ZPos);
 	}
 
-	Point2D(Point3D<T> pos) :
-		x{ pos.x },
-		y{ pos.y }
+	void SetPosition(float XPos, float YPos, float ZPos = 0.0f)
 	{
-	}
-};
-
-
-template<class T>
-struct Point3D
-{
-	using value_type = T;
-
-	value_type x, y, z;
-
-	Point3D() :
-		x{ 0 },
-		y{ 0 },
-		z{ 0 }
-	{
+		x = XPos;
+		y = YPos;
+		z = ZPos;
 	}
 
-	Point3D(value_type x, value_type y, value_type z) :
-		x{ x },
-		y{ y },
-		z{ z }
+	void SetGridPosition(int XPos, int YPos, int ZPos = 0)
 	{
+		x = static_cast<float>(XPos);
+		y = static_cast<float>(YPos);
+		z = static_cast<float>(ZPos);
 	}
 
-	template<class U>
-	Point3D(Point2D<U> pos, value_type z) :
-		x{ pos.x },
-		y{ pos.y },
-		z{ z }
+	Point3D<float> GetPosition() const
 	{
+		return *this;
 	}
+
+	DirectX::XMMATRIX GetTranslationMatrix() const
+	{
+		return XMMatrixTranslation(x, y, z);
+	}
+
 };

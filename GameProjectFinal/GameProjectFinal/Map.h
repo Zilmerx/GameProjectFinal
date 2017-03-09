@@ -8,7 +8,7 @@
 #include "BGRColor.h"
 #include "Exception.h"
 
-
+#include "Point2D.h"
 
 class Map
 {
@@ -27,8 +27,7 @@ public:
 
 	std::unique_ptr<MapTile>& Get(Point2D<size_t> point)
 	{
-		if ((point.x < 0 || point.x > height-1)
-		 || (point.y < 0 || point.y > width-1))
+		if ((point.x > height-1) || (point.y > width-1))
 		{
 			THROW_EXCEPTION(OutOfBoundsException, L"Out of bounds")
 		}

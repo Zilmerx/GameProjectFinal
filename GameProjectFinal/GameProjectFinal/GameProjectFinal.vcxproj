@@ -197,11 +197,14 @@
     <ClInclude Include="MouseManager.h" />
     <ClInclude Include="MyDebug.h" />
     <ClInclude Include="Object.h" />
+    <ClInclude Include="Point3D.h" />
+    <ClInclude Include="Point2D.h" />
     <ClInclude Include="Position.h" />
     <ClInclude Include="Random.h" />
-    <ClInclude Include="Rect.h" />
     <ClInclude Include="resource.h" />
     <ClInclude Include="ResourceManager.h" />
+    <ClInclude Include="Rotation.h" />
+    <ClInclude Include="Scale.h" />
     <ClInclude Include="ScreenSize.h" />
     <ClInclude Include="Settings.h" />
     <ClInclude Include="Singleton.h" />

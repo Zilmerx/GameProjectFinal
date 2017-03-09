@@ -149,13 +149,7 @@
     <ClInclude Include="MyDebug.h">
       <Filter>Header Files\Other</Filter>
     </ClInclude>
-    <ClInclude Include="Position.h">
-      <Filter>Header Files\Other</Filter>
-    </ClInclude>
     <ClInclude Include="Random.h">
-      <Filter>Header Files\Other</Filter>
-    </ClInclude>
-    <ClInclude Include="Rect.h">
       <Filter>Header Files\Other</Filter>
     </ClInclude>
     <ClInclude Include="TypeLists.h">
@@ -271,6 +265,21 @@
     </ClInclude>
     <ClInclude Include="DebugRedSquare.h">
       <Filter>Header Files\System\Graphics\Contexts\World\MapTiles\Defs</Filter>
+    </ClInclude>
+    <ClInclude Include="Position.h">
+      <Filter>Header Files\Other</Filter>
+    </ClInclude>
+    <ClInclude Include="Rotation.h">
+      <Filter>Header Files\Other</Filter>
+    </ClInclude>
+    <ClInclude Include="Scale.h">
+      <Filter>Header Files\Other</Filter>
+    </ClInclude>
+    <ClInclude Include="Point2D.h">
+      <Filter>Header Files\Other</Filter>
+    </ClInclude>
+    <ClInclude Include="Point3D.h">
+      <Filter>Header Files\Other</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

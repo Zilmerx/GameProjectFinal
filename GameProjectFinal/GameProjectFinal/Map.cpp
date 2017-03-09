@@ -47,13 +47,13 @@ void Map::SetMap(char* filename)
 	m_Map.clear();
 	m_Map.reserve(size);
 
-	for (int y = 0; y <height; y++)
+	for (unsigned int y = 0; y <height; y++)
 	{
 		// Fill the vector with the colors from the bitmap.
 		input.read(&temp[0], width * 3 + padding);
 
 		// Retain width length of data, and swizzle RB component.
-		for (int x = 0; x < width * 3; x += 3)
+		for (unsigned int x = 0; x < width * 3; x += 3)
 		{
 			BGRColor color;
 			color.blue = temp[x + 2];
