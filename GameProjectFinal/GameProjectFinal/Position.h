@@ -51,7 +51,8 @@ struct Point3D
 	{
 	}
 
-	Point3D(Point2D<T> pos, value_type z) :
+	template<class U>
+	Point3D(Point2D<U> pos, value_type z) :
 		x{ pos.x },
 		y{ pos.y },
 		z{ z }

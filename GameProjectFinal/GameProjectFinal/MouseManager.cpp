@@ -28,10 +28,8 @@ Point2D<int> MouseManager::GetClientCursorPos()
 			return Point2D<int>{p.x, p.y};
 		}
 	}
-	else
-	{
-		return Point2D<int>{-1, -1};
-	}
+
+	return Point2D<int>{-1, -1};
 }
 
 Point2D<int> MouseManager::GetGridCursorPos()
@@ -43,7 +41,7 @@ Point2D<int> MouseManager::GetGridCursorPos()
 
 	float ScreenHeight = (float)ScreenSize::get().height;
 	float ScreenWidth = (float)ScreenSize::get().width;
-	click.y = ScreenHeight - click.y;
+	click.y = ScreenSize::get().height - click.y;
 
 	using T = long double;
 
