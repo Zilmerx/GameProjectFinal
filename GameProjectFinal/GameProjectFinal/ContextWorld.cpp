@@ -26,40 +26,7 @@ void ContextWorld::InitializeDef(ID3D11Device* device, ID3D11DeviceContext* devi
 	m_Manager->AddHandler(InputEventHandler::Gen_DefaultHandler<Keys::LBUTTON>(
 		[this](SHORT)
 	{
-		Point2D<int> click = MouseManager::GetClientCursorPos();
-
-		XMFLOAT3 cam = Globals::get().camera->GetPosition();
-		cam.z = std::abs(cam.z);
-
-		// Y part of the function is OK.
-		int ScreenHeight = ScreenSize::get().height;
-		auto HeightRatio = ScreenSize::get().HeightRatio();
-		click.y = ScreenHeight - click.y;
-
-		auto ScreenPercentY = (double)click.y / (double)ScreenHeight;
-
-		auto YCorrection = -((cam.z * HeightRatio) / 2.0);
-
-		auto GridPosY = ScreenPercentY * cam.z * HeightRatio;
-
-		GridPosY = std::round(GridPosY + cam.y + YCorrection);
-
-
-		// X part of the function is not.
-		int ScreenWidth = ScreenSize::get().width;
-		auto WidthRatio = ScreenSize::get().WidthRatio();
-
-		auto ScreenPercentX = (double)click.x / (double)ScreenWidth;
-
-		auto XCorrection = -((cam.z * WidthRatio) / 2.0);
-
-		auto GridPosX = ScreenPercentX * cam.z * WidthRatio;
-
-		GridPosX = std::round(GridPosX + cam.x + XCorrection);
-
-		//
-
-		Point2D<int> GridPosition{ (int)GridPosX, (int)GridPosY };
+		Point2D<int> GridPosition = MouseManager::get().GetGridCursorPos();
 
 		try
 		{
