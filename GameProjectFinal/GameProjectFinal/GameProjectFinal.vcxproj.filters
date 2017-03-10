@@ -40,17 +40,32 @@
     <Filter Include="Header Files\System\Graphics\Contexts\World">
       <UniqueIdentifier>{04142dac-d04a-4c61-9a88-342073d50c8e}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\System\Graphics\Contexts\World\MapTiles">
-      <UniqueIdentifier>{388acdd0-bb75-4edb-a833-455668e5ccea}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Header Files\System\Graphics\Contexts\World\MapTiles\Defs">
-      <UniqueIdentifier>{c1408008-f158-4f17-9410-6f3d24834927}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\Objects">
       <UniqueIdentifier>{147c1787-ca06-460e-9341-d47e2102e709}</UniqueIdentifier>
     </Filter>
     <Filter Include="Source Files\Objects\MapTiles">
       <UniqueIdentifier>{b6f93a34-bfc4-49cf-bd13-7d3c6e7997e2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\System\Graphics\Contexts\World\Map">
+      <UniqueIdentifier>{388acdd0-bb75-4edb-a833-455668e5ccea}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\System\Graphics\Contexts\World\Map\MapTiles">
+      <UniqueIdentifier>{c1408008-f158-4f17-9410-6f3d24834927}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\System\Graphics\Contexts\World\Mobiles">
+      <UniqueIdentifier>{4d5e35b4-4a0e-453b-9ab5-92f56e6fd484}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\System\Graphics\Contexts\World\Mobiles\PlayerMobile">
+      <UniqueIdentifier>{b1fed251-adf9-49ae-9f1b-f6208f492c01}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\System\Graphics\Contexts\World\Mobiles\MobileAttributes">
+      <UniqueIdentifier>{6491f8fb-98cc-487e-b93d-6d81a64d7bd6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\System\Graphics\Contexts\World\Mobiles\AIMobile">
+      <UniqueIdentifier>{32acd5f3-53a1-4d9b-bbdf-3ed5c0e4e794}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Other">
+      <UniqueIdentifier>{91cd9eb8-362b-465f-a705-19cfa9d7b1ff}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -116,6 +131,60 @@
     </ClCompile>
     <ClCompile Include="DebugRedSquare.cpp">
       <Filter>Source Files\Objects\MapTiles</Filter>
+    </ClCompile>
+    <ClCompile Include="HP.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Energy.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Movement.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerMobile.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="AIMobile.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Mobile.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ARGBColor.cpp">
+      <Filter>Source Files\Other</Filter>
+    </ClCompile>
+    <ClCompile Include="BGRColor.cpp">
+      <Filter>Source Files\Other</Filter>
+    </ClCompile>
+    <ClCompile Include="ByteAmount.cpp">
+      <Filter>Source Files\Other</Filter>
+    </ClCompile>
+    <ClCompile Include="Exception.cpp">
+      <Filter>Source Files\Other</Filter>
+    </ClCompile>
+    <ClCompile Include="FrameTime.cpp">
+      <Filter>Source Files\Other</Filter>
+    </ClCompile>
+    <ClCompile Include="MyDebug.cpp">
+      <Filter>Source Files\Other</Filter>
+    </ClCompile>
+    <ClCompile Include="Position.cpp">
+      <Filter>Source Files\Other</Filter>
+    </ClCompile>
+    <ClCompile Include="Rotation.cpp">
+      <Filter>Source Files\Other</Filter>
+    </ClCompile>
+    <ClCompile Include="Scale.cpp">
+      <Filter>Source Files\Other</Filter>
+    </ClCompile>
+    <ClCompile Include="ScreenSize.cpp">
+      <Filter>Source Files\Other</Filter>
+    </ClCompile>
+    <ClCompile Include="Singleton.cpp">
+      <Filter>Source Files\Other</Filter>
+    </ClCompile>
+    <ClCompile Include="TestTimer.cpp">
+      <Filter>Source Files\Other</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -234,22 +303,19 @@
       <Filter>Header Files\System\Graphics\Contexts\Menu</Filter>
     </ClInclude>
     <ClInclude Include="Grass.h">
-      <Filter>Header Files\System\Graphics\Contexts\World\MapTiles\Defs</Filter>
+      <Filter>Header Files\System\Graphics\Contexts\World\Map\MapTiles</Filter>
     </ClInclude>
     <ClInclude Include="MapTile.h">
-      <Filter>Header Files\System\Graphics\Contexts\World\MapTiles</Filter>
+      <Filter>Header Files\System\Graphics\Contexts\World\Map</Filter>
     </ClInclude>
     <ClInclude Include="Stones.h">
-      <Filter>Header Files\System\Graphics\Contexts\World\MapTiles\Defs</Filter>
-    </ClInclude>
-    <ClInclude Include="Map.h">
-      <Filter>Header Files\System\Graphics\Contexts\World</Filter>
+      <Filter>Header Files\System\Graphics\Contexts\World\Map\MapTiles</Filter>
     </ClInclude>
     <ClInclude Include="EmptyTile.h">
-      <Filter>Header Files\System\Graphics\Contexts\World\MapTiles\Defs</Filter>
+      <Filter>Header Files\System\Graphics\Contexts\World\Map\MapTiles</Filter>
     </ClInclude>
     <ClInclude Include="AllMapTileDefs.h">
-      <Filter>Header Files\System\Graphics\Contexts\World\MapTiles\Defs</Filter>
+      <Filter>Header Files\System\Graphics\Contexts\World\Map\MapTiles</Filter>
     </ClInclude>
     <ClInclude Include="BGRColor.h">
       <Filter>Header Files\Other</Filter>
@@ -264,7 +330,7 @@
       <Filter>Header Files\System\Keyboard/Mouse</Filter>
     </ClInclude>
     <ClInclude Include="DebugRedSquare.h">
-      <Filter>Header Files\System\Graphics\Contexts\World\MapTiles\Defs</Filter>
+      <Filter>Header Files\System\Graphics\Contexts\World\Map\MapTiles</Filter>
     </ClInclude>
     <ClInclude Include="Position.h">
       <Filter>Header Files\Other</Filter>
@@ -280,6 +346,30 @@
     </ClInclude>
     <ClInclude Include="Point3D.h">
       <Filter>Header Files\Other</Filter>
+    </ClInclude>
+    <ClInclude Include="Map.h">
+      <Filter>Header Files\System\Graphics\Contexts\World\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="Mobile.h">
+      <Filter>Header Files\System\Graphics\Contexts\World\Mobiles</Filter>
+    </ClInclude>
+    <ClInclude Include="HP.h">
+      <Filter>Header Files\System\Graphics\Contexts\World\Mobiles\MobileAttributes</Filter>
+    </ClInclude>
+    <ClInclude Include="LimitedT.h">
+      <Filter>Header Files\Other</Filter>
+    </ClInclude>
+    <ClInclude Include="Energy.h">
+      <Filter>Header Files\System\Graphics\Contexts\World\Mobiles\MobileAttributes</Filter>
+    </ClInclude>
+    <ClInclude Include="Movement.h">
+      <Filter>Header Files\System\Graphics\Contexts\World\Mobiles\MobileAttributes</Filter>
+    </ClInclude>
+    <ClInclude Include="PlayerMobile.h">
+      <Filter>Header Files\System\Graphics\Contexts\World\Mobiles\PlayerMobile</Filter>
+    </ClInclude>
+    <ClInclude Include="AIMobile.h">
+      <Filter>Header Files\System\Graphics\Contexts\World\Mobiles\AIMobile</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

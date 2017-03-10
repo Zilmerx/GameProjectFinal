@@ -9,126 +9,56 @@ class ByteAmount
 
 public:
 
-	constexpr ByteAmount(size_t amount) :
-		_amount{ amount }
-	{
-	}
+	constexpr ByteAmount(size_t amount);
 
-	constexpr ByteAmount(const ByteAmount& byte_amount) :
-		_amount{ byte_amount._amount }
-	{
-	}
+	constexpr ByteAmount(const ByteAmount& byte_amount);
 
-	constexpr size_t amount() const
-	{
-		return _amount;
-	}
+	constexpr size_t amount() const;
 
 
 	// OPERATOR OVERLOADS
 
 	// ASSIGNMENT
 
-	ByteAmount& operator=(const ByteAmount& other)
-	{
-		if (this != &other)
-		{
-			_amount = other._amount;
-		}
-		return *this;
-	}
+	ByteAmount& operator=(const ByteAmount& other);
 
-	ByteAmount& operator=(ByteAmount&& other)
-	{
-		_amount = std::exchange(other._amount, 0);
-		return *this;
-	}
+	ByteAmount& operator=(ByteAmount&& other);
 
 	// MODIFICATION
 
-	ByteAmount& operator++()
-	{
-		_amount = _amount + 1;
-		return *this;
-	}
+	ByteAmount& operator++();
 
-	ByteAmount operator++(int)
-	{
-		ByteAmount tmp(*this);
-		operator++();
-		return tmp;
-	}
+	ByteAmount operator++(int);
 
-	ByteAmount& operator--()
-	{
-		_amount = _amount - 1;
-		return *this;
-	}
+	ByteAmount& operator--();
 
-	ByteAmount operator--(int)
-	{
-		ByteAmount tmp(*this);
-		operator--();
-		return tmp;
-	}
+	ByteAmount operator--(int);
 
-	ByteAmount& operator+=(const ByteAmount& rhs)
-	{
-		_amount = _amount + rhs._amount;
-		return *this;
-	}
+	ByteAmount& operator+=(const ByteAmount& rhs);
 
-	friend ByteAmount operator+(ByteAmount lhs, const ByteAmount& rhs)
-	{
-		lhs += rhs;
-		return lhs;
-	}
+	friend ByteAmount operator+(ByteAmount lhs, const ByteAmount& rhs);
 
-	ByteAmount& operator-=(const ByteAmount& rhs)
-	{
-		_amount = _amount - rhs._amount;
-		return *this;
-	}
+	ByteAmount& operator-=(const ByteAmount& rhs);
 
-	friend ByteAmount operator-(ByteAmount lhs, const ByteAmount& rhs)
-	{
-		lhs -= rhs;
-		return lhs;
-	}
+	friend ByteAmount operator-(ByteAmount lhs, const ByteAmount& rhs);
 
-	ByteAmount& operator*=(const ByteAmount& rhs)
-	{
-		_amount = _amount * rhs._amount;
-		return *this;
-	}
+	ByteAmount& operator*=(const ByteAmount& rhs);
 
-	friend ByteAmount operator*(ByteAmount lhs, const ByteAmount& rhs)
-	{
-		lhs *= rhs;
-		return lhs;
-	}
+	friend ByteAmount operator*(ByteAmount lhs, const ByteAmount& rhs);
 
-	ByteAmount& operator/=(const ByteAmount& rhs)
-	{
-		_amount = _amount / rhs._amount;
-		return *this;
-	}
+	ByteAmount& operator/=(const ByteAmount& rhs);
 
-	friend ByteAmount operator/(ByteAmount lhs, const ByteAmount& rhs)
-	{
-		lhs /= rhs;
-		return lhs;
-	}
+	friend ByteAmount operator/(ByteAmount lhs, const ByteAmount& rhs);
 
 	// COMPARISON
 
-	constexpr bool operator< (const ByteAmount& rhs) { return _amount < rhs._amount; }
-	constexpr bool operator> (const ByteAmount& rhs) { return !(this->operator<(rhs)); }
-	constexpr bool operator<=(const ByteAmount& rhs) { return !(*this > rhs); }
-	constexpr bool operator>=(const ByteAmount& rhs) { return !(*this < rhs); }
+	constexpr bool operator< (const ByteAmount& rhs) const { return _amount < rhs._amount; }
+	constexpr bool operator> (const ByteAmount& rhs) const { return !(this->operator<(rhs)); }
+	constexpr bool operator<=(const ByteAmount& rhs) const { return !(*this > rhs); }
+	constexpr bool operator>=(const ByteAmount& rhs) const { return !(*this < rhs); }
 
-	constexpr bool operator==(const ByteAmount& rhs) { return this->_amount == rhs._amount; }
-	constexpr bool operator!=(const ByteAmount& rhs) { return !(*this == rhs); }
+	constexpr bool operator==(const ByteAmount& rhs) const { return _amount == rhs._amount; }
+	constexpr bool operator!=(const ByteAmount& rhs) const { return !(*this == rhs); }
 
-	constexpr operator size_t() const { return _amount; }
+	constexpr operator size_t() const;
 };

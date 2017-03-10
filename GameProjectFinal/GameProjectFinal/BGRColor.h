@@ -8,19 +8,9 @@ struct BGRColor
 	value_type green;
 	value_type red;
 
-	BGRColor() :
-		blue{ 0 },
-		green{ 0 },
-		red{ 0 }
-	{
-	}
+	BGRColor();
 
-	BGRColor(value_type blue, value_type green, value_type red) :
-		blue{ blue },
-		green{ green },
-		red{ red }
-	{
-	}
+	BGRColor(value_type blue, value_type green, value_type red);
 
 	bool operator==(const BGRColor& rhs) { return blue == rhs.blue && green == rhs.green && red == rhs.red; }
 };

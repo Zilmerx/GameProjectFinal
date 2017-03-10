@@ -7,30 +7,14 @@ class Rotation : private Point3D<float>
 {
 
 public:
-	Rotation()
-	{
-		SetRotation(0.0f, 0.0f, 0.0f);
-	}
+	Rotation();
 
-	Rotation(float xRot, float yRot, float zRot)
-	{
-		SetRotation(xRot, yRot, zRot);
-	}
+	Rotation(float xRot, float yRot, float zRot);
 
-	void SetRotation(float xRot, float yRot, float zRot)
-	{
-		x = xRot;
-		y = yRot;
-		z = zRot;
-	}
+	void SetRotation(float xRot, float yRot, float zRot);
 
-	Point3D<float> GetRotation() const
-	{
-		return *this;
-	}
+	Point3D<float> GetRotation() const;
 
-	XMMATRIX GetRotationMatrix() const
-	{
-		return XMMatrixRotationRollPitchYaw(x, y, z);
-	}
+	XMMATRIX GetRotationMatrix() const;
+
 };

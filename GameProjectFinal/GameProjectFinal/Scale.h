@@ -7,30 +7,13 @@ class Scale : private Point3D<float>
 {
 
 public:
-	Scale()
-	{
-		SetScale(1.0f, 1.0f, 1.0f);
-	}
+	Scale();
 
-	Scale(float XScale, float YScale, float ZScale)
-	{
-		SetScale(XScale, YScale, ZScale);
-	}
+	Scale(float XScale, float YScale, float ZScale);
 
-	void SetScale(float XScale, float YScale, float ZScale = 0.0f)
-	{
-		x = XScale;
-		y = YScale;
-		z = ZScale;
-	}
+	void SetScale(float XScale, float YScale, float ZScale = 0.0f);
 
-	Point3D<float> GetScale() const
-	{
-		return *this;
-	}
+	Point3D<float> GetScale() const;
 
-	XMMATRIX GetScaleMatrix() const
-	{
-		return XMMatrixScaling(x, y, z);
-	}
+	XMMATRIX GetScaleMatrix() const;
 };

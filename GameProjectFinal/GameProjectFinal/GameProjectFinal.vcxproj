@@ -142,29 +142,48 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="AIMobile.cpp" />
+    <ClCompile Include="ARGBColor.cpp" />
     <ClCompile Include="BaseContext.cpp" />
+    <ClCompile Include="BGRColor.cpp" />
+    <ClCompile Include="ByteAmount.cpp" />
     <ClCompile Include="Camera.cpp" />
     <ClCompile Include="ColorShader.cpp" />
     <ClCompile Include="ContextMenu.cpp" />
     <ClCompile Include="DebugRedSquare.cpp" />
     <ClCompile Include="Direct3D.cpp" />
     <ClCompile Include="EmptyTile.cpp" />
+    <ClCompile Include="Energy.cpp" />
+    <ClCompile Include="Exception.cpp" />
+    <ClCompile Include="FrameTime.cpp" />
     <ClCompile Include="Graphics.cpp" />
     <ClCompile Include="Grass.cpp" />
+    <ClCompile Include="HP.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Map.cpp" />
     <ClCompile Include="MapTile.cpp" />
+    <ClCompile Include="Mobile.cpp" />
     <ClCompile Include="Model2D.cpp" />
     <ClCompile Include="MouseManager.cpp" />
+    <ClCompile Include="Movement.cpp" />
+    <ClCompile Include="MyDebug.cpp" />
     <ClCompile Include="Object.cpp" />
+    <ClCompile Include="PlayerMobile.cpp" />
+    <ClCompile Include="Position.cpp" />
     <ClCompile Include="ResourceManager.cpp" />
+    <ClCompile Include="Rotation.cpp" />
+    <ClCompile Include="Scale.cpp" />
+    <ClCompile Include="ScreenSize.cpp" />
+    <ClCompile Include="Singleton.cpp" />
     <ClCompile Include="Stones.cpp" />
     <ClCompile Include="SystemClass.cpp" />
+    <ClCompile Include="TestTimer.cpp" />
     <ClCompile Include="Texture.cpp" />
     <ClCompile Include="TextureShader.cpp" />
     <ClCompile Include="ContextWorld.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="AIMobile.h" />
     <ClInclude Include="Aligned.h" />
     <ClInclude Include="AllMapTileDefs.h" />
     <ClInclude Include="ARGBColor.h" />
@@ -181,10 +200,12 @@
     <ClInclude Include="ContextMenu.h" />
     <ClInclude Include="DebugRedSquare.h" />
     <ClInclude Include="Direct3D.h" />
+    <ClInclude Include="Energy.h" />
     <ClInclude Include="Exception.h" />
     <ClInclude Include="FrameTime.h" />
     <ClInclude Include="Graphics.h" />
     <ClInclude Include="Grass.h" />
+    <ClInclude Include="HP.h" />
     <ClInclude Include="Incopiable.h" />
     <ClInclude Include="InputEventHandler.h" />
     <ClInclude Include="InputManager.h" />
@@ -193,10 +214,14 @@
     <ClInclude Include="MallocatorEmptyType.h" />
     <ClInclude Include="Map.h" />
     <ClInclude Include="MapTile.h" />
+    <ClInclude Include="LimitedT.h" />
+    <ClInclude Include="Mobile.h" />
     <ClInclude Include="Model2D.h" />
     <ClInclude Include="MouseManager.h" />
+    <ClInclude Include="Movement.h" />
     <ClInclude Include="MyDebug.h" />
     <ClInclude Include="Object.h" />
+    <ClInclude Include="PlayerMobile.h" />
     <ClInclude Include="Point3D.h" />
     <ClInclude Include="Point2D.h" />
     <ClInclude Include="Position.h" />
