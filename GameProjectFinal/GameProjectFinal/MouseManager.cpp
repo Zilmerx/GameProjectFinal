@@ -39,19 +39,35 @@ Point2D<int> MouseManager::GetGridCursorPos()
 	XMFLOAT3 cam = Globals::get().camera->GetPosition();
 	cam.z = std::abs(cam.z);
 
-	float ScreenHeight = (float)ScreenSize::get().height;
-	float ScreenWidth = (float)ScreenSize::get().width;
+	double ScreenHeight = (double)ScreenSize::get().height;
+	double ScreenWidth = (double)ScreenSize::get().width;
 	click.y = ScreenSize::get().height - click.y;
 
-	using T = long double;
+	constexpr double radian = 45.0 / 180 * PI;
+	
+	/*
+	
+	  PI * (sqrt( h^2 + (tan(45) * h)^2)
+		    ---------------------------
+			         180 / 45.0
+     --------------------------------------
+	             tan(45) * h
+	  
+	*/
 
-	const T halfRatio = ((1 - ScreenHeight / ScreenWidth) / 2);
+	const double ratio = (PI * ((std::sqrt( std::pow(cam.z, 2) + std::pow(std::tan(radian) * cam.z, 2))) / (180.0 / 45.0))) / (std::tan(radian) * cam.z);
 
-	const T GridHeight = (cam.z - (cam.z * halfRatio) - 1);
-	const T GridWidth = (cam.z + (cam.z * halfRatio) - 1);
+	const double gridHeight = cam.z * ratio * (ScreenHeight / ScreenWidth);
+	const double gridWidth  = cam.z * ratio;
 
-	const T GridPosY = cam.y + (((T)click.y * GridHeight) / ScreenHeight) - (GridHeight / 2);
-	const T GridPosX = cam.x + (((T)click.x * GridWidth) / ScreenWidth) - (GridWidth / 2);
+	auto GridPosX = ((double)click.x * gridWidth) / ScreenWidth;
+	auto GridPosY = ((double)click.y * gridHeight) / ScreenHeight;
 
-	return Point2D<int>{ (int)std::round(GridPosX), (int)std::round(GridPosY) };
+	GridPosX -= (gridWidth / 2.0);
+	GridPosY -= (gridHeight / 2.0);
+
+	GridPosX += cam.x + 0.5;
+	GridPosY += cam.y + 0.5;
+
+	return Point2D<int>{ (int)GridPosX, (int)GridPosY };
 }
