@@ -186,6 +186,12 @@
     <ClCompile Include="TestTimer.cpp">
       <Filter>Source Files\Other</Filter>
     </ClCompile>
+    <ClCompile Include="AStarPathfinding.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Wall.cpp">
+      <Filter>Source Files\Objects\MapTiles</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ByteAmount.h">
@@ -370,6 +376,18 @@
     </ClInclude>
     <ClInclude Include="AIMobile.h">
       <Filter>Header Files\System\Graphics\Contexts\World\Mobiles\AIMobile</Filter>
+    </ClInclude>
+    <ClInclude Include="AStarPathfinding.h">
+      <Filter>Header Files\System\Graphics\Contexts\World\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="MovementCost.h">
+      <Filter>Header Files\System\Graphics\Contexts\World\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="Direction.h">
+      <Filter>Header Files\Other</Filter>
+    </ClInclude>
+    <ClInclude Include="Wall.h">
+      <Filter>Header Files\System\Graphics\Contexts\World\Map\MapTiles</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

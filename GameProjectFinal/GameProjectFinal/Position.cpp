@@ -30,6 +30,11 @@ Point3D<float> Position::GetPosition() const
 	return *this;
 }
 
+Point3D<int> Position::GetGridPosition() const
+{
+	return { (int)x, (int)y, (int)z };
+}
+
 DirectX::XMMATRIX Position::GetTranslationMatrix() const
 {
 	return XMMatrixTranslation(x, y, z);

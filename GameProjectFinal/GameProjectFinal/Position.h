@@ -17,6 +17,30 @@ public:
 
 	Point3D<float> GetPosition() const;
 
-	DirectX::XMMATRIX GetTranslationMatrix() const;
+	Point3D<int> GetGridPosition() const;
 
+	DirectX::XMMATRIX GetTranslationMatrix() const;
+	/*
+	Position& operator+=(const Direction& rhs)
+	{
+		if (rhs.m_horizontal == HorizontalDirection::RIGHT)
+		{
+			x += 1;
+		}
+		else if (rhs.m_horizontal == HorizontalDirection::LEFT)
+		{
+			x -= 1;
+		}
+
+		if (rhs.m_vertical == VerticalDirection::UP)
+		{
+			y += 1;
+		}
+		else if (rhs.m_vertical == VerticalDirection::DOWN)
+		{
+			y -= 1;
+		}
+
+		return *this;
+	}*/
 };

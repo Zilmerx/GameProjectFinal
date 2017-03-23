@@ -34,6 +34,11 @@ public:
 		static_assert(false, "BadType");
 	}
 
+	Map& GetMap()
+	{
+		return m_Map;
+	}
+
 	template<>
 	std::unique_ptr<MapTile>& Get<MapTile>(Point2D<size_t> point)
 	{

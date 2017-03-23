@@ -144,6 +144,7 @@
   <ItemGroup>
     <ClCompile Include="AIMobile.cpp" />
     <ClCompile Include="ARGBColor.cpp" />
+    <ClCompile Include="AStarPathfinding.cpp" />
     <ClCompile Include="BaseContext.cpp" />
     <ClCompile Include="BGRColor.cpp" />
     <ClCompile Include="ByteAmount.cpp" />
@@ -181,12 +182,14 @@
     <ClCompile Include="Texture.cpp" />
     <ClCompile Include="TextureShader.cpp" />
     <ClCompile Include="ContextWorld.cpp" />
+    <ClCompile Include="Wall.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="AIMobile.h" />
     <ClInclude Include="Aligned.h" />
     <ClInclude Include="AllMapTileDefs.h" />
     <ClInclude Include="ARGBColor.h" />
+    <ClInclude Include="AStarPathfinding.h" />
     <ClInclude Include="BaseContext.h" />
     <ClInclude Include="BGRColor.h" />
     <ClInclude Include="ByteAmount.h" />
@@ -200,6 +203,7 @@
     <ClInclude Include="ContextMenu.h" />
     <ClInclude Include="DebugRedSquare.h" />
     <ClInclude Include="Direct3D.h" />
+    <ClInclude Include="Direction.h" />
     <ClInclude Include="Energy.h" />
     <ClInclude Include="Exception.h" />
     <ClInclude Include="FrameTime.h" />
@@ -219,6 +223,7 @@
     <ClInclude Include="Model2D.h" />
     <ClInclude Include="MouseManager.h" />
     <ClInclude Include="Movement.h" />
+    <ClInclude Include="MovementCost.h" />
     <ClInclude Include="MyDebug.h" />
     <ClInclude Include="Object.h" />
     <ClInclude Include="PlayerMobile.h" />
@@ -244,6 +249,7 @@
     <ClInclude Include="TypeLists.h" />
     <ClInclude Include="ContextWorld.h" />
     <ClInclude Include="EmptyTile.h" />
+    <ClInclude Include="Wall.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="color.ps" />

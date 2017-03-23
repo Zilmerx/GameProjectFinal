@@ -83,6 +83,10 @@ std::unique_ptr<MapTile> Map::GetTileFromColor(BGRColor& color)
 	{
 		return std::make_unique<Stones>();
 	}
+	else if (color == BGRColor{ 128, 128, 128 })
+	{
+		return std::make_unique<Wall>();
+	}
 
 
 	return std::make_unique<EmptyTile>();
