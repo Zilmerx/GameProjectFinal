@@ -12,9 +12,10 @@
 
 class Map
 {
+	std::vector<std::unique_ptr<MapTile>> m_Map;
+
 	size_t width;
 	size_t height;
-	std::vector<std::unique_ptr<MapTile>> m_Map;
 
 public:
 
@@ -32,6 +33,16 @@ public:
 			THROW_EXCEPTION(OutOfBoundsException, L"Out of bounds")
 		}
 		return m_Map[(height * point.y) + point.x];
+	}
+
+	size_t getWidth()
+	{
+		return width;
+	}
+
+	size_t getHeight()
+	{
+		return height;
 	}
 
 private:

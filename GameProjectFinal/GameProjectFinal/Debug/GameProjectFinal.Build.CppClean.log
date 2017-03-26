@@ -1,6 +1,5 @@
 c:\users\jean-philippe\documents\github\gameprojectfinal\gameprojectfinal\gameprojectfinal\debug\vc140.pdb
 c:\users\jean-philippe\documents\github\gameprojectfinal\gameprojectfinal\gameprojectfinal\debug\vc140.idb
-c:\users\jean-philippe\documents\github\gameprojectfinal\gameprojectfinal\gameprojectfinal\debug\maptile.obj
 c:\users\jean-philippe\documents\github\gameprojectfinal\gameprojectfinal\gameprojectfinal\debug\mobile.obj
 c:\users\jean-philippe\documents\github\gameprojectfinal\gameprojectfinal\gameprojectfinal\debug\model2d.obj
 c:\users\jean-philippe\documents\github\gameprojectfinal\gameprojectfinal\gameprojectfinal\debug\mousemanager.obj
@@ -19,7 +18,7 @@ c:\users\jean-philippe\documents\github\gameprojectfinal\gameprojectfinal\gamepr
 c:\users\jean-philippe\documents\github\gameprojectfinal\gameprojectfinal\gameprojectfinal\debug\testtimer.obj
 c:\users\jean-philippe\documents\github\gameprojectfinal\gameprojectfinal\gameprojectfinal\debug\texture.obj
 c:\users\jean-philippe\documents\github\gameprojectfinal\gameprojectfinal\gameprojectfinal\debug\textureshader.obj
-c:\users\jean-philippe\documents\github\gameprojectfinal\gameprojectfinal\gameprojectfinal\debug\aimobile.obj
+c:\users\jean-philippe\documents\github\gameprojectfinal\gameprojectfinal\gameprojectfinal\debug\wall.obj
 c:\users\jean-philippe\documents\github\gameprojectfinal\gameprojectfinal\gameprojectfinal\debug\argbcolor.obj
 c:\users\jean-philippe\documents\github\gameprojectfinal\gameprojectfinal\gameprojectfinal\debug\astarpathfinding.obj
 c:\users\jean-philippe\documents\github\gameprojectfinal\gameprojectfinal\gameprojectfinal\debug\basecontext.obj
@@ -39,6 +38,8 @@ c:\users\jean-philippe\documents\github\gameprojectfinal\gameprojectfinal\gamepr
 c:\users\jean-philippe\documents\github\gameprojectfinal\gameprojectfinal\gameprojectfinal\debug\hp.obj
 c:\users\jean-philippe\documents\github\gameprojectfinal\gameprojectfinal\gameprojectfinal\debug\main.obj
 c:\users\jean-philippe\documents\github\gameprojectfinal\gameprojectfinal\gameprojectfinal\debug\map.obj
+c:\users\jean-philippe\documents\github\gameprojectfinal\gameprojectfinal\gameprojectfinal\debug\maptile.obj
+c:\users\jean-philippe\documents\github\gameprojectfinal\gameprojectfinal\gameprojectfinal\debug\aimobile.obj
 c:\users\jean-philippe\documents\github\gameprojectfinal\gameprojectfinal\gameprojectfinal\debug\contextworld.obj
 c:\users\jean-philippe\documents\github\gameprojectfinal\gameprojectfinal\debug\gameprojectfinal.ilk
 c:\users\jean-philippe\documents\github\gameprojectfinal\gameprojectfinal\debug\gameprojectfinal.exe

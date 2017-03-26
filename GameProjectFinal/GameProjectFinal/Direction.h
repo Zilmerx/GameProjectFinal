@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Position.h"
+#include "Point2D.h"
 
 
 enum class VerticalDirection
@@ -34,17 +34,14 @@ struct Direction
 	{
 	}
 
-	Direction(const Position& from, const Position& to)
+	Direction(const Point2D<int>& from, const Point2D<int>& to)
 	{
-		const auto fromPos = from.GetPosition();
-		const auto toPos = to.GetPosition();
-
 		// Horizontal.
-		if (fromPos.x < toPos.x)
+		if (from.x < to.x)
 		{
 			m_horizontal = HorizontalDirection::RIGHT;
 		}
-		else if (fromPos.x > toPos.x)
+		else if (from.x > to.x)
 		{
 			m_horizontal = HorizontalDirection::LEFT;
 		}
@@ -54,11 +51,11 @@ struct Direction
 		}
 
 		// Vertical.
-		if (fromPos.y < toPos.y)
+		if (from.y < to.y)
 		{
 			m_vertical = VerticalDirection::UP;
 		}
-		else if (fromPos.y > toPos.y)
+		else if (from.y > to.y)
 		{
 			m_vertical = VerticalDirection::DOWN;
 		}
@@ -96,9 +93,9 @@ struct Direction
 		return *this;
 	}
 
-	operator Point3D<int>()
+	operator Point2D<int>()
 	{
-		Point3D<int> point;
+		Point2D<int> point;
 
 		point.x = (int)m_horizontal;
 		point.y = (int)m_vertical;

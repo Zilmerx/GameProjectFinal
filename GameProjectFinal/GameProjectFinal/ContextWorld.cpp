@@ -46,14 +46,13 @@ void ContextWorld::InitializeDef(ID3D11Device* device, ID3D11DeviceContext* devi
 
 		}*/
 
-		
 		if (begin == nullptr)
 		{
-			begin = &Get<MapTile>(Point2D<size_t>(GridPosition.x, GridPosition.y));
+			begin = &Get<MapTile>(Point2D<size_t>(5, 15));
 		}
 		else if (end == nullptr)
 		{
-			end = &Get<MapTile>(Point2D<size_t>(GridPosition.x, GridPosition.y));
+			end = &Get<MapTile>(Point2D<size_t>(33, 45));
 		}
 		else
 		{

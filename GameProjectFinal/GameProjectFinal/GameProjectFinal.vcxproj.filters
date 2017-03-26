@@ -377,9 +377,6 @@
     <ClInclude Include="AIMobile.h">
       <Filter>Header Files\System\Graphics\Contexts\World\Mobiles\AIMobile</Filter>
     </ClInclude>
-    <ClInclude Include="AStarPathfinding.h">
-      <Filter>Header Files\System\Graphics\Contexts\World\Map</Filter>
-    </ClInclude>
     <ClInclude Include="MovementCost.h">
       <Filter>Header Files\System\Graphics\Contexts\World\Map</Filter>
     </ClInclude>
@@ -388,6 +385,9 @@
     </ClInclude>
     <ClInclude Include="Wall.h">
       <Filter>Header Files\System\Graphics\Contexts\World\Map\MapTiles</Filter>
+    </ClInclude>
+    <ClInclude Include="AStarPathfinding.h">
+      <Filter>Header Files\System\Graphics\Contexts\World\Map</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

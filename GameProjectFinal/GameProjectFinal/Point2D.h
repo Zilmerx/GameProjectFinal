@@ -4,7 +4,6 @@ template<class T>
 struct Point3D;
 
 #include "Point3D.h"
-#include "Direction.h"
 
 template<class T>
 struct Point2D
@@ -38,7 +37,7 @@ struct Point2D
 	{
 	}
 
-	inline bool operator==(const Point2D& rhs) { return x == rhs.x && y == rhs.y };
+	inline bool operator==(const Point2D& rhs) { return x == rhs.x && y == rhs.y; }
 
 	friend Point2D operator+(Point2D lhs, const Point2D& rhs)
 	{
