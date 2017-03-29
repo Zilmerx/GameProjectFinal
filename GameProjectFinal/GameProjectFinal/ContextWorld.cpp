@@ -2,7 +2,7 @@
 #include "ContextMenu.h"
 #include "ContextWorld.h"
 
-#include "MouseManager.h"
+#include "InputManager.h"
 #include "ScreenSize.h"
 #include "AStarPathfinding.h"
 
@@ -17,17 +17,17 @@ ContextWorld::~ContextWorld()
 
 void ContextWorld::InitializeDef(ID3D11Device* device, ID3D11DeviceContext* deviceContext)
 {
-	m_Manager->AddHandler(InputEventHandler::Gen_DefaultHandler<Keys::KEY_O>(
-		[this](SHORT)
+	m_Manager->addHandler(OnPressEvent(Keys::KEY_O,
+		[&]()
 	{
 		m_Parent->SwitchContext<ContextMenu>();
 	}
 	));
 
-	m_Manager->AddHandler(InputEventHandler::Gen_DefaultHandler<Keys::LBUTTON>(
-		[this](SHORT)
+	m_Manager->addHandler(OnPressEvent(Keys::LBUTTON,
+		[&]()
 	{
-		Point2D<size_t> GridPosition = MouseManager::get().GetGridCursorPos();
+		Point2D<size_t> GridPosition = m_Manager->GetGridCursorPos();
 
 		static std::unique_ptr<MapTile>* begin;
 		static std::unique_ptr<MapTile>* end;
@@ -48,24 +48,34 @@ void ContextWorld::InitializeDef(ID3D11Device* device, ID3D11DeviceContext* devi
 
 		if (begin == nullptr)
 		{
-			begin = &Get<MapTile>(Point2D<size_t>(5, 15));
+			try
+			{
+				begin = &Get<MapTile>(m_Manager->GetGridCursorPos());
+			}
+			catch (...)
+			{
+			}
 		}
 		else if (end == nullptr)
 		{
-			end = &Get<MapTile>(Point2D<size_t>(33, 45));
-		}
-		else
-		{
-			AStarPathfinding pathfinder{ &GetMap() };
-			std::vector<MapTile*> path = pathfinder.FindPath(begin->get(), end->get());
-
-			for (auto& tile : path)
+			try
 			{
-				std::unique_ptr<MapTile> newTile = std::make_unique<Stones>();
+				end = &Get<MapTile>(m_Manager->GetGridCursorPos());
 
-				auto pos = tile->GetPosition();
-				newTile->SetPosition(pos.x, pos.y, pos.z);
-				std::swap(*tile, *newTile.get());
+				AStarPathfinding pathfinder{ &GetMap() };
+				std::vector<MapTile*> path = pathfinder.FindPath(begin->get(), end->get());
+
+				for (auto& tile : path)
+				{
+					std::unique_ptr<MapTile> newTile = std::make_unique<Stones>();
+
+					auto pos = tile->GetPosition();
+					newTile->SetPosition(pos.x, pos.y, pos.z);
+					std::swap(*tile, *newTile.get());
+				}
+			}
+			catch (...)
+			{
 			}
 		}
 	}));

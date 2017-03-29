@@ -14,8 +14,8 @@ ContextMenu::~ContextMenu()
 
 void ContextMenu::InitializeDef(ID3D11Device* device, ID3D11DeviceContext* deviceContext)
 {
-	m_Manager->AddHandler(InputEventHandler::Gen_DefaultHandler<Keys::KEY_P>(
-		[this](SHORT)
+	m_Manager->addHandler(OnPressEvent(Keys::KEY_P,
+		[&]()
 	{
 		m_Parent->SwitchContext<ContextWorld>();
 	}

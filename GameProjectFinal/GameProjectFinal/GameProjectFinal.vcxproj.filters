@@ -67,6 +67,9 @@
     <Filter Include="Source Files\Other">
       <UniqueIdentifier>{91cd9eb8-362b-465f-a705-19cfa9d7b1ff}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Keyboard/Mouse">
+      <UniqueIdentifier>{50ee327a-b94c-44c6-9160-88d34666c850}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -124,9 +127,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="BaseContext.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="MouseManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="DebugRedSquare.cpp">
@@ -192,6 +192,9 @@
     <ClCompile Include="Wall.cpp">
       <Filter>Source Files\Objects\MapTiles</Filter>
     </ClCompile>
+    <ClCompile Include="InputManager.cpp">
+      <Filter>Source Files\Keyboard/Mouse</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ByteAmount.h">
@@ -256,12 +259,6 @@
     </ClInclude>
     <ClInclude Include="Mallocator.h">
       <Filter>Header Files\Other</Filter>
-    </ClInclude>
-    <ClInclude Include="InputEventHandler.h">
-      <Filter>Header Files\System\Keyboard/Mouse</Filter>
-    </ClInclude>
-    <ClInclude Include="InputManager.h">
-      <Filter>Header Files\System\Keyboard/Mouse</Filter>
     </ClInclude>
     <ClInclude Include="Keys.h">
       <Filter>Header Files\System\Keyboard/Mouse</Filter>
@@ -332,9 +329,6 @@
     <ClInclude Include="ARGBColor.h">
       <Filter>Header Files\Other</Filter>
     </ClInclude>
-    <ClInclude Include="MouseManager.h">
-      <Filter>Header Files\System\Keyboard/Mouse</Filter>
-    </ClInclude>
     <ClInclude Include="DebugRedSquare.h">
       <Filter>Header Files\System\Graphics\Contexts\World\Map\MapTiles</Filter>
     </ClInclude>
@@ -388,6 +382,12 @@
     </ClInclude>
     <ClInclude Include="AStarPathfinding.h">
       <Filter>Header Files\System\Graphics\Contexts\World\Map</Filter>
+    </ClInclude>
+    <ClInclude Include="InputEvent.h">
+      <Filter>Header Files\System\Keyboard/Mouse</Filter>
+    </ClInclude>
+    <ClInclude Include="InputManager.h">
+      <Filter>Header Files\System\Keyboard/Mouse</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -160,12 +160,12 @@
     <ClCompile Include="Graphics.cpp" />
     <ClCompile Include="Grass.cpp" />
     <ClCompile Include="HP.cpp" />
+    <ClCompile Include="InputManager.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Map.cpp" />
     <ClCompile Include="MapTile.cpp" />
     <ClCompile Include="Mobile.cpp" />
     <ClCompile Include="Model2D.cpp" />
-    <ClCompile Include="MouseManager.cpp" />
     <ClCompile Include="Movement.cpp" />
     <ClCompile Include="MyDebug.cpp" />
     <ClCompile Include="Object.cpp" />
@@ -211,7 +211,7 @@
     <ClInclude Include="Grass.h" />
     <ClInclude Include="HP.h" />
     <ClInclude Include="Incopiable.h" />
-    <ClInclude Include="InputEventHandler.h" />
+    <ClInclude Include="InputEvent.h" />
     <ClInclude Include="InputManager.h" />
     <ClInclude Include="Keys.h" />
     <ClInclude Include="Mallocator.h" />
@@ -221,7 +221,6 @@
     <ClInclude Include="LimitedT.h" />
     <ClInclude Include="Mobile.h" />
     <ClInclude Include="Model2D.h" />
-    <ClInclude Include="MouseManager.h" />
     <ClInclude Include="Movement.h" />
     <ClInclude Include="MovementCost.h" />
     <ClInclude Include="MyDebug.h" />

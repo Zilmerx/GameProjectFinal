@@ -1,85 +1,69 @@
 #pragma once
 
-//////////////
-// INCLUDES //
-//////////////
+
 #include <vector>
 #include <Windows.h>
-#include <algorithm>
 
-#include "InputEventHandler.h"
-#include "Singleton.h"
+#include "Point2D.h"
+#include "Keys.h"
+#include "InputEvent.h"
 
-////////////////////////////////////////////////////////////////////////////////
-/*
-*/
-/////////////////////////////////////////////////////////////////////////////////
 class InputManager
 {
-	// Vector of keys for which the values have to be updated in m_KeyValues.
 	std::vector<Keys> m_KeysToUpdate;
 
 	// Array of SHORTs holding the state of keys on last verification.
 	#define KeyStatesSize Keys::ENUM_END
-	SHORT m_KeyStates[KeyStatesSize];
 
-	// Vector of callbacks when a key is triggered.
-	std::vector<InputEventHandler> m_EventHandlers;
+	bool m_KeyStates[KeyStatesSize];
+
+	// Arrays of vectors.
+	std::vector<OnPressEvent>	m_Press_Handlers[KeyStatesSize];
+	std::vector<OnReleaseEvent> m_Release_Handlers[KeyStatesSize];
+	std::vector<OnHoldEvent>	m_Hold_Handlers[KeyStatesSize];
 
 public:
 
-	void AddHandler(InputEventHandler&& handler)
-	{
-		m_KeysToUpdate.push_back(handler.m_Key);
-		m_EventHandlers.push_back(handler);
-	}
+	void addHandler(OnPressEvent&& handler);
 
+	void addHandler(OnReleaseEvent&& handler);
 
-	void RemoveHandler(InputEventHandler* handler)
-	{
-		for (std::vector<InputEventHandler>::iterator i = m_EventHandlers.begin(); i != m_EventHandlers.end(); ++i)
-		{
-			if (&*i == handler) 
-			{ 
-				m_EventHandlers.erase(i); break; 
-			}
-		}
-	}
+	void addHandler(OnHoldEvent&& handler);
 
-	void ClearHandlers()
-	{
-		m_KeysToUpdate.clear();
-		m_EventHandlers.clear();
-	}
+	void removeHandler(OnPressEvent* handler);
 
-	void CheckEvents()
-	{
-		UpdateKeyStates();
-		ExecuteHandlers();
-	}
+	void removeHandler(OnReleaseEvent* handler);
 
-	InputManager()
-	{
-		std::fill_n(m_KeyStates, (int)KeyStatesSize, 0);
-	}
+	void removeHandler(OnHoldEvent* handler);
 
+	void clearHandlers();
+
+	void checkEvents();
+
+	Point2D<int> GetGlobalCursorPos();
+
+	Point2D<int> GetClientCursorPos();
+
+	Point2D<int> GetGridCursorPos();
 private:
 
-	// Updates the state of the keys with the current info.
-	void UpdateKeyStates()
+	bool keyIsActive(SHORT keyState);
+
+	bool getKeyState(Keys key);
+
+	template<class T>
+	void ExecuteHandlers(std::vector<T> vec[], Keys key)
 	{
-		for (const auto& key : m_KeysToUpdate)
+		std::vector<T>& handlerList = vec[key];
+
+		for (auto handler : handlerList)
 		{
-			m_KeyStates[key] = GetAsyncKeyState(key);
+			handler.Execute();
 		}
 	}
 
-	// Executes the callbacks held by the handlers if the predicate allows so.
-	void ExecuteHandlers() const
-	{
-		for (const auto& handler : m_EventHandlers)
-		{
-			handler.Handle(m_KeyStates[handler.m_Key]);
-		}
-	}
+public:
+
+	InputManager();
+
 };

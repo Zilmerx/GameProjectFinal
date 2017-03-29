@@ -22,43 +22,43 @@ Camera::~Camera()
 
 void Camera::SetHandlers(InputManager* manager)
 {
-	manager->AddHandler(InputEventHandler::Gen_DefaultHandler<Keys::KEY_W>(
-		[this](SHORT)
+	manager->addHandler(OnHoldEvent(Keys::KEY_W,
+		[&]()
 	{
 		SetPositionY(m_position.y += 0.1f);
 	}
 	));
 
-	manager->AddHandler(InputEventHandler::Gen_DefaultHandler<Keys::KEY_S>(
-		[this](SHORT)
+	manager->addHandler(OnHoldEvent(Keys::KEY_S,
+		[&]()
 	{
 		SetPositionY(m_position.y -= 0.1f);
 	}
 	));
 
-	manager->AddHandler(InputEventHandler::Gen_DefaultHandler<Keys::KEY_D>(
-		[this](SHORT)
+	manager->addHandler(OnHoldEvent(Keys::KEY_D,
+		[&]()
 	{
 		SetPositionX(m_position.x += 0.1f);
 	}
 	));
 
-	manager->AddHandler(InputEventHandler::Gen_DefaultHandler<Keys::KEY_A>(
-		[this](SHORT)
+	manager->addHandler(OnHoldEvent(Keys::KEY_A,
+		[&]()
 	{
 		SetPositionX(m_position.x -= 0.1f);
 	}
 	));
 
-	manager->AddHandler(InputEventHandler::Gen_DefaultHandler<Keys::KEY_T>(
-		[this](SHORT)
+	manager->addHandler(OnHoldEvent(Keys::KEY_T,
+		[&]()
 	{
 		SetPositionZ(m_position.z /= 1.1f);
 	}
 	));
 
-	manager->AddHandler(InputEventHandler::Gen_DefaultHandler<Keys::KEY_G>(
-		[this](SHORT)
+	manager->addHandler(OnHoldEvent(Keys::KEY_G,
+		[&]()
 	{
 		SetPositionZ(m_position.z *= 1.1f);
 	}

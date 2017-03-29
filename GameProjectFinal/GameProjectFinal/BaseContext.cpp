@@ -25,8 +25,8 @@ void BaseContext::Initialize(ID3D11Device* device, ID3D11DeviceContext* deviceCo
 		m_Manager = new InputManager{};
 	}
 
-	m_Manager->AddHandler(InputEventHandler::Gen_DefaultHandler<Keys::ESCAPE>(
-		[](SHORT)
+	m_Manager->addHandler(OnPressEvent(Keys::ESCAPE,
+		[]()
 	{
 		Globals::get().Shutdown = true;
 	}
@@ -37,7 +37,7 @@ void BaseContext::Initialize(ID3D11Device* device, ID3D11DeviceContext* deviceCo
 
 void BaseContext::ProcessInputs()
 {
-	m_Manager->CheckEvents();
+	m_Manager->checkEvents();
 }
 
 void BaseContext::Render(Graphics& gfx)
