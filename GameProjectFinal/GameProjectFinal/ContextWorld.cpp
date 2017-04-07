@@ -17,20 +17,21 @@ ContextWorld::~ContextWorld()
 
 void ContextWorld::InitializeDef(ID3D11Device* device, ID3D11DeviceContext* deviceContext)
 {
-	m_Manager->addHandler(OnPressEvent(Keys::KEY_O,
+	m_Manager->addHandler<OnPressEvent>(Keys::KEY_O,
 		[&]()
 	{
 		m_Parent->SwitchContext<ContextMenu>();
 	}
-	));
+	);
 
-	m_Manager->addHandler(OnPressEvent(Keys::LBUTTON,
+	m_Manager->addHandler<OnPressEvent>(Keys::LBUTTON,
 		[&]()
 	{
 		Point2D<size_t> GridPosition = m_Manager->GetGridCursorPos();
 
 		static std::unique_ptr<MapTile>* begin;
 		static std::unique_ptr<MapTile>* end;
+
 		/*
 		try
 		{
@@ -73,12 +74,15 @@ void ContextWorld::InitializeDef(ID3D11Device* device, ID3D11DeviceContext* devi
 					newTile->SetPosition(pos.x, pos.y, pos.z);
 					std::swap(*tile, *newTile.get());
 				}
+
+				begin = end;
+				end = nullptr;
 			}
 			catch (...)
 			{
 			}
 		}
-	}));
+	});
 
 	ResourceManager::get().Make(device, deviceContext, "../GameProjectFinal/Resources/Maps/Tiles/stone01.tga");
 	ResourceManager::get().Make(device, deviceContext, "../GameProjectFinal/Resources/Maps/Tiles/MT-GR-02.tga");

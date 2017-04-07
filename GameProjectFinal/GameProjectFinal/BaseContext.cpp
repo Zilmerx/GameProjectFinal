@@ -25,12 +25,12 @@ void BaseContext::Initialize(ID3D11Device* device, ID3D11DeviceContext* deviceCo
 		m_Manager = new InputManager{};
 	}
 
-	m_Manager->addHandler(OnPressEvent(Keys::ESCAPE,
+	m_Manager->addHandler<OnPressEvent>(Keys::ESCAPE,
 		[]()
 	{
 		Globals::get().Shutdown = true;
 	}
-	));
+	);
 
 	InitializeDef(device, deviceContext);
 }

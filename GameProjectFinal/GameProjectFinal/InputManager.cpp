@@ -5,65 +5,16 @@
 #include "Settings.h"
 #include "SystemClass.h"
 
-void InputManager::addHandler(OnPressEvent&& handler)
-{
-	Keys key = handler.getKey();
 
-	m_KeysToUpdate.push_back(key);
-	m_Press_Handlers[key].push_back(std::move(handler));
-}
-
-void InputManager::addHandler(OnReleaseEvent&& handler)
-{
-	Keys key = handler.getKey();
-
-	m_KeysToUpdate.push_back(key);
-	m_Release_Handlers[key].push_back(std::move(handler));
-}
-
-void InputManager::addHandler(OnHoldEvent&& handler)
-{
-	Keys key = handler.getKey();
-
-	m_KeysToUpdate.push_back(key);
-	m_Hold_Handlers[key].push_back(std::move(handler));
-}
-
-void InputManager::removeHandler(OnPressEvent* handler)
+void InputManager::removeHandler(std::shared_ptr<InputEvent>& handler)
 {
 	Keys key = handler->getKey();
 
-	for (std::vector<OnPressEvent>::iterator i = m_Press_Handlers[key].begin(); i != m_Press_Handlers[key].end(); ++i)
+	for (auto i = m_Handlers[key].begin(); i != m_Handlers[key].end(); ++i)
 	{
-		if (&*i == handler)
+		if (*&*i == handler)
 		{
-			m_Press_Handlers[key].erase(i); break;
-		}
-	}
-}
-
-void InputManager::removeHandler(OnReleaseEvent* handler)
-{
-	Keys key = handler->getKey();
-
-	for (std::vector<OnReleaseEvent>::iterator i = m_Release_Handlers[key].begin(); i != m_Release_Handlers[key].end(); ++i)
-	{
-		if (&*i == handler)
-		{
-			m_Release_Handlers[key].erase(i); break;
-		}
-	}
-}
-
-void InputManager::removeHandler(OnHoldEvent* handler)
-{
-	Keys key = handler->getKey();
-
-	for (std::vector<OnHoldEvent>::iterator i = m_Hold_Handlers[key].begin(); i != m_Hold_Handlers[key].end(); ++i)
-	{
-		if (&*i == handler)
-		{
-			m_Hold_Handlers[key].erase(i); break;
+			m_Handlers[key].erase(i); break;
 		}
 	}
 }
@@ -72,12 +23,7 @@ void InputManager::clearHandlers()
 {
 	m_KeysToUpdate.clear();
 
-	for (auto& vec : m_Press_Handlers)
-	{
-		vec.clear();
-	}
-
-	for (auto& vec : m_Release_Handlers)
+	for (auto& vec : m_Handlers)
 	{
 		vec.clear();
 	}
@@ -99,19 +45,30 @@ void InputManager::checkEvents()
 		if (oldState == false
 			&& newState == true) // OnPress event.
 		{
-			ExecuteHandlers(m_Press_Handlers, key);
+			for (auto& handler : m_Handlers[key])
+			{
+				handler->OnPress();
+			}
+
 			m_KeyStates[key] = newState;
 		}
 		else if (oldState == true
 			&& newState == false) // OnRelease event.
 		{
-			ExecuteHandlers(m_Release_Handlers, key);
+			for (auto& handler : m_Handlers[key])
+			{
+				handler->OnRelease();
+			}
+
 			m_KeyStates[key] = newState;
 		}
 		else if (oldState == true
-			  && newState == true)
+			  && newState == true) // OnHold
 		{
-			ExecuteHandlers(m_Hold_Handlers, key);
+			for (auto& handler : m_Handlers[key])
+			{
+				handler->OnHold();
+			}
 		}
 	}
 }
@@ -196,5 +153,5 @@ Point2D<int> InputManager::GetGridCursorPos()
 
 InputManager::InputManager()
 {
-	std::fill_n(m_KeyStates, (int)KeyStatesSize, 0);
+	std::fill_n(m_KeyStates, (int)KeyStatesSize, false);
 }

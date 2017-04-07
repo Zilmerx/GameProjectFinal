@@ -22,47 +22,47 @@ Camera::~Camera()
 
 void Camera::SetHandlers(InputManager* manager)
 {
-	manager->addHandler(OnHoldEvent(Keys::KEY_W,
+	manager->addHandler<OnHoldEvent>(Keys::KEY_W,
 		[&]()
 	{
 		SetPositionY(m_position.y += 0.1f);
 	}
-	));
+	);
 
-	manager->addHandler(OnHoldEvent(Keys::KEY_S,
+	manager->addHandler<OnHoldEvent>(Keys::KEY_S,
 		[&]()
 	{
 		SetPositionY(m_position.y -= 0.1f);
 	}
-	));
+	);
 
-	manager->addHandler(OnHoldEvent(Keys::KEY_D,
+	manager->addHandler<OnHoldEvent>(Keys::KEY_D,
 		[&]()
 	{
 		SetPositionX(m_position.x += 0.1f);
 	}
-	));
+	);
 
-	manager->addHandler(OnHoldEvent(Keys::KEY_A,
+	manager->addHandler<OnHoldEvent>(Keys::KEY_A,
 		[&]()
 	{
 		SetPositionX(m_position.x -= 0.1f);
 	}
-	));
+	);
 
-	manager->addHandler(OnHoldEvent(Keys::KEY_T,
+	manager->addHandler<OnHoldEvent>(Keys::KEY_T,
 		[&]()
 	{
 		SetPositionZ(m_position.z /= 1.1f);
 	}
-	));
+	);
 
-	manager->addHandler(OnHoldEvent(Keys::KEY_G,
+	manager->addHandler<OnHoldEvent>(Keys::KEY_G,
 		[&]()
 	{
 		SetPositionZ(m_position.z *= 1.1f);
 	}
-	));
+	);
 
 }
 

@@ -5,56 +5,76 @@
 
 class InputEvent
 {
-	std::function<void()> m_Func;
-	Keys m_Key;
+	Keys m_key;
 
+protected:
+	InputEvent(Keys key) :
+		m_key{ key }
+	{
+	}
 
 public:
 
-	InputEvent(Keys key, std::function<void()> func) :
-		m_Key{ key },
+	virtual void OnPress() {}
+
+	virtual void OnHold() {}
+
+	virtual void OnRelease() {}
+
+	Keys getKey()
+	{
+		return m_key;
+	}
+
+};
+
+class OnPressEvent final : public InputEvent
+{
+	std::function<void()> m_Func;
+
+public:
+	OnPressEvent(Keys key, std::function<void()> func) :
+		InputEvent(key),
 		m_Func{ func }
 	{
 	}
 
-	void Execute()
+	virtual void OnPress() override
 	{
 		m_Func();
 	}
-
-	Keys getKey()
-	{
-		return m_Key;
-	}
-
 };
 
-class OnPressEvent : public InputEvent
+class OnReleaseEvent final : public InputEvent
 {
+	std::function<void()> m_Func;
+
 public:
-
-	OnPressEvent(Keys key, std::function<void()> func) :
-		InputEvent(key, func)
-	{
-	}
-};
-
-class OnReleaseEvent : public InputEvent
-{
-public:
-
 	OnReleaseEvent(Keys key, std::function<void()> func) :
-		InputEvent(key,func)
+		InputEvent(key),
+		m_Func{ func }
 	{
+	}
+
+	virtual void OnRelease() override
+	{
+		m_Func();
 	}
 };
 
-class OnHoldEvent : public InputEvent
+class OnHoldEvent final : public InputEvent
 {
-public:
+	std::function<void()> m_Func;
 
+public:
 	OnHoldEvent(Keys key, std::function<void()> func) :
-		InputEvent(key, func)
+		InputEvent(key),
+		m_Func{ func }
 	{
+	}
+
+	virtual void OnHold() override
+	{
+		m_Func();
 	}
 };

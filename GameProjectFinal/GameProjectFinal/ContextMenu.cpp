@@ -14,12 +14,12 @@ ContextMenu::~ContextMenu()
 
 void ContextMenu::InitializeDef(ID3D11Device* device, ID3D11DeviceContext* deviceContext)
 {
-	m_Manager->addHandler(OnPressEvent(Keys::KEY_P,
+	m_Manager->addHandler<OnPressEvent>(Keys::KEY_P,
 		[&]()
 	{
 		m_Parent->SwitchContext<ContextWorld>();
 	}
-	));
+	);
 
 	ResourceManager::get().Make(device, deviceContext, "../GameProjectFinal/Resources/Maps/Tiles/stone01.tga");
 	ResourceManager::get().Make(device, deviceContext, "../GameProjectFinal/Resources/Maps/Tiles/MT-GR-02.tga");

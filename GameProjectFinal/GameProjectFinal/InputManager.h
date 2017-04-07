@@ -3,6 +3,7 @@
 
 #include <vector>
 #include <Windows.h>
+#include <memory>
 
 #include "Point2D.h"
 #include "Keys.h"
@@ -18,23 +19,23 @@ class InputManager
 	bool m_KeyStates[KeyStatesSize];
 
 	// Arrays of vectors.
-	std::vector<OnPressEvent>	m_Press_Handlers[KeyStatesSize];
-	std::vector<OnReleaseEvent> m_Release_Handlers[KeyStatesSize];
-	std::vector<OnHoldEvent>	m_Hold_Handlers[KeyStatesSize];
+	std::vector<std::shared_ptr<InputEvent>> m_Handlers[KeyStatesSize];
 
 public:
 
-	void addHandler(OnPressEvent&& handler);
 
-	void addHandler(OnReleaseEvent&& handler);
+	template<class Handler, typename... Args>
+	std::shared_ptr<Handler> InputManager::addHandler(Args&&... args)
+	{
+		std::shared_ptr<Handler> ptr{ std::make_unique<Handler>(std::forward<Args>(args)...) };
 
-	void addHandler(OnHoldEvent&& handler);
+		Keys key = ptr->getKey();
+		m_KeysToUpdate.push_back(key);
+		m_Handlers[key].push_back(std::move(ptr));
+		return ptr;
+	}
 
-	void removeHandler(OnPressEvent* handler);
-
-	void removeHandler(OnReleaseEvent* handler);
-
-	void removeHandler(OnHoldEvent* handler);
+	void removeHandler(std::shared_ptr<InputEvent>& handler);
 
 	void clearHandlers();
 
@@ -51,16 +52,7 @@ private:
 
 	bool getKeyState(Keys key);
 
-	template<class T>
-	void ExecuteHandlers(std::vector<T> vec[], Keys key)
-	{
-		std::vector<T>& handlerList = vec[key];
-
-		for (auto handler : handlerList)
-		{
-			handler.Execute();
-		}
-	}
+	void ExecuteHandlers(Keys key);
 
 public:
 

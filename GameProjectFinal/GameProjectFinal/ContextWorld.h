@@ -28,15 +28,15 @@ public:
 
 	virtual void Shutdown() override;
 
+	Map& GetMap()
+	{
+		return m_Map;
+	}
+
 	template<class T>
 	std::unique_ptr<T>& Get(Point2D<size_t> point)
 	{
 		static_assert(false, "BadType");
-	}
-
-	Map& GetMap()
-	{
-		return m_Map;
 	}
 
 	template<>
