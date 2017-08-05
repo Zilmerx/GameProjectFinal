@@ -43,3 +43,34 @@ void ResourceManager::Reset()
 {
 	m_Map.clear();
 }
+
+/*
+void ResourceManager::CleanDuplicates()
+{
+	std::map<char*, Model2D*> temp;
+
+	for (auto pair : m_Map)
+	{
+		char* fileName = pair.first;
+
+		// Find if the pair from m_Map is in the temp map.
+		auto treeIterator = std::find_if(temp.begin(), temp.end(), [&](std::pair<char*, Model2D*> pair)->bool {
+			return fileName == pair.second->GetName();
+		});
+
+
+
+		// If the pair isnt in the new map, add it to the map.
+		if (treeIterator == temp.end())
+		{
+			temp.emplace(pair);
+		}
+		// Otherwise don't do anything, pair is already in the new map.
+		else
+		{
+		}
+	}
+
+	// Put the temporary map as the new map.
+	m_Map.swap(temp);
+}*/

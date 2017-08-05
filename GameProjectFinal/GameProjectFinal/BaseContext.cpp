@@ -33,6 +33,8 @@ void BaseContext::Initialize(ID3D11Device* device, ID3D11DeviceContext* deviceCo
 	);
 
 	InitializeDef(device, deviceContext);
+
+	// ResourceManager::get().CleanDuplicates(); // Emplace function from std::map already checks for duplicates.
 }
 
 void BaseContext::ProcessInputs()
