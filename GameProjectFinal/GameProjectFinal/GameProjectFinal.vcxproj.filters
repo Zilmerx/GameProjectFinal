@@ -70,6 +70,9 @@
     <Filter Include="Source Files\Keyboard/Mouse">
       <UniqueIdentifier>{50ee327a-b94c-44c6-9160-88d34666c850}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\System\Graphics\Resources\ModelManagers">
+      <UniqueIdentifier>{f4bafcf4-5dc6-4f3f-8dd7-0aadd1c0067b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -388,6 +391,12 @@
     </ClInclude>
     <ClInclude Include="InputManager.h">
       <Filter>Header Files\System\Keyboard/Mouse</Filter>
+    </ClInclude>
+    <ClInclude Include="BaseModelManager.h">
+      <Filter>Header Files\System\Graphics\Resources\ModelManagers</Filter>
+    </ClInclude>
+    <ClInclude Include="StaticModelManager.h">
+      <Filter>Header Files\System\Graphics\Resources\ModelManagers</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

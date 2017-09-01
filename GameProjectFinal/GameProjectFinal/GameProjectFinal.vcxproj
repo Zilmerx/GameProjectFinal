@@ -191,6 +191,7 @@
     <ClInclude Include="ARGBColor.h" />
     <ClInclude Include="AStarPathfinding.h" />
     <ClInclude Include="BaseContext.h" />
+    <ClInclude Include="BaseModelManager.h" />
     <ClInclude Include="BGRColor.h" />
     <ClInclude Include="ByteAmount.h" />
     <ClInclude Include="ByteLiterals.h" />
@@ -239,6 +240,7 @@
     <ClInclude Include="Singleton.h" />
     <ClInclude Include="StackAllocator.h" />
     <ClInclude Include="StackAllocatorEmptyType.h" />
+    <ClInclude Include="StaticModelManager.h" />
     <ClInclude Include="Stones.h" />
     <ClInclude Include="SystemClass.h" />
     <ClInclude Include="TestTimer.h" />

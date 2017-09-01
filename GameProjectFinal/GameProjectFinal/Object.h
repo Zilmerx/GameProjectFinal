@@ -4,6 +4,7 @@
 // INCLUDES //
 //////////////
 #include "Model2D.h"
+#include "StaticModelManager.h"
 
 #include "Position.h"
 #include "Rotation.h"
@@ -16,11 +17,12 @@
 class Object : public Position, public Rotation, public Scale
 {
 
-	Model2D* m_Model;
+	BaseModelManager* m_ModelManager;
 
 public:
 
 	Object(Model2D* model);
+	Object(BaseModelManager* modelManager);
 	Object(const Object& other);
 	~Object();
 

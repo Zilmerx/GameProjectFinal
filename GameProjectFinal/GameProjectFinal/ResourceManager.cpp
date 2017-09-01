@@ -8,10 +8,7 @@ ResourceManager::ResourceManager()
 
 ResourceManager::~ResourceManager()
 {
-	for (auto val : m_Map)
-	{
-		delete val.second;
-	}
+	Reset();
 }
 
 void ResourceManager::Make(ID3D11Device* device, ID3D11DeviceContext* deviceContext, char* fileName)
@@ -41,6 +38,11 @@ Model2D* ResourceManager::Get(char* fileName) const
 
 void ResourceManager::Reset()
 {
+	for (auto val : m_Map)
+	{
+		val.second->Shutdown();
+		delete val.second;
+	}
 	m_Map.clear();
 }
 
