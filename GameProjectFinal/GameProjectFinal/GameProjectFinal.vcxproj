@@ -188,6 +188,7 @@
     <ClInclude Include="AIMobile.h" />
     <ClInclude Include="Aligned.h" />
     <ClInclude Include="AllMapTileDefs.h" />
+    <ClInclude Include="AnimatedModelManager.h" />
     <ClInclude Include="ARGBColor.h" />
     <ClInclude Include="AStarPathfinding.h" />
     <ClInclude Include="BaseContext.h" />
@@ -240,6 +241,7 @@
     <ClInclude Include="Singleton.h" />
     <ClInclude Include="StackAllocator.h" />
     <ClInclude Include="StackAllocatorEmptyType.h" />
+    <ClInclude Include="StaticDynamicEnum.h" />
     <ClInclude Include="StaticModelManager.h" />
     <ClInclude Include="Stones.h" />
     <ClInclude Include="SystemClass.h" />

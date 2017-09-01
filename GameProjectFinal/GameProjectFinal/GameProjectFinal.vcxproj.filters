@@ -398,6 +398,12 @@
     <ClInclude Include="StaticModelManager.h">
       <Filter>Header Files\System\Graphics\Resources\ModelManagers</Filter>
     </ClInclude>
+    <ClInclude Include="AnimatedModelManager.h">
+      <Filter>Header Files\System\Graphics\Resources\ModelManagers</Filter>
+    </ClInclude>
+    <ClInclude Include="StaticDynamicEnum.h">
+      <Filter>Header Files\Other</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="texture.ps">

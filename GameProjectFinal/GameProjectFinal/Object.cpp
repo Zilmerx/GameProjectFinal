@@ -1,13 +1,23 @@
 
+#include <assert.h>
+
 #include "Object.h"
 #include "InputManager.h"
 
-Object::Object(Model2D* model) :
-	Position{ 0,0,0 },
-	Rotation{ 0,0,0 },
-	Scale{ 1,1,1 },
-	m_ModelManager{ new StaticModelManager(model) }
+Object::Object(MOVETYPE mode, Model2D* model)
 {
+	if (mode == MOVETYPE::STATIC)
+	{
+		m_ModelManager = new StaticModelManager(model);
+	}
+	else if (mode == MOVETYPE::DYNAMIC)
+	{
+		m_ModelManager = new AnimatedModelManager(model);
+	}
+	else
+	{
+		assert(false);
+	}
 }
 
 Object::Object(const Object& other)
@@ -17,6 +27,7 @@ Object::Object(const Object& other)
 
 Object::~Object()
 {
+	delete m_ModelManager;
 }
 
 void Object::Initialize()

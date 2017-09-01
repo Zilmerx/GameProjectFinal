@@ -5,6 +5,8 @@
 //////////////
 #include "Model2D.h"
 #include "StaticModelManager.h"
+#include "AnimatedModelManager.h"
+#include "StaticDynamicEnum.h"
 
 #include "Position.h"
 #include "Rotation.h"
@@ -21,8 +23,7 @@ class Object : public Position, public Rotation, public Scale
 
 public:
 
-	Object(Model2D* model);
-	Object(BaseModelManager* modelManager);
+	Object(MOVETYPE mode, Model2D* model);
 	Object(const Object& other);
 	~Object();
 

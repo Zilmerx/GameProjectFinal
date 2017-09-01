@@ -3,13 +3,13 @@
 #include "BaseModelManager.h"
 
 
-class StaticModelManager : public BaseModelManager
+class AnimatedModelManager : public BaseModelManager
 {
 
 public:
 
-	StaticModelManager(Model2D* model) :
-		BaseModelManager{ model }
+	AnimatedModelManager(Model2D* defaultModel) :
+		BaseModelManager{ defaultModel }
 	{
 	}
 
