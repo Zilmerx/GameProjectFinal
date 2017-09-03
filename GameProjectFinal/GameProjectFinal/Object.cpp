@@ -22,7 +22,7 @@ Object::Object(MOVETYPE mode, Model2D* model)
 
 Object::Object(const Object& other)
 {
-	m_ModelManager = other.m_ModelManager;
+	m_ModelManager = (BaseModelManager*)(other.getBaseModelAnimation()->clone());
 }
 
 Object::~Object()
@@ -38,12 +38,12 @@ void Object::Shutdown()
 {
 }
 
-void Object::Render(ID3D11Device* device, ID3D11DeviceContext* deviceContext)
+Model2D* Object::Render(ID3D11Device* device, ID3D11DeviceContext* deviceContext)
 {
-	m_ModelManager->Render(device, deviceContext);
+	return m_ModelManager->Render(device, deviceContext);
 }
 
-Model2D* Object::GetModel() const
+BaseModelManager* Object::getBaseModelAnimation() const
 {
-	return m_ModelManager->getCurrentModel();
+	return m_ModelManager;
 }

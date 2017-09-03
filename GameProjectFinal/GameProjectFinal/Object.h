@@ -29,7 +29,6 @@ public:
 
 	void Initialize();
 	void Shutdown();
-	void Render(ID3D11Device*, ID3D11DeviceContext*);
-
-	Model2D* GetModel() const;
+	Model2D* Render(ID3D11Device*, ID3D11DeviceContext*);
+	BaseModelManager* getBaseModelAnimation() const;
 };

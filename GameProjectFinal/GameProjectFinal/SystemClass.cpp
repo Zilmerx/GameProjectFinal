@@ -5,6 +5,7 @@
 #include "Settings.h"
 #include "ScreenSize.h"
 #include "resource.h"
+#include "Clock.h"
 
 SystemClass::SystemClass()
 {
@@ -93,6 +94,8 @@ void SystemClass::Run()
 		}
 		else
 		{
+			Clock::get().Update();
+
 			// Otherwise do the frame processing.
 			result = Frame();
 			if (!result)

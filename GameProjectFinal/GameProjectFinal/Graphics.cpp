@@ -177,7 +177,7 @@ bool Graphics::Render()
 bool Graphics::RenderObject(Object& obj)
 {
 
-	Model2D* model = obj.GetModel();
+	Model2D* model = obj.Render(m_Direct3D->GetDevice(), m_Direct3D->GetDeviceContext());
 
 	XMMATRIX rot = obj.GetRotationMatrix();
 	XMMATRIX tra = obj.GetTranslationMatrix();
@@ -189,8 +189,6 @@ bool Graphics::RenderObject(Object& obj)
 	XMMATRIX projectionMatrix = m_Direct3D->GetProjectionMatrix();
 
 	XMMATRIX objectMat = rot * sca * tra;
-
-	obj.Render(m_Direct3D->GetDevice(), m_Direct3D->GetDeviceContext());
 
 	// Render the model using the texture shader.
 	return m_TextureShader->Render(m_Direct3D->GetDeviceContext(), model->GetIndexCount(), worldMatrix * objectMat, viewMatrix, projectionMatrix, model->GetTexture()->GetTexture());

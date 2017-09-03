@@ -11,6 +11,8 @@ protected:
 
 public:
 
+	MapTile(const MapTile&) = default;
+
 	virtual double cost() override;
 
 	inline bool operator==(const MapTile& rhs) { return GetGridPosition() == rhs.GetGridPosition(); };

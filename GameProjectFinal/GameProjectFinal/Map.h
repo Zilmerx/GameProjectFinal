@@ -26,6 +26,13 @@ public:
 
 	void SetMap(char* filename);
 
+	void SetTile(Point2D<size_t> pos, std::unique_ptr<MapTile>&& newtile)
+	{
+		auto& tile = Get(pos);
+		newtile->SetGridPosition(pos.x, pos.y);
+		tile.swap(std::move(newtile));
+	}
+
 	std::unique_ptr<MapTile>& Get(Point2D<size_t> point)
 	{
 		if ((point.x > height-1) || (point.y > width-1))

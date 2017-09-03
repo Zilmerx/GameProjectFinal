@@ -200,6 +200,8 @@
     <ClInclude Include="ByteTypes.h" />
     <ClInclude Include="Camera.h" />
     <ClInclude Include="ChronoSuffix.h" />
+    <ClInclude Include="Clock.h" />
+    <ClInclude Include="Clonable.h" />
     <ClInclude Include="ColorShader.h" />
     <ClInclude Include="Constexpr.h" />
     <ClInclude Include="ContextMenu.h" />

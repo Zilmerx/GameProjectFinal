@@ -293,9 +293,6 @@
     <ClInclude Include="Texture.h">
       <Filter>Header Files\System\Graphics\Resources</Filter>
     </ClInclude>
-    <ClInclude Include="Object.h">
-      <Filter>Header Files\System\Graphics\Resources</Filter>
-    </ClInclude>
     <ClInclude Include="BaseContext.h">
       <Filter>Header Files\System\Graphics\Contexts</Filter>
     </ClInclude>
@@ -402,6 +399,15 @@
       <Filter>Header Files\System\Graphics\Resources\ModelManagers</Filter>
     </ClInclude>
     <ClInclude Include="StaticDynamicEnum.h">
+      <Filter>Header Files\Other</Filter>
+    </ClInclude>
+    <ClInclude Include="Clock.h">
+      <Filter>Header Files\Other</Filter>
+    </ClInclude>
+    <ClInclude Include="Object.h">
+      <Filter>Header Files\System\Graphics\Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="Clonable.h">
       <Filter>Header Files\Other</Filter>
     </ClInclude>
   </ItemGroup>

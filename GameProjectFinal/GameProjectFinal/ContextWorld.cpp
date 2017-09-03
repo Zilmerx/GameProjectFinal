@@ -27,6 +27,7 @@ void ContextWorld::InitializeDef(ID3D11Device* device, ID3D11DeviceContext* devi
 	m_Manager->addHandler<OnPressEvent>(Keys::LBUTTON,
 		[&]()
 	{
+
 		Point2D<size_t> GridPosition = m_Manager->GetGridCursorPos();
 
 		static std::unique_ptr<MapTile>* begin;
@@ -68,12 +69,14 @@ void ContextWorld::InitializeDef(ID3D11Device* device, ID3D11DeviceContext* devi
 
 				for (auto& tile : path)
 				{
-					std::unique_ptr<MapTile> newTile = std::make_unique<Stones>();
-
-					auto pos = tile->GetPosition();
-					newTile->SetPosition(pos.x, pos.y, pos.z);
-					std::swap(*tile, *newTile.get());
+					Point2D<size_t> pos = tile->GetGridPosition();
+					m_Map.SetTile(pos, std::make_unique<Stones>());
 				}
+
+				BaseModelManager* manager = end->get()->getBaseModelAnimation();
+				manager->AddAnimation(seconds(2), ResourceManager::get().Get("../GameProjectFinal/Resources/Maps/Tiles/MT-GR-02.tga"));
+				manager->AddAnimation(seconds(1), ResourceManager::get().Get("../GameProjectFinal/Resources/Maps/Tiles/stone01.tga"));
+				manager->AddAnimation(seconds(5), ResourceManager::get().Get("../GameProjectFinal/Resources/Maps/Tiles/UNUSED_DEBUGE.tga"));
 
 				begin = end;
 				end = nullptr;
