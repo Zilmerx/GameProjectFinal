@@ -4,5 +4,7 @@
 
 class PlayerMobile : public Mobile
 {
-	PlayerMobile() = default;
+public:
+
+	PlayerMobile();
 };

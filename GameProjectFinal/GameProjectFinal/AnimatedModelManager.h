@@ -94,7 +94,7 @@ public:
 		defaultIsOn = true;
 	}
 
-	virtual Clonable *clone() const override
+	virtual Clonable* clone() const override
 	{
 		return new AnimatedModelManager(*this);
 	}

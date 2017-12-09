@@ -26,6 +26,13 @@ private:
 	unsigned int line;
 };
 
+struct UnhandledException : public Exception
+{
+	UnhandledException(const wchar_t* file, unsigned int line, const std::wstring& note = L"") :
+		Exception(file, line, note)
+	{
+	}
+};
 
 struct OutOfBoundsException : public Exception
 {

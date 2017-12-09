@@ -2,6 +2,8 @@
 #include "ContextMenu.h"
 #include "ContextWorld.h"
 
+#include "Debug.h"
+
 #include "InputManager.h"
 #include "ScreenSize.h"
 #include "AStarPathfinding.h"
@@ -91,20 +93,29 @@ void ContextWorld::InitializeDef(ID3D11Device* device, ID3D11DeviceContext* devi
 	ResourceManager::get().Make(device, deviceContext, "../GameProjectFinal/Resources/Maps/Tiles/MT-GR-02.tga");
 	ResourceManager::get().Make(device, deviceContext, "../GameProjectFinal/Resources/Maps/Tiles/UNUSED_DEBUGE.tga");
 	ResourceManager::get().Make(device, deviceContext, "../GameProjectFinal/Resources/Maps/Tiles/DEBUG_RED_SQUARE.tga");
+	ResourceManager::get().Make(device, deviceContext, "../GameProjectFinal/Resources/Characters/Personnages/Perso2.tga");
 
 	m_Map.SetMap("../GameProjectFinal/Resources/Maps/BitMaps/DebugMap.bmp");
+
+	std::unique_ptr<PlayerMobile> mob = std::make_unique<PlayerMobile>();
+
+	mob->SetPosition(5, 5.5);
+
+	m_Characters.push_back(std::move(mob));
 }
 
 void ContextWorld::Render(Graphics& gfx)
 {
-	for (auto& tile : m_Map)
-	{
-		gfx.RenderObject(*tile);
-	}
+	// Render from front to the back.
 
 	for (auto& character : m_Characters)
 	{
 		gfx.RenderObject(*character);
+	}
+
+	for (auto& tile : m_Map)
+	{
+		gfx.RenderObject(*tile);
 	}
 }
 

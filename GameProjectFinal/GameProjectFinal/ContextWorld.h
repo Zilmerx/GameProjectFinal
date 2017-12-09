@@ -6,6 +6,7 @@
 #include "BaseContext.h"
 
 #include "Map.h"
+#include "PlayerMobile.h"
 
 ////////////////////////////////////////////////////////////////////////////////
 /*
@@ -14,7 +15,7 @@
 class ContextWorld : public BaseContext
 {
 	Map m_Map;
-	std::vector<std::unique_ptr<Object>> m_Characters;
+	std::vector<std::unique_ptr<Mobile>> m_Characters;
 
 public:
 
@@ -36,7 +37,7 @@ public:
 	template<class T>
 	std::unique_ptr<T>& Get(Point2D<size_t> point)
 	{
-		static_assert(false, "BadType");
+		static_assert(false, "Invalid Type");
 	}
 
 	template<>

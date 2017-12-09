@@ -1,9 +1,10 @@
 #pragma once
 
+#include "Object.h"
 #include "HP.h"
 #include "Energy.h"
 
-class Mobile
+class Mobile : public Object
 {
 public:
 
@@ -13,4 +14,5 @@ public:
 protected:
 
 	Mobile();
+	Mobile(const Mobile& other) = default;
 };

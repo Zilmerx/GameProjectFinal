@@ -1,6 +1,5 @@
 
-#include <assert.h>
-
+#include "Debug.h"
 #include "Object.h"
 #include "InputManager.h"
 
@@ -16,7 +15,7 @@ Object::Object(MOVETYPE mode, Model2D* model)
 	}
 	else
 	{
-		assert(false);
+		Debug::Assert(false, L"Invalid MoveType");
 	}
 }
 
