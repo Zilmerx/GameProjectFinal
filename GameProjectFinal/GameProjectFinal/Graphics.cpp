@@ -7,6 +7,7 @@
 #include "InputManager.h"
 #include "Object.h"
 #include "ContextMenu.h"
+#include "Debug.h"
 
 
 Graphics::Graphics()
@@ -44,7 +45,7 @@ bool Graphics::Initialize(HWND hwnd)
 	result = m_Direct3D->Initialize(hwnd);
 	if (!result)
 	{
-		MessageBox(hwnd, L"Could not initialize Direct3D", L"Error", MB_OK);
+		Debug::Crash(L"Could not initialize Direct3D");
 		return false;
 	}
 
@@ -80,7 +81,7 @@ bool Graphics::Initialize(HWND hwnd)
 	result = m_ColorShader->Initialize(m_Direct3D->GetDevice(), hwnd);
 	if (!result)
 	{
-		MessageBox(hwnd, L"Could not initialize the color shader object.", L"Error", MB_OK);
+		Debug::Crash(L"Could not initialize the color shader object.");
 		return false;
 	}
 
@@ -95,7 +96,7 @@ bool Graphics::Initialize(HWND hwnd)
 	result = m_TextureShader->Initialize(m_Direct3D->GetDevice(), hwnd);
 	if (!result)
 	{
-		MessageBox(hwnd, L"Could not initialize the color shader object.", L"Error", MB_OK);
+		Debug::Crash(L"Could not initialize the texture shader object.");
 		return false;
 	}
 
@@ -107,6 +108,7 @@ bool Graphics::Initialize(HWND hwnd)
 
 void Graphics::Shutdown()
 {
+
 	// Release the texture shader object.
 	if (m_TextureShader)
 	{

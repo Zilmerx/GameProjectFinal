@@ -36,13 +36,13 @@ public:
 
 	void SetValue(T value)
 	{
-		if (value < min)
+		if (value < m_min)
 		{
-			m_value = min;
+			m_value = m_min;
 		}
-		else if (value > max)
+		else if (value > m_max)
 		{
-			m_value = max;
+			m_value = m_max;
 		}
 		else
 		{

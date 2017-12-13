@@ -62,4 +62,5 @@ private:
 	XMMATRIX m_worldMatrix;
 	XMMATRIX m_orthoMatrix;
 	ID3D11DepthStencilState* m_depthDisabledStencilState;
+	ID3D11BlendState* m_BlendState;
 };

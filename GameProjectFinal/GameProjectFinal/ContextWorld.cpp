@@ -93,7 +93,7 @@ void ContextWorld::InitializeDef(ID3D11Device* device, ID3D11DeviceContext* devi
 	ResourceManager::get().Make(device, deviceContext, "../GameProjectFinal/Resources/Maps/Tiles/MT-GR-02.tga");
 	ResourceManager::get().Make(device, deviceContext, "../GameProjectFinal/Resources/Maps/Tiles/UNUSED_DEBUGE.tga");
 	ResourceManager::get().Make(device, deviceContext, "../GameProjectFinal/Resources/Maps/Tiles/DEBUG_RED_SQUARE.tga");
-	ResourceManager::get().Make(device, deviceContext, "../GameProjectFinal/Resources/Characters/Personnages/Perso2.tga");
+	ResourceManager::get().Make(device, deviceContext, "../GameProjectFinal/Resources/Characters/Personnages/Perso1.tga");
 
 	m_Map.SetMap("../GameProjectFinal/Resources/Maps/BitMaps/DebugMap.bmp");
 

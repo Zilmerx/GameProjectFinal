@@ -24,7 +24,12 @@ public:
 	{
 		if (expression == false)
 		{
-			THROW_EXCEPTION(UnhandledException, message);
+			Crash(message);
 		}
+	}
+
+	static inline void Crash(const wchar_t* message)
+	{
+		THROW_EXCEPTION(UnhandledException, message);
 	}
 };
