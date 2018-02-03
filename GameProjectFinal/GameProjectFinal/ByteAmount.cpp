@@ -1,7 +1,7 @@
 
 #include "ByteAmount.h"
 
-constexpr ByteAmount::ByteAmount(size_t amount) :
+constexpr ByteAmount::ByteAmount(unsigned int amount) :
 	_amount{ amount }
 {
 }
@@ -11,7 +11,7 @@ constexpr ByteAmount::ByteAmount(const ByteAmount& byte_amount) :
 {
 }
 
-constexpr size_t ByteAmount::amount() const
+constexpr unsigned int ByteAmount::amount() const
 {
 	return _amount;
 }
@@ -114,4 +114,4 @@ ByteAmount operator/(ByteAmount lhs, const ByteAmount& rhs)
 
 // COMPARISON
 
-constexpr ByteAmount::operator size_t() const { return _amount; }
+constexpr ByteAmount::operator unsigned int() const { return _amount; }

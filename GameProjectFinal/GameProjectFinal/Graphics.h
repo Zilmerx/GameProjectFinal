@@ -7,6 +7,7 @@
 #include "Camera.h"
 #include "ColorShader.h"
 #include "TextureShader.h"
+#include "Position.h"
 
 class Object;
 class BaseContext;
@@ -42,13 +43,17 @@ public:
 
 		// Initialize the model object.
 		m_Context->Initialize(m_Direct3D->GetDevice(), m_Direct3D->GetDeviceContext());
-
-		m_Camera->SetPosition(0.0f, 0.0f);
-		m_Camera->SetHandlers(m_Context->GetInputManager());
-
 		Globals::get().context = m_Context;
 
+		m_Camera->SetHandlers(m_Context->GetInputManager());
+
 		return true;
+	}
+
+	void SetCameraPosition(Position pos)
+	{
+		Point3D<float> pos2 = pos.GetPosition();
+		m_Camera->SetPosition(pos2.x, pos2.y);
 	}
 
 private:

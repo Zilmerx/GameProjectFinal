@@ -18,7 +18,7 @@ void Position::SetPosition(float XPos, float YPos, float ZPos)
 	z = ZPos;
 }
 
-void Position::SetGridPosition(int XPos, int YPos, int ZPos)
+void Position::SetGridPosition(unsigned int XPos, unsigned int YPos, unsigned int ZPos)
 {
 	x = static_cast<float>(XPos);
 	y = static_cast<float>(YPos);
@@ -30,9 +30,9 @@ Point3D<float> Position::GetPosition() const
 	return *this;
 }
 
-Point3D<int> Position::GetGridPosition() const
+Point3D<unsigned int> Position::GetGridPosition() const
 {
-	return { (int)x, (int)y, (int)z };
+	return { (unsigned int)x, (unsigned int)y, (unsigned int)z };
 }
 
 DirectX::XMMATRIX Position::GetTranslationMatrix() const

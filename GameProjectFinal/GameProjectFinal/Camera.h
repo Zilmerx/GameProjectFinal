@@ -20,7 +20,7 @@ public:
 	Camera(const Camera&);
 	~Camera();
 
-	void SetHandlers(InputManager* manager);
+	void SetHandlers(InputManager& manager);
 
 	void SetPosition(float, float, float z = -28.0f);
 	void SetPositionX(float);

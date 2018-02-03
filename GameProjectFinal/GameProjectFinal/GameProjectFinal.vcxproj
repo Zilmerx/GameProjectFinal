@@ -199,6 +199,7 @@
     <ClInclude Include="ByteTraits.h" />
     <ClInclude Include="ByteTypes.h" />
     <ClInclude Include="Camera.h" />
+    <ClInclude Include="CharacterContainer.h" />
     <ClInclude Include="ChronoSuffix.h" />
     <ClInclude Include="Clock.h" />
     <ClInclude Include="Clonable.h" />
@@ -254,6 +255,7 @@
     <ClInclude Include="TypeLists.h" />
     <ClInclude Include="ContextWorld.h" />
     <ClInclude Include="EmptyTile.h" />
+    <ClInclude Include="UnsignedAbs.h" />
     <ClInclude Include="Wall.h" />
   </ItemGroup>
   <ItemGroup>

@@ -7,7 +7,7 @@
 #include "ChronoSuffix.h"
 
 
-template<size_t nTests, class duration_type = std::chrono::nanoseconds>
+template<unsigned int nTests, class duration_type = std::chrono::nanoseconds>
 class TestTimer
 {
 public:
@@ -59,7 +59,7 @@ public:
 
 private:
 
-	size_t getNTests() const
+	unsigned int getNTests() const
 	{
 		return nTests;
 	}

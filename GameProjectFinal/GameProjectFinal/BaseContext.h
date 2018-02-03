@@ -18,7 +18,7 @@ class BaseContext
 protected:
 
 	Graphics* m_Parent;
-	InputManager* m_Manager;
+	InputManager m_Manager;
 
 public:
 
@@ -34,7 +34,7 @@ public:
 
 	virtual void Shutdown();
 
-	InputManager* GetInputManager();
+	InputManager& GetInputManager();
 
 private:
 

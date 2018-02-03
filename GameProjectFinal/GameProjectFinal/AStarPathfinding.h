@@ -6,11 +6,12 @@
 
 #include "Map.h"
 #include "Direction.h"
+#include "UnsignedAbs.h"
 
 class AStarPathfinding
 {
 
-	struct PathTile : public Point2D<int>
+	struct PathTile : public Point2D<unsigned int>
 	{
 		double g;
 		double h;
@@ -28,9 +29,9 @@ class AStarPathfinding
 		{
 		}
 
-		void ComputeH(const Point2D<int> end)
+		void ComputeH(const Point2D<unsigned int> end)
 		{
-			h = std::abs(x - end.x) + std::abs(y - end.y);
+			h = UnsignedAbs(x, end.x) + UnsignedAbs(y, end.y);
 		}
 
 		void SetParent(const Point2D<int> from)
@@ -42,8 +43,8 @@ class AStarPathfinding
 	Map* m_map;
 	std::vector<PathTile> m_ArrayMap;
 
-	size_t mapWidth;
-	size_t mapHeight;
+	unsigned int mapWidth;
+	unsigned int mapHeight;
 
 	std::vector<PathTile*> m_OpenList;
 	std::vector<PathTile*> m_ClosedList;
@@ -61,11 +62,11 @@ public:
 		mapHeight = m_map->getHeight();
 		mapWidth = m_map->getWidth();
 
-		for (size_t y = 0; y < mapHeight; y++)
+		for (unsigned int y = 0; y < mapHeight; y++)
 		{
-			for (size_t x = 0; x < mapWidth; x++)
+			for (unsigned int x = 0; x < mapWidth; x++)
 			{
-				PathTile tile{ m_map->Get(Point2D<size_t>(x,y)).get() };
+				PathTile tile{ m_map->Get(Point2D<unsigned int>(x,y)).get() };
 				m_ArrayMap.push_back(tile);
 			}
 		}
@@ -113,7 +114,7 @@ public:
 
 			auto lambda = [&](int x, int y)
 			{
-				Point2D<int> pos = *cur_tile + Point2D<int>{x, y};
+				Point2D<int> pos = (Point2D<int>)*cur_tile + Point2D<int>{x, y};
 
 				if(isValidPos(pos))
 				{
@@ -168,9 +169,9 @@ public:
 
 			path.push_back(end);
 
-			while (!(*cur_tile == (Point2D<int>)begin->GetGridPosition()))
+			while (!(*cur_tile == (Point2D<unsigned int>)begin->GetGridPosition()))
 			{
-				pathTile = m_map->Get((Point2D<size_t>)(*cur_tile + cur_tile->parentDirection)).get();
+				pathTile = (m_map->Get((Point2D<unsigned int>)(*cur_tile) + cur_tile->parentDirection)).get();
 
 				path.push_back(pathTile);
 

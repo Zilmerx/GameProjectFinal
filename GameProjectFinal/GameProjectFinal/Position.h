@@ -13,11 +13,11 @@ public:
 
 	void SetPosition(float XPos, float YPos, float ZPos = 0.0f);
 
-	void SetGridPosition(int XPos, int YPos, int ZPos = 0);
+	void SetGridPosition(unsigned int XPos, unsigned int YPos, unsigned int ZPos = 0);
 
 	Point3D<float> GetPosition() const;
 
-	Point3D<int> GetGridPosition() const;
+	Point3D<unsigned int> GetGridPosition() const;
 
 	DirectX::XMMATRIX GetTranslationMatrix() const;
 	/*

@@ -3,7 +3,8 @@
 template<class T>
 struct Point3D;
 
-#include "Point3D.h"
+struct Direction;
+
 
 template<class T>
 struct Point2D
@@ -44,4 +45,9 @@ struct Point2D
 		return Point2D<T>{lhs.x + rhs.x, lhs.y + rhs.y};
 	}
 
+	friend Point2D operator+(Point2D lhs, const Direction& rhs)
+	{
+		Point2D<int> movement = rhs;
+		return Point2D<T>{lhs.x + movement.x, lhs.y + movement.y};
+	}
 };

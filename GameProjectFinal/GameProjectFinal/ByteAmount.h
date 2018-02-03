@@ -5,15 +5,15 @@
 
 class ByteAmount
 {
-	size_t _amount;
+	unsigned int _amount;
 
 public:
 
-	constexpr ByteAmount(size_t amount);
+	constexpr ByteAmount(unsigned int amount);
 
 	constexpr ByteAmount(const ByteAmount& byte_amount);
 
-	constexpr size_t amount() const;
+	constexpr unsigned int amount() const;
 
 
 	// OPERATOR OVERLOADS
@@ -60,5 +60,5 @@ public:
 	constexpr bool operator==(const ByteAmount& rhs) const { return _amount == rhs._amount; }
 	constexpr bool operator!=(const ByteAmount& rhs) const { return !(*this == rhs); }
 
-	constexpr operator size_t() const;
+	constexpr operator unsigned int() const;
 };

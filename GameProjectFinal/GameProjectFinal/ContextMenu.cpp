@@ -14,7 +14,9 @@ ContextMenu::~ContextMenu()
 
 void ContextMenu::InitializeDef(ID3D11Device* device, ID3D11DeviceContext* deviceContext)
 {
-	m_Manager->addHandler<OnPressEvent>(Keys::KEY_P,
+	m_Parent->SetCameraPosition(Position(3, 3));
+
+	m_Manager.addHandler<OnPressEvent>(Keys::KEY_P,
 		[&]()
 	{
 		m_Parent->SwitchContext<ContextWorld>();
@@ -24,9 +26,9 @@ void ContextMenu::InitializeDef(ID3D11Device* device, ID3D11DeviceContext* devic
 	ResourceManager::get().Make(device, deviceContext, "../GameProjectFinal/Resources/Maps/Tiles/stone01.tga");
 	ResourceManager::get().Make(device, deviceContext, "../GameProjectFinal/Resources/Maps/Tiles/MT-GR-02.tga");
 
-	for (int y = -3; y <= 3; y++) // -3 to 3, 7 values.
+	for (unsigned int y = 0; y <= 6; y++)
 	{
-		for (int x = -3; x <= 3; x++) // -3 to 3, 7 values.
+		for (unsigned int x = 0; x <= 6; x++)
 		{
 			std::unique_ptr<MapTile> obj;
 			if (x % 2) // Is Even

@@ -19,18 +19,20 @@ ContextWorld::~ContextWorld()
 
 void ContextWorld::InitializeDef(ID3D11Device* device, ID3D11DeviceContext* deviceContext)
 {
-	m_Manager->addHandler<OnPressEvent>(Keys::KEY_O,
+	m_Parent->SetCameraPosition(Position(3, 3));
+
+	m_Manager.addHandler<OnPressEvent>(Keys::KEY_O,
 		[&]()
 	{
 		m_Parent->SwitchContext<ContextMenu>();
 	}
 	);
 
-	m_Manager->addHandler<OnPressEvent>(Keys::LBUTTON,
+	m_Manager.addHandler<OnPressEvent>(Keys::LBUTTON,
 		[&]()
 	{
 
-		Point2D<size_t> GridPosition = m_Manager->GetGridCursorPos();
+		Point2D<unsigned int> GridPosition = m_Manager.GetGridCursorPos();
 
 		static std::unique_ptr<MapTile>* begin;
 		static std::unique_ptr<MapTile>* end;
@@ -54,24 +56,24 @@ void ContextWorld::InitializeDef(ID3D11Device* device, ID3D11DeviceContext* devi
 		{
 			try
 			{
-				begin = &Get<MapTile>(m_Manager->GetGridCursorPos());
+				begin = &Get<MapTile>(m_Manager.GetGridCursorPos());
 			}
 			catch (...)
 			{
 			}
 		}
-		else if (end == nullptr)
+		else // if (end == nullptr)
 		{
 			try
 			{
-				end = &Get<MapTile>(m_Manager->GetGridCursorPos());
+				end = &Get<MapTile>(m_Manager.GetGridCursorPos());
 
 				AStarPathfinding pathfinder{ &GetMap() };
 				std::vector<MapTile*> path = pathfinder.FindPath(begin->get(), end->get());
 
 				for (auto& tile : path)
 				{
-					Point2D<size_t> pos = tile->GetGridPosition();
+					Point2D<unsigned int> pos = tile->GetGridPosition();
 					m_Map.SetTile(pos, std::make_unique<Stones>());
 				}
 
@@ -89,6 +91,8 @@ void ContextWorld::InitializeDef(ID3D11Device* device, ID3D11DeviceContext* devi
 		}
 	});
 
+	// MAP
+
 	ResourceManager::get().Make(device, deviceContext, "../GameProjectFinal/Resources/Maps/Tiles/stone01.tga");
 	ResourceManager::get().Make(device, deviceContext, "../GameProjectFinal/Resources/Maps/Tiles/MT-GR-02.tga");
 	ResourceManager::get().Make(device, deviceContext, "../GameProjectFinal/Resources/Maps/Tiles/UNUSED_DEBUGE.tga");
@@ -96,6 +100,8 @@ void ContextWorld::InitializeDef(ID3D11Device* device, ID3D11DeviceContext* devi
 	ResourceManager::get().Make(device, deviceContext, "../GameProjectFinal/Resources/Characters/Personnages/Perso1.tga");
 
 	m_Map.SetMap("../GameProjectFinal/Resources/Maps/BitMaps/DebugMap.bmp");
+
+	// CHARACTERS
 
 	std::unique_ptr<PlayerMobile> mob = std::make_unique<PlayerMobile>();
 

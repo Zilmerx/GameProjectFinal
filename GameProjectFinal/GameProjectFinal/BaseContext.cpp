@@ -7,7 +7,7 @@
 
 
 BaseContext::BaseContext(Graphics* parent) :
-	m_Manager{ nullptr },
+	m_Manager{ },
 	m_Parent{ parent }
 {
 }
@@ -20,12 +20,7 @@ void BaseContext::Initialize(ID3D11Device* device, ID3D11DeviceContext* deviceCo
 {
 	ResourceManager::get().Reset();
 
-	if (m_Manager == nullptr)
-	{
-		m_Manager = new InputManager{};
-	}
-
-	m_Manager->addHandler<OnPressEvent>(Keys::ESCAPE,
+	m_Manager.addHandler<OnPressEvent>(Keys::ESCAPE,
 		[]()
 	{
 		Globals::get().Shutdown = true;
@@ -39,7 +34,7 @@ void BaseContext::Initialize(ID3D11Device* device, ID3D11DeviceContext* deviceCo
 
 void BaseContext::ProcessInputs()
 {
-	m_Manager->checkEvents();
+	m_Manager.checkEvents();
 }
 
 void BaseContext::Render(Graphics& gfx)
@@ -50,7 +45,7 @@ void BaseContext::Shutdown()
 {
 }
 
-InputManager* BaseContext::GetInputManager()
+InputManager& BaseContext::GetInputManager()
 {
 	return m_Manager;
 }

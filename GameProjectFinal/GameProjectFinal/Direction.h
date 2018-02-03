@@ -93,7 +93,7 @@ struct Direction
 		return *this;
 	}
 
-	operator Point2D<int>()
+	operator Point2D<int>() const
 	{
 		Point2D<int> point;
 

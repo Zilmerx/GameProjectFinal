@@ -27,8 +27,8 @@ void Map::SetMap(char* filename)
 	input.read(header, 54);
 
 	// Extract image height and width from header
-	width = *(size_t*)&header[18];
-	height = *(size_t*)&header[22];
+	width = *(unsigned int*)&header[18];
+	height = *(unsigned int*)&header[22];
 
 	int padding = 0;
 

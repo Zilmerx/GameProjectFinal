@@ -16,13 +16,13 @@ protected:
 public:
 
 	template<class T>
-	T* allocate(size_t count)
+	T* allocate(unsigned int count)
 	{
 		return reinterpret_cast<T*>(malloc(count * sizeof(T)));
 	}
 
 	template<class T>
-	void deallocate(T* ptr, size_t)
+	void deallocate(T* ptr, unsigned int)
 	{
 		free(ptr);
 	}

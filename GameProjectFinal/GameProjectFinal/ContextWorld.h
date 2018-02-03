@@ -6,6 +6,7 @@
 #include "BaseContext.h"
 
 #include "Map.h"
+#include "CharacterContainer.h"
 #include "PlayerMobile.h"
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -15,7 +16,7 @@
 class ContextWorld : public BaseContext
 {
 	Map m_Map;
-	std::vector<std::unique_ptr<Mobile>> m_Characters;
+	CharacterContainer m_Characters;
 
 public:
 
@@ -35,20 +36,20 @@ public:
 	}
 
 	template<class T>
-	std::unique_ptr<T>& Get(Point2D<size_t> point)
+	std::unique_ptr<T>& Get(Point2D<unsigned int> point)
 	{
 		static_assert(false, "Invalid Type");
 	}
 
 	template<>
-	std::unique_ptr<MapTile>& Get<MapTile>(Point2D<size_t> point)
+	std::unique_ptr<MapTile>& Get<MapTile>(Point2D<unsigned int> point)
 	{
 		return m_Map.Get(point);
 	}
-	/*
+	
 	template<>
-	Object* Get<Object>(Point2D<size_t> point)
+	std::unique_ptr<Mobile>& Get<Mobile>(Point2D<unsigned int> point)
 	{
-
-	}*/
+		return m_Characters.Get(point);
+	}
 };

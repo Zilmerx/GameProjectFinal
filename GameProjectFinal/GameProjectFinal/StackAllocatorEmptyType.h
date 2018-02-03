@@ -13,14 +13,14 @@ public:
 	}
 
 	template<class T>
-	T* allocate(size_t count)
+	T* allocate(unsigned int count)
 	{
 		return StackAllocator<10_Mo>::get().allocate<T>(count);
 	}
 
 
 	template<class T>
-	static void deallocate(T* ptr, size_t count)
+	static void deallocate(T* ptr, unsigned int count)
 	{
 		return StackAllocator<10_Mo>::get().deallocate<T>(ptr, count);
 	}

@@ -8,7 +8,7 @@ protected:
 
 public:
 
-	void* operator new(size_t i)
+	void* operator new(unsigned int i)
 	{
 		return _aligned_malloc(i, 16);
 	}

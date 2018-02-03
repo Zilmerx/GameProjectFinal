@@ -14,8 +14,8 @@ class Map
 {
 	std::vector<std::unique_ptr<MapTile>> m_Map;
 
-	size_t width;
-	size_t height;
+	unsigned int width;
+	unsigned int height;
 
 public:
 
@@ -26,14 +26,14 @@ public:
 
 	void SetMap(char* filename);
 
-	void SetTile(Point2D<size_t> pos, std::unique_ptr<MapTile>&& newtile)
+	void SetTile(Point2D<unsigned int> pos, std::unique_ptr<MapTile>&& newtile)
 	{
 		auto& tile = Get(pos);
 		newtile->SetGridPosition(pos.x, pos.y);
 		tile.swap(std::move(newtile));
 	}
 
-	std::unique_ptr<MapTile>& Get(Point2D<size_t> point)
+	std::unique_ptr<MapTile>& Get(Point2D<unsigned int> point)
 	{
 		if ((point.x > height-1) || (point.y > width-1))
 		{
@@ -42,12 +42,12 @@ public:
 		return m_Map[(height * point.y) + point.x];
 	}
 
-	size_t getWidth()
+	unsigned int getWidth()
 	{
 		return width;
 	}
 
-	size_t getHeight()
+	unsigned int getHeight()
 	{
 		return height;
 	}

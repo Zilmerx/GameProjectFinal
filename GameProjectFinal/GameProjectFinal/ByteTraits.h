@@ -10,7 +10,7 @@ struct byte_traits;
 template<>
 struct byte_traits<Byte>
 {
-	static constexpr size_t to_neutral(size_t val)
+	static constexpr unsigned int to_neutral(unsigned int val)
 	{
 		return val * _pow<_pow<2, 10>::value, 0>::value;
 	}
@@ -19,7 +19,7 @@ struct byte_traits<Byte>
 template<>
 struct byte_traits<KiloByte>
 {
-	static constexpr size_t to_neutral(size_t val)
+	static constexpr unsigned int to_neutral(unsigned int val)
 	{
 		return val * _pow<_pow<2, 10>::value, 1>::value;
 	}
@@ -28,7 +28,7 @@ struct byte_traits<KiloByte>
 template<>
 struct byte_traits<MegaByte>
 {
-	static constexpr size_t to_neutral(size_t val)
+	static constexpr unsigned int to_neutral(unsigned int val)
 	{
 		return val * _pow<_pow<2, 10>::value, 2>::value;
 	}
@@ -37,7 +37,7 @@ struct byte_traits<MegaByte>
 template<>
 struct byte_traits<GigaByte>
 {
-	static constexpr size_t to_neutral(size_t val)
+	static constexpr unsigned int to_neutral(unsigned int val)
 	{
 		return val * _pow<_pow<2, 10>::value, 3>::value;
 	}
@@ -46,7 +46,7 @@ struct byte_traits<GigaByte>
 template<>
 struct byte_traits<TeraByte>
 {
-	static constexpr size_t to_neutral(size_t val)
+	static constexpr unsigned int to_neutral(unsigned int val)
 	{
 		return val * _pow<_pow<2, 10>::value, 4>::value;
 	}
@@ -55,7 +55,7 @@ struct byte_traits<TeraByte>
 template<>
 struct byte_traits<PetaByte>
 {
-	static constexpr size_t to_neutral(size_t val)
+	static constexpr unsigned int to_neutral(unsigned int val)
 	{
 		return val * _pow<_pow<2, 10>::value, 5>::value;
 	}
@@ -64,7 +64,7 @@ struct byte_traits<PetaByte>
 template<>
 struct byte_traits<ExaByte>
 {
-	static constexpr size_t to_neutral(size_t val)
+	static constexpr unsigned int to_neutral(unsigned int val)
 	{
 		return val * _pow<_pow<2, 10>::value, 6>::value;
 	}
@@ -73,7 +73,7 @@ struct byte_traits<ExaByte>
 template<>
 struct byte_traits<ZetaByte>
 {
-	static constexpr size_t to_neutral(size_t val)
+	static constexpr unsigned int to_neutral(unsigned int val)
 	{
 		return val * _pow<_pow<2, 10>::value, 7>::value;
 	}
@@ -82,7 +82,7 @@ struct byte_traits<ZetaByte>
 template<>
 struct byte_traits<YottaByte>
 {
-	static constexpr size_t to_neutral(size_t val)
+	static constexpr unsigned int to_neutral(unsigned int val)
 	{
 		return val * _pow<_pow<2, 10>::value, 8>::value;
 	}

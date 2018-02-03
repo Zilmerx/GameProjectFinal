@@ -13,12 +13,12 @@ public:
 
 	}
 
-	T* allocate(size_t count)
+	T* allocate(unsigned int count)
 	{
 		return Mallocator::get().allocate<T>(count);
 	}
 
-	static void deallocate(T* ptr, size_t count)
+	static void deallocate(T* ptr, unsigned int count)
 	{
 		return Mallocator::get().deallocate<T>(ptr, count);
 	}

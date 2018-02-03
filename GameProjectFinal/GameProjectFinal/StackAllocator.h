@@ -21,7 +21,7 @@ protected:
 public:
 
 	template<class T>
-	T* allocate(size_t count)
+	T* allocate(unsigned int count)
 	{
 		T* ptr = reinterpret_cast<T*>(_head);
 
@@ -31,7 +31,7 @@ public:
 	}
 
 	template<class T>
-	void deallocate(T*, size_t count)
+	void deallocate(T*, unsigned int count)
 	{
 		_head -= sizeof(T) * count;
 	}

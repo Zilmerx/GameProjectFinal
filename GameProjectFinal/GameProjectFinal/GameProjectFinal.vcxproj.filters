@@ -410,6 +410,12 @@
     <ClInclude Include="Debug.h">
       <Filter>Header Files\Other</Filter>
     </ClInclude>
+    <ClInclude Include="CharacterContainer.h">
+      <Filter>Header Files\System\Graphics\Contexts\World\Mobiles</Filter>
+    </ClInclude>
+    <ClInclude Include="UnsignedAbs.h">
+      <Filter>Header Files\Other</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="texture.ps">
