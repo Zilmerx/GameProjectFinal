@@ -1,6 +1,6 @@
 
 #include "ContextMenu.h"
-#include "ContextWorld.h"
+#include "Level1.h"
 
 
 ContextMenu::ContextMenu(Graphics* parent) :
@@ -19,7 +19,7 @@ void ContextMenu::InitializeDef(ID3D11Device* device, ID3D11DeviceContext* devic
 	m_Manager.addHandler<OnPressEvent>(Keys::KEY_P,
 		[&]()
 	{
-		m_Parent->SwitchContext<ContextWorld>();
+		m_Parent->SwitchContext<Level1>();
 	}
 	);
 

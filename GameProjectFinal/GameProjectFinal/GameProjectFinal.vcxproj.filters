@@ -73,6 +73,9 @@
     <Filter Include="Header Files\System\Graphics\Resources\ModelManagers">
       <UniqueIdentifier>{f4bafcf4-5dc6-4f3f-8dd7-0aadd1c0067b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\System\Graphics\Contexts\World\Levels">
+      <UniqueIdentifier>{e43b6f6d-fae9-4523-a383-c66f0c0dbd89}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -415,6 +418,9 @@
     </ClInclude>
     <ClInclude Include="UnsignedAbs.h">
       <Filter>Header Files\Other</Filter>
+    </ClInclude>
+    <ClInclude Include="Level1.h">
+      <Filter>Header Files\System\Graphics\Contexts\World\Levels</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

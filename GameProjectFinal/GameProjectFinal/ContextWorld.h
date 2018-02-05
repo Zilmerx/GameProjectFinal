@@ -15,6 +15,8 @@
 /////////////////////////////////////////////////////////////////////////////////
 class ContextWorld : public BaseContext
 {
+protected:
+
 	Map m_Map;
 	CharacterContainer m_Characters;
 
@@ -25,6 +27,16 @@ public:
 	~ContextWorld();
 
 	void InitializeDef(ID3D11Device* device, ID3D11DeviceContext* deviceContext) override;
+
+	void InitializeControls();
+
+	//
+
+	virtual void InitializeMap(ID3D11Device* device, ID3D11DeviceContext* deviceContext) = 0;
+
+	virtual void InitializeCharacters(ID3D11Device* device, ID3D11DeviceContext* deviceContext) = 0;
+
+	//
 
 	virtual void Render(Graphics& gfx) override;
 
