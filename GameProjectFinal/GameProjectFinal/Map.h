@@ -24,7 +24,7 @@ public:
 	std::vector<std::unique_ptr<MapTile>>::iterator begin();
 	std::vector<std::unique_ptr<MapTile>>::iterator end();
 
-	void SetMap(char* filename);
+	void SetMap(std::string filename);
 
 	void SetTile(Point2D<unsigned int> pos, std::unique_ptr<MapTile>&& newtile)
 	{
@@ -37,7 +37,7 @@ public:
 	{
 		if ((point.x > height-1) || (point.y > width-1))
 		{
-			THROW_EXCEPTION(OutOfBoundsException, L"Out of bounds")
+			THROW_EXCEPTION(OutOfBoundsException, "Out of bounds")
 		}
 		return m_Map[(height * point.y) + point.x];
 	}

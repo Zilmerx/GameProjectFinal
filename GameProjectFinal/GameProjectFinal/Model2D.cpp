@@ -29,7 +29,7 @@ Model2D::~Model2D()
 }
 
 
-bool Model2D::Initialize(ID3D11Device* device, ID3D11DeviceContext* deviceContext, char* textureFilename)
+bool Model2D::Initialize(ID3D11Device* device, ID3D11DeviceContext* deviceContext, std::string textureFilename)
 {
 	bool result;
 
@@ -92,7 +92,7 @@ int Model2D::GetIndexCount() const
 	return m_indexCount;
 }
 
-char* Model2D::GetName() const
+std::string Model2D::GetName() const
 {
 	return m_Name;
 }
@@ -229,7 +229,7 @@ void Model2D::ShutdownBuffers()
 }
 
 
-bool Model2D::LoadTexture(ID3D11Device* device, ID3D11DeviceContext* deviceContext, char* filename, D3D11_USAGE usage)
+bool Model2D::LoadTexture(ID3D11Device* device, ID3D11DeviceContext* deviceContext, std::string filename, D3D11_USAGE usage)
 {
 	bool result;
 

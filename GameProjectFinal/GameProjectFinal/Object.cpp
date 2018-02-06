@@ -15,7 +15,7 @@ Object::Object(MOVETYPE mode, Model2D* model)
 	}
 	else
 	{
-		Debug::Assert(false, L"Invalid MoveType");
+		Debug::Assert(false, "Invalid MoveType");
 	}
 }
 

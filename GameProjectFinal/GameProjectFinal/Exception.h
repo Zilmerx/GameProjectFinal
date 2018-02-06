@@ -10,25 +10,25 @@ class Exception
 {
 
 public:
-	Exception(const wchar_t* file, unsigned int line, const std::wstring& note = L"");
+	Exception(const wchar_t* file, unsigned int line, const std::string& note = "");
 
-	const std::wstring& GetNote() const;
+	std::string GetNote() const;
+	
+	std::string GetFile() const;
+	
+	std::string GetLine() const;
 
-	const std::wstring& GetFile() const;
-
-	unsigned int GetLine() const;
-
-	std::wstring GetLocation() const;
+	std::string GetLocation() const;
 
 private:
-	std::wstring note;
-	std::wstring file;
+	std::string note;
+	const wchar_t* file;
 	unsigned int line;
 };
 
 struct UnhandledException : public Exception
 {
-	UnhandledException(const wchar_t* file, unsigned int line, const std::wstring& note = L"") :
+	UnhandledException(const wchar_t* file, unsigned int line, const std::string note = "") :
 		Exception(file, line, note)
 	{
 	}
@@ -36,7 +36,7 @@ struct UnhandledException : public Exception
 
 struct OutOfBoundsException : public Exception
 {
-	OutOfBoundsException(const wchar_t* file, unsigned int line, const std::wstring& note = L"") :
+	OutOfBoundsException(const wchar_t* file, unsigned int line, const std::string& note = "") :
 		Exception(file, line, note)
 	{
 	}

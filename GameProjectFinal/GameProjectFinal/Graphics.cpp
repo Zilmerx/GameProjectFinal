@@ -45,7 +45,7 @@ bool Graphics::Initialize(HWND hwnd)
 	result = m_Direct3D->Initialize(hwnd);
 	if (!result)
 	{
-		Debug::Crash(L"Could not initialize Direct3D");
+		Debug::Crash("Could not initialize Direct3D");
 		return false;
 	}
 
@@ -81,7 +81,7 @@ bool Graphics::Initialize(HWND hwnd)
 	result = m_ColorShader->Initialize(m_Direct3D->GetDevice(), hwnd);
 	if (!result)
 	{
-		Debug::Crash(L"Could not initialize the color shader object.");
+		Debug::Crash("Could not initialize the color shader object.");
 		return false;
 	}
 
@@ -96,7 +96,7 @@ bool Graphics::Initialize(HWND hwnd)
 	result = m_TextureShader->Initialize(m_Direct3D->GetDevice(), hwnd);
 	if (!result)
 	{
-		Debug::Crash(L"Could not initialize the texture shader object.");
+		Debug::Crash("Could not initialize the texture shader object.");
 		return false;
 	}
 

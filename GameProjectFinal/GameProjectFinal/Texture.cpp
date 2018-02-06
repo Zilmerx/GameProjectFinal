@@ -28,7 +28,7 @@ Texture::~Texture()
 {
 }
 
-bool Texture::Initialize(ID3D11Device* device, ID3D11DeviceContext* deviceContext, char* filename, D3D11_USAGE usage)
+bool Texture::Initialize(ID3D11Device* device, ID3D11DeviceContext* deviceContext, std::string filename, D3D11_USAGE usage)
 {
 	m_usage = usage;
 
@@ -136,7 +136,7 @@ unsigned short Texture::GetHeight() const
 	return m_targaHeader.height;
 }
 
-bool Texture::LoadTarga(char* filename, int& height, int& width, unsigned char*& targaData)
+bool Texture::LoadTarga(std::string filename, int& height, int& width, unsigned char*& targaData)
 {
 	std::ifstream input(filename, std::ios::in | std::ifstream::binary);
 

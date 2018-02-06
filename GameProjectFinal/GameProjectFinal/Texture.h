@@ -30,7 +30,7 @@ public:
 	Texture(const Texture&);
 	~Texture();
 
-	bool Initialize(ID3D11Device*, ID3D11DeviceContext*, char*, D3D11_USAGE);
+	bool Initialize(ID3D11Device*, ID3D11DeviceContext*, std::string, D3D11_USAGE);
 	void Shutdown();
 
 	ID3D11ShaderResourceView* GetTexture();
@@ -41,7 +41,7 @@ public:
 
 private:
 
-	bool LoadTarga(char*, int&, int&, unsigned char*&);
+	bool LoadTarga(std::string, int&, int&, unsigned char*&);
 
 private:
 

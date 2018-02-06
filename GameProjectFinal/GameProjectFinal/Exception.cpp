@@ -1,29 +1,33 @@
 
 #include "Exception.h"
+#include <string>
 
-Exception::Exception(const wchar_t* file, unsigned int line, const std::wstring& note)
-	:
+Exception::Exception(const wchar_t* file, unsigned int line, const std::string& note) :
 	note(note),
 	file(file),
 	line(line)
-{}
+{
+}
 
-const std::wstring& Exception::GetNote() const
+std::string Exception::GetNote() const
 {
 	return note;
 }
 
-const std::wstring& Exception::GetFile() const
+std::string Exception::GetFile() const
 {
-	return file;
+	std::wstring File(file);
+	return std::string(File.begin(), File.end());
 }
 
-unsigned int Exception::GetLine() const
+std::string Exception::GetLine() const
 {
-	return line;
+	return std::to_string(line);
 }
 
-std::wstring Exception::GetLocation() const
+std::string Exception::GetLocation() const
 {
-	return std::wstring(L"Line [") + std::to_wstring(line) + L"] in " + file;
+	std::wstring File(file);
+
+	return std::string("Line [") + std::to_string(line) + "] in " + GetFile();
 }

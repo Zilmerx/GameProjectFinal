@@ -20,7 +20,7 @@ public:
 		#endif
 	}
 
-	static inline void Assert(bool expression, const wchar_t* message)
+	static inline void Assert(bool expression, std::string message)
 	{
 		if (expression == false)
 		{
@@ -28,7 +28,7 @@ public:
 		}
 	}
 
-	static inline void Crash(const wchar_t* message)
+	static inline void Crash(const std::string message)
 	{
 		THROW_EXCEPTION(UnhandledException, message);
 	}

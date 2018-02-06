@@ -17,7 +17,7 @@ std::vector<std::unique_ptr<MapTile>>::iterator Map::end()
 	return m_Map.end();
 }
 
-void Map::SetMap(char* filename)
+void Map::SetMap(std::string filename)
 {
 	std::ifstream input(filename, std::ios::in | std::ifstream::binary);
 
