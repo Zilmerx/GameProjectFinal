@@ -194,6 +194,7 @@
     <ClInclude Include="BaseContext.h" />
     <ClInclude Include="BaseModelManager.h" />
     <ClInclude Include="BGRColor.h" />
+    <ClInclude Include="Bitmap.h" />
     <ClInclude Include="ByteAmount.h" />
     <ClInclude Include="ByteLiterals.h" />
     <ClInclude Include="ByteTraits.h" />

@@ -1,6 +1,7 @@
 
 #include <fstream>
 
+#include "Bitmap.h"
 #include "Map.h"
 
 Map::Map()
@@ -19,50 +20,20 @@ std::vector<std::unique_ptr<MapTile>>::iterator Map::end()
 
 void Map::SetMap(std::string filename)
 {
-	std::ifstream input(filename, std::ios::in | std::ifstream::binary);
-
-	// Extract info from the header.
-	char header[54];
-
-	input.read(header, 54);
-
-	// Extract image height and width from header
-	width = *(unsigned int*)&header[18];
-	height = *(unsigned int*)&header[22];
-
-	int padding = 0;
-
-	// Calculate padding
-	while ((width * 3 + padding) % 4 != 0)
-	{
-		padding++;
-	}
-
-	int size = width * height;
-
-	// Make a temporary vector to hold bitmap tile colors.
-	std::vector<char> temp(size * 3);
+	Bitmap bits;
+	bits.LoadFrom(filename);
 
 	// Resize the map to the size of the map to come.
 	m_Map.clear();
-	m_Map.reserve(size);
+	m_Map.reserve(bits.size());
 
-	for (unsigned int y = 0; y <height; y++)
+	for (unsigned int y = 0; y <bits.m_Height; y++)
 	{
-		// Fill the vector with the colors from the bitmap.
-		input.read(&temp[0], width * 3 + padding);
-
-		// Retain width length of data, and swizzle RB component.
-		for (unsigned int x = 0; x < width * 3; x += 3)
+		for (unsigned int x = 0; x < bits.m_Width; x++)
 		{
-			BGRColor color;
-			color.blue = temp[x + 2];
-			color.green = temp[x + 1];
-			color.red = temp[x + 0];
+			std::unique_ptr<MapTile> tile = GetTileFromColor(bits.m_Bits[(y*bits.m_Width)+x]);
 
-			std::unique_ptr<MapTile> tile = GetTileFromColor(color);
-
-			tile->SetGridPosition(x / 3, y);
+			tile->SetGridPosition(x, y);
 
 			m_Map.push_back(std::move(tile));
 		}
