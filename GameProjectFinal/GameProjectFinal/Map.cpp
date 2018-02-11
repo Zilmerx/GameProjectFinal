@@ -20,8 +20,7 @@ std::vector<std::unique_ptr<MapTile>>::iterator Map::end()
 
 void Map::SetMap(std::string filename)
 {
-	Bitmap bits;
-	bits.LoadFrom(filename);
+	Bitmap bits(filename);
 
 	// Resize the map to the size of the map to come.
 	m_Map.clear();

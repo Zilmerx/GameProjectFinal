@@ -11,16 +11,7 @@ struct Bitmap
 	unsigned int m_Width;
 	unsigned int m_Height;
 
-	Bitmap()
-	{
-	}
-
-	size_t size()
-	{
-		return m_Width * m_Height;
-	}
-
-	void LoadFrom(std::string filename)
+	Bitmap(std::string filename)
 	{
 		std::ifstream input(filename, std::ios::in | std::ifstream::binary);
 
@@ -41,15 +32,17 @@ struct Bitmap
 			padding++;
 		}
 
-		int size = m_Width * m_Height;
-
-		// Make a temporary vector to hold bitmap tile colors.
-		m_Bits = std::vector<BGRColor>(size);
+		m_Bits(size());
 
 		for (unsigned int y = 0; y <m_Height; y++)
 		{
 			// Fill the vector with the colors from the bitmap.
 			input.read(reinterpret_cast<char*>(&m_Bits[y * m_Width]), (m_Width * 3) + padding);
 		}
+	}
+
+	size_t size()
+	{
+		return m_Width * m_Height;
 	}
 };
