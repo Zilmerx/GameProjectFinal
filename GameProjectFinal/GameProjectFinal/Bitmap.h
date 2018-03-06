@@ -32,7 +32,7 @@ struct Bitmap
 			padding++;
 		}
 
-		m_Bits(size());
+		m_Bits = std::vector<BGRColor>(size());
 
 		for (unsigned int y = 0; y <m_Height; y++)
 		{

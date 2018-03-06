@@ -23,8 +23,8 @@ void ContextMenu::InitializeDef(ID3D11Device* device, ID3D11DeviceContext* devic
 	}
 	);
 
-	ResourceManager::get().Make(device, deviceContext, "../GameProjectFinal/Resources/Maps/Tiles/stone01.tga");
-	ResourceManager::get().Make(device, deviceContext, "../GameProjectFinal/Resources/Maps/Tiles/MT-GR-02.tga");
+	ResourceManager::get().Make(device, deviceContext, "../GameProjectFinal/Resources/Skins/stone01.tga");
+	ResourceManager::get().Make(device, deviceContext, "../GameProjectFinal/Resources/Skins/MT-GR-02.tga");
 
 	for (unsigned int y = 0; y <= 6; y++)
 	{

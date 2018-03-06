@@ -17,17 +17,17 @@ private:
 
 	virtual void InitializeMap(ID3D11Device* device, ID3D11DeviceContext* deviceContext) override
 	{
-		ResourceManager::get().Make(device, deviceContext, "../GameProjectFinal/Resources/Maps/Tiles/stone01.tga");
-		ResourceManager::get().Make(device, deviceContext, "../GameProjectFinal/Resources/Maps/Tiles/MT-GR-02.tga");
-		ResourceManager::get().Make(device, deviceContext, "../GameProjectFinal/Resources/Maps/Tiles/UNUSED_DEBUGE.tga");
-		ResourceManager::get().Make(device, deviceContext, "../GameProjectFinal/Resources/Maps/Tiles/DEBUG_RED_SQUARE.tga");
+		ResourceManager::get().Make(device, deviceContext, "../GameProjectFinal/Resources/Skins/stone01.tga");
+		ResourceManager::get().Make(device, deviceContext, "../GameProjectFinal/Resources/Skins/MT-GR-02.tga");
+		ResourceManager::get().Make(device, deviceContext, "../GameProjectFinal/Resources/Skins/UNUSED_DEBUGE.tga");
+		ResourceManager::get().Make(device, deviceContext, "../GameProjectFinal/Resources/Skins/DEBUG_RED_SQUARE.tga");
 
-		m_Map.SetMap("../GameProjectFinal/Resources/Maps/BitMaps/DebugMap.bmp");
+		m_Map.SetMap("../GameProjectFinal/Resources/Maps/DebugMap.bmp");
 	}
 
 	virtual void InitializeCharacters(ID3D11Device* device, ID3D11DeviceContext* deviceContext) override
 	{
-		ResourceManager::get().Make(device, deviceContext, "../GameProjectFinal/Resources/Characters/Personnages/Perso1.tga");
+		ResourceManager::get().Make(device, deviceContext, "../GameProjectFinal/Resources/Skins/Perso1.tga");
 
 		std::unique_ptr<PlayerMobile> mob = std::make_unique<PlayerMobile>();
 
