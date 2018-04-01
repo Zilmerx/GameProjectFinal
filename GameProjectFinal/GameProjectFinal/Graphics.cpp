@@ -8,13 +8,13 @@
 #include "Object.h"
 #include "ContextMenu.h"
 #include "Debug.h"
+#include "World.h"
 
 
 Graphics::Graphics()
 {
 	m_Direct3D = nullptr;
 	m_Camera = nullptr;
-	m_Context = nullptr;
 	m_ColorShader = nullptr;
 	m_TextureShader = nullptr;
 }
@@ -60,15 +60,6 @@ bool Graphics::Initialize(HWND hwnd)
 	// Set the initial position of the camera.
 	m_Camera->SetPosition(0.0f, 0.0f);
 	Globals::get().camera = m_Camera;
-
-	m_Context = new ContextMenu{ this };
-	if (!m_Context)
-	{
-		return false;
-	}
-
-	// Initialize the model object.
-	m_Context->Initialize(m_Direct3D->GetDevice(), m_Direct3D->GetDeviceContext());
 
 	// Create the color shader object.
 	m_ColorShader = new ColorShader;
@@ -125,14 +116,6 @@ void Graphics::Shutdown()
 		m_ColorShader = 0;
 	}
 
-	// Release the model object.
-	if (m_Context)
-	{
-		m_Context->Shutdown();
-		delete m_Context;
-		m_Context = 0;
-	}
-
 	// Release the camera object.
 	if (m_Camera)
 	{
@@ -160,39 +143,46 @@ bool Graphics::Render()
 	// Generate the view matrix based on the camera's position.
 	m_Camera->Render();
 
-	// Get the world, view, and projection matrices from the camera and d3d objects.
-	XMMATRIX worldMatrix = m_Direct3D->GetWorldMatrix();
-	XMMATRIX viewMatrix = m_Camera->GetViewMatrix();
-	XMMATRIX projectionMatrix = m_Direct3D->GetProjectionMatrix();
+	// Render the worllld.
 
-	// Put the model vertex and index buffers on the graphics pipeline to prepare them for drawing.
-	m_Context->Render(*this);
+	for (auto& obj : Globals::get().world->m_Map)
+	{
+		Model2D* model = obj->Render();
+		
+		// Get the world, view, and projection matrices from the camera and d3d objects.
+		XMMATRIX worldMatrix = m_Direct3D->GetWorldMatrix();
+		XMMATRIX viewMatrix = m_Camera->GetViewMatrix();
+		XMMATRIX projectionMatrix = m_Direct3D->GetProjectionMatrix();
+		
+		XMMATRIX rot = obj->GetRotationMatrix();
+		XMMATRIX tra = obj->GetTranslationMatrix();
+		XMMATRIX sca = obj->GetScaleMatrix();
+
+		XMMATRIX objectMat = rot * sca * tra;
+
+		m_TextureShader->Render(m_Direct3D->GetDeviceContext(), model->GetIndexCount(), worldMatrix * objectMat, viewMatrix, projectionMatrix, model->GetTexture()->GetTexture());
+	}
+
+	for (auto& obj : Globals::get().world->m_Characters)
+	{
+		Model2D* model = obj->Render();
+
+		// Get the world, view, and projection matrices from the camera and d3d objects.
+		XMMATRIX worldMatrix = m_Direct3D->GetWorldMatrix();
+		XMMATRIX viewMatrix = m_Camera->GetViewMatrix();
+		XMMATRIX projectionMatrix = m_Direct3D->GetProjectionMatrix();
+
+		XMMATRIX rot = obj->GetRotationMatrix();
+		XMMATRIX tra = obj->GetTranslationMatrix();
+		XMMATRIX sca = obj->GetScaleMatrix();
+
+		XMMATRIX objectMat = rot * sca * tra;
+
+		m_TextureShader->Render(m_Direct3D->GetDeviceContext(), model->GetIndexCount(), worldMatrix * objectMat, viewMatrix, projectionMatrix, model->GetTexture()->GetTexture());
+	}
 
 	// Present the rendered scene to the screen.
 	m_Direct3D->EndScene();
 
-	m_Context->ProcessInputs();
-
 	return true;
-}
-
-bool Graphics::RenderObject(Object& obj)
-{
-
-	Model2D* model = obj.Render(m_Direct3D->GetDevice(), m_Direct3D->GetDeviceContext());
-
-	XMMATRIX rot = obj.GetRotationMatrix();
-	XMMATRIX tra = obj.GetTranslationMatrix();
-	XMMATRIX sca = obj.GetScaleMatrix();
-
-	// Get the world, view, and projection matrices from the camera and d3d objects.
-	XMMATRIX worldMatrix = m_Direct3D->GetWorldMatrix();
-	XMMATRIX viewMatrix = m_Camera->GetViewMatrix();
-	XMMATRIX projectionMatrix = m_Direct3D->GetProjectionMatrix();
-
-	XMMATRIX objectMat = rot * sca * tra;
-
-	// Render the model using the texture shader.
-	return m_TextureShader->Render(m_Direct3D->GetDeviceContext(), model->GetIndexCount(), worldMatrix * objectMat, viewMatrix, projectionMatrix, model->GetTexture()->GetTexture());
-
 }

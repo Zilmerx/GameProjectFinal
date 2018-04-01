@@ -26,7 +26,7 @@ public:
 	{
 	}
 
-	virtual Model2D* Render(ID3D11Device*, ID3D11DeviceContext*) = 0;
+	virtual Model2D* Render() = 0;
 
 	virtual void AddAnimation(duration_T duration, Model2D* model) = 0;
 

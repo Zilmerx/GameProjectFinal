@@ -27,6 +27,8 @@ class Graphics;
 class Direct3D;
 class BaseContext;
 class Camera;
+class World;
+class Game;
 
 struct Globals : public Singleton<Globals>
 {
@@ -37,6 +39,8 @@ struct Globals : public Singleton<Globals>
 	Direct3D* direct3d;
 	BaseContext* context;
 	Camera* camera;
+	World* world;
+	Game* game;
 
 private:
 	friend struct Singleton<Globals>;

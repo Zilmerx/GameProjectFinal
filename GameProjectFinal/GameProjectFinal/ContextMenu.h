@@ -13,17 +13,13 @@
 /////////////////////////////////////////////////////////////////////////////////
 class ContextMenu : public BaseContext
 {
-	std::vector<std::unique_ptr<MapTile>> m_Map;
-
 public:
 
-	ContextMenu(Graphics* parent);
+	ContextMenu();
 
 	~ContextMenu();
 
-	void InitializeDef(ID3D11Device* device, ID3D11DeviceContext* deviceContext) override;
-
-	virtual void Render(Graphics& gfx) override;
+	void InitializeDef() override;
 
 	virtual void Shutdown() override;
 

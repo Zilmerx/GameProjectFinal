@@ -9,7 +9,6 @@
 
 SystemClass::SystemClass()
 {
-	m_Graphics = nullptr;
 }
 
 SystemClass::SystemClass(const SystemClass&)
@@ -23,29 +22,10 @@ SystemClass::~SystemClass()
 
 bool SystemClass::Initialize()
 {
-	int screenWidth, screenHeight;
-	bool result;
-
-	// Initialize the width and height of the screen to zero before sending the variables into the function.
-	screenWidth = 0;
-	screenHeight = 0;
-
 	// Initialize the windows api.
 	InitializeWindows();
 
-	// Create the graphics object.  This object will handle rendering all the graphics for this application.
-	m_Graphics = new Graphics;
-	if (!m_Graphics)
-	{
-		return false;
-	}
-
-	// Initialize the graphics object.
-	result = m_Graphics->Initialize(m_hwnd);
-	if (!result)
-	{
-		return false;
-	}
+	m_Game.Initialize(m_hwnd);
 
 	Globals::get().system = this;
 
@@ -54,13 +34,7 @@ bool SystemClass::Initialize()
 
 void SystemClass::Shutdown()
 {
-	// Release the graphics object.
-	if (m_Graphics)
-	{
-		m_Graphics->Shutdown();
-		delete m_Graphics;
-		m_Graphics = 0;
-	}
+	m_Game.Shutdown();
 
 	// Shutdown the window.
 	ShutdownWindows();
@@ -114,7 +88,7 @@ bool SystemClass::Frame()
 	bool result;
 
 	// Do the frame processing for the graphics object.
-	result = m_Graphics->Render();
+	result = m_Game.Frame();
 	if (!result)
 	{
 		return false;

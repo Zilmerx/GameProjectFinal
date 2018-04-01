@@ -44,12 +44,12 @@ public:
 	{
 	}
 
-	virtual Model2D* Render(ID3D11Device* device, ID3D11DeviceContext* context) override
+	virtual Model2D* Render() override
 	{
 		///////
 		if (defaultIsOn)
 		{
-			m_Model->Render(device, context);
+			m_Model->Render();
 			return m_Model;
 		}
 		else
@@ -63,12 +63,12 @@ public:
 			if (m_AnimationTimeline.size() == 0)
 			{
 				defaultIsOn = true;
-				m_Model->Render(device, context);
+				m_Model->Render();
 				return m_Model;
 			}
 			else
 			{
-				m_AnimationTimeline[0].model->Render(device, context);
+				m_AnimationTimeline[0].model->Render();
 				return m_AnimationTimeline[0].model;
 			}
 		}

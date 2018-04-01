@@ -2,6 +2,8 @@
 
 #include "ResourceManager.h"
 #include "Debug.h"
+#include "Settings.h"
+#include "Direct3D.h"
 
 ResourceManager::ResourceManager()
 {
@@ -12,7 +14,7 @@ ResourceManager::~ResourceManager()
 	Reset();
 }
 
-void ResourceManager::Make(ID3D11Device* device, ID3D11DeviceContext* deviceContext, std::string fileName)
+void ResourceManager::Make(std::string fileName)
 {
 	Model2D* model = new Model2D{ D3D11_USAGE::D3D11_USAGE_DEFAULT };
 	if (!model)
@@ -20,7 +22,7 @@ void ResourceManager::Make(ID3D11Device* device, ID3D11DeviceContext* deviceCont
 		Debug::Crash("Could not create model" + fileName);
 	}
 
-	if (!model->Initialize(device, deviceContext, fileName))
+	if (!model->Initialize(fileName))
 	{
 		Debug::Crash("Could not initialize model" + fileName);
 	}

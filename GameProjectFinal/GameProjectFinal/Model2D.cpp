@@ -3,6 +3,8 @@
 ////////////////////////////////////////////////////////////////////////////////
 #include "Model2D.h"
 #include "InputManager.h"
+#include "Settings.h"
+#include "Direct3D.h"
 
 
 Model2D::Model2D(D3D11_USAGE usage) :
@@ -29,20 +31,20 @@ Model2D::~Model2D()
 }
 
 
-bool Model2D::Initialize(ID3D11Device* device, ID3D11DeviceContext* deviceContext, std::string textureFilename)
+bool Model2D::Initialize(std::string textureFilename)
 {
 	bool result;
 
 
 	// Initialize the vertex and index buffers.
-	result = InitializeBuffers(device);
+	result = InitializeBuffers();
 	if (!result)
 	{
 		return false;
 	}
 
 	// Load the texture for this model.
-	result = LoadTexture(device, deviceContext, textureFilename, m_Usage);
+	result = LoadTexture(textureFilename, m_Usage);
 	if (!result)
 	{
 		return false;
@@ -65,7 +67,7 @@ void Model2D::Shutdown()
 }
 
 
-void Model2D::Render(ID3D11Device*, ID3D11DeviceContext* deviceContext)
+void Model2D::Render()
 {
 	unsigned int stride;
 	unsigned int offset;
@@ -73,6 +75,8 @@ void Model2D::Render(ID3D11Device*, ID3D11DeviceContext* deviceContext)
 	// Set vertex buffer stride and offset.
 	stride = sizeof(VertexType);
 	offset = 0;
+
+	ID3D11DeviceContext* deviceContext = Globals::get().direct3d->GetDeviceContext();
 
 	// Set the vertex buffer to active in the input assembler so it can be rendered.
 	deviceContext->IASetVertexBuffers(0, 1, &m_vertexBuffer, &stride, &offset);
@@ -107,14 +111,17 @@ ID3D11ShaderResourceView* Model2D::GetTextureView() const
 	return m_Texture->GetTexture();
 }
 
-bool Model2D::InitializeBuffers(ID3D11Device* device)
+bool Model2D::InitializeBuffers()
 {
 	VertexType* vertices;
 	unsigned long* indices;
 	D3D11_BUFFER_DESC vertexBufferDesc, indexBufferDesc;
 	D3D11_SUBRESOURCE_DATA vertexData, indexData;
 	HRESULT result;
-
+	ID3D11Device* device;
+	
+	
+	device = Globals::get().direct3d->GetDevice();
 
 	// Set the number of vertices in the vertex array.
 	m_vertexCount = 4;
@@ -229,7 +236,7 @@ void Model2D::ShutdownBuffers()
 }
 
 
-bool Model2D::LoadTexture(ID3D11Device* device, ID3D11DeviceContext* deviceContext, std::string filename, D3D11_USAGE usage)
+bool Model2D::LoadTexture(std::string filename, D3D11_USAGE usage)
 {
 	bool result;
 
@@ -242,7 +249,7 @@ bool Model2D::LoadTexture(ID3D11Device* device, ID3D11DeviceContext* deviceConte
 	}
 
 	// Initialize the texture object.
-	result = m_Texture->Initialize(device, deviceContext, filename, usage);
+	result = m_Texture->Initialize(filename, usage);
 	if (!result)
 	{
 		return false;

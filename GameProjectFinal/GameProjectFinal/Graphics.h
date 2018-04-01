@@ -9,9 +9,6 @@
 #include "TextureShader.h"
 #include "Position.h"
 
-class Object;
-class BaseContext;
-
 
 ////////////////////////////////////////////////////////////////////////////////
 /*
@@ -28,28 +25,6 @@ public:
 	void Shutdown();
 	bool Render();
 
-	bool RenderObject(Object& obj);
-
-	template<class ContextType>
-	bool SwitchContext()
-	{
-		m_Context->Shutdown();
-
-		m_Context = new ContextType{ this };
-		if (!m_Context)
-		{
-			return false;
-		}
-
-		// Initialize the model object.
-		m_Context->Initialize(m_Direct3D->GetDevice(), m_Direct3D->GetDeviceContext());
-		Globals::get().context = m_Context;
-
-		m_Camera->SetHandlers(m_Context->GetInputManager());
-
-		return true;
-	}
-
 	void SetCameraPosition(Position pos)
 	{
 		Point3D<float> pos2 = pos.GetPosition();
@@ -60,7 +35,6 @@ private:
 
 	Direct3D* m_Direct3D;
 	Camera* m_Camera;
-	BaseContext* m_Context;
 	ColorShader* m_ColorShader;
 	TextureShader* m_TextureShader;
 };

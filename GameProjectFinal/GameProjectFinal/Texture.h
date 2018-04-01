@@ -30,7 +30,7 @@ public:
 	Texture(const Texture&);
 	~Texture();
 
-	bool Initialize(ID3D11Device*, ID3D11DeviceContext*, std::string, D3D11_USAGE);
+	bool Initialize(std::string, D3D11_USAGE);
 	void Shutdown();
 
 	ID3D11ShaderResourceView* GetTexture();

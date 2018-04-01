@@ -6,9 +6,7 @@
 #include "Settings.h"
 
 
-BaseContext::BaseContext(Graphics* parent) :
-	m_Manager{ },
-	m_Parent{ parent }
+BaseContext::BaseContext()
 {
 }
 
@@ -16,7 +14,7 @@ BaseContext::~BaseContext()
 {
 }
 
-void BaseContext::Initialize(ID3D11Device* device, ID3D11DeviceContext* deviceContext)
+void BaseContext::Initialize()
 {
 	ResourceManager::get().Reset();
 
@@ -27,16 +25,12 @@ void BaseContext::Initialize(ID3D11Device* device, ID3D11DeviceContext* deviceCo
 	}
 	);
 
-	InitializeDef(device, deviceContext);
+	InitializeDef();
 }
 
 void BaseContext::ProcessInputs()
 {
 	m_Manager.checkEvents();
-}
-
-void BaseContext::Render(Graphics& gfx)
-{
 }
 
 void BaseContext::Shutdown()

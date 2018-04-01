@@ -1,7 +1,7 @@
 #pragma once
 
 #include <vector>
-#include <string>>
+#include <string>
 #include "BGRColor.h"
 
 struct Bitmap

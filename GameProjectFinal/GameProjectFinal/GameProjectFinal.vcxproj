@@ -157,10 +157,12 @@
     <ClCompile Include="Energy.cpp" />
     <ClCompile Include="Exception.cpp" />
     <ClCompile Include="FrameTime.cpp" />
+    <ClCompile Include="Game.cpp" />
     <ClCompile Include="Graphics.cpp" />
     <ClCompile Include="Grass.cpp" />
     <ClCompile Include="HP.cpp" />
     <ClCompile Include="InputManager.cpp" />
+    <ClCompile Include="Level1.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Map.cpp" />
     <ClCompile Include="MapTile.cpp" />
@@ -213,6 +215,7 @@
     <ClInclude Include="Energy.h" />
     <ClInclude Include="Exception.h" />
     <ClInclude Include="FrameTime.h" />
+    <ClInclude Include="Game.h" />
     <ClInclude Include="Graphics.h" />
     <ClInclude Include="Grass.h" />
     <ClInclude Include="HP.h" />
@@ -259,6 +262,7 @@
     <ClInclude Include="EmptyTile.h" />
     <ClInclude Include="UnsignedAbs.h" />
     <ClInclude Include="Wall.h" />
+    <ClInclude Include="World.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="color.ps" />

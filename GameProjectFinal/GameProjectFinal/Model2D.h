@@ -29,9 +29,9 @@ public:
 	Model2D(const Model2D&);
 	~Model2D();
 
-	bool Initialize(ID3D11Device*, ID3D11DeviceContext*, std::string);
+	bool Initialize(std::string);
 	void Shutdown();
-	void Render(ID3D11Device*, ID3D11DeviceContext*);
+	void Render();
 
 	int GetIndexCount() const;
 	std::string GetName() const;
@@ -42,9 +42,9 @@ public:
 	bool operator==(const Model2D& rhs) { return this->m_Name == rhs.m_Name; }
 
 private:
-	bool InitializeBuffers(ID3D11Device*);
+	bool InitializeBuffers();
 	void ShutdownBuffers();
-	bool LoadTexture(ID3D11Device*, ID3D11DeviceContext*, std::string, D3D11_USAGE);
+	bool LoadTexture(std::string, D3D11_USAGE);
 	void ReleaseTexture();
 
 private:

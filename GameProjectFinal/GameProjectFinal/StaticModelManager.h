@@ -18,9 +18,9 @@ public:
 	{
 	}
 
-	virtual Model2D* Render(ID3D11Device* device, ID3D11DeviceContext* context) override
+	virtual Model2D* Render() override
 	{
-		m_Model->Render(device, context);
+		m_Model->Render();
 		return m_Model;
 	}
 

@@ -8,8 +8,10 @@
 #include "ScreenSize.h"
 #include "AStarPathfinding.h"
 
-ContextWorld::ContextWorld(Graphics* parent) :
-	BaseContext{ parent }
+#include "Settings.h"
+#include "Game.h"
+
+ContextWorld::ContextWorld()
 {
 }
 
@@ -17,15 +19,15 @@ ContextWorld::~ContextWorld()
 {
 }
 
-void ContextWorld::InitializeDef(ID3D11Device* device, ID3D11DeviceContext* deviceContext)
+void ContextWorld::InitializeDef()
 {
-	m_Parent->SetCameraPosition(Position(3, 3));
+	Globals::get().camera->SetPosition(3.0, 3.0);
 
 	InitializeControls();
 
-	InitializeMap(device, deviceContext);
+	InitializeMap();
 
-	InitializeCharacters(device, deviceContext);
+	InitializeCharacters();
 }
 
 void ContextWorld::InitializeControls()
@@ -33,7 +35,7 @@ void ContextWorld::InitializeControls()
 	m_Manager.addHandler<OnPressEvent>(Keys::KEY_O,
 		[&]()
 	{
-		m_Parent->SwitchContext<ContextMenu>();
+		Globals::get().game->SwitchContext<ContextMenu>();
 	}
 	);
 
@@ -42,21 +44,6 @@ void ContextWorld::InitializeControls()
 	{
 
 	});
-}
-
-void ContextWorld::Render(Graphics& gfx)
-{
-	// Render from front to the back.
-
-	for (auto& character : m_Characters)
-	{
-		gfx.RenderObject(*character);
-	}
-
-	for (auto& tile : m_Map)
-	{
-		gfx.RenderObject(*tile);
-	}
 }
 
 void ContextWorld::Shutdown()

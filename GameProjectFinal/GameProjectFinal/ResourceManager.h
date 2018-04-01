@@ -23,7 +23,7 @@ class ResourceManager : public Singleton<ResourceManager>
 
 public:
 
-	void Make(ID3D11Device* device, ID3D11DeviceContext* deviceContext, std::string fileName);
+	void Make(std::string fileName);
 	Model2D* Get(std::string fileName) const;
 	void Reset();
 };

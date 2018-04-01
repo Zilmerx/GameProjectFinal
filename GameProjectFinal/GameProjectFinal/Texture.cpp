@@ -3,6 +3,8 @@
 #include <stdio.h>
 
 #include "ARGBColor.h"
+#include "Settings.h"
+#include "Direct3D.h"
 
 #include "Texture.h"
 
@@ -28,7 +30,7 @@ Texture::~Texture()
 {
 }
 
-bool Texture::Initialize(ID3D11Device* device, ID3D11DeviceContext* deviceContext, std::string filename, D3D11_USAGE usage)
+bool Texture::Initialize(std::string filename, D3D11_USAGE usage)
 {
 	m_usage = usage;
 
@@ -38,6 +40,11 @@ bool Texture::Initialize(ID3D11Device* device, ID3D11DeviceContext* deviceContex
 	HRESULT hResult;
 	unsigned int rowPitch;
 	D3D11_SHADER_RESOURCE_VIEW_DESC srvDesc;
+	ID3D11Device* device;
+	ID3D11DeviceContext* deviceContext;
+
+	device = Globals::get().direct3d->GetDevice();
+	deviceContext = Globals::get().direct3d->GetDeviceContext();
 
 	unsigned char* targaData = nullptr;
 

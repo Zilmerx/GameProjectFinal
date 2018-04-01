@@ -15,6 +15,7 @@
 ///////////////////////
 #include "InputManager.h"
 #include "Graphics.h"
+#include "Game.h"
 
 ////////////////////////////////////////////////////////////////////////////////
 // Class name: SystemClass
@@ -44,7 +45,7 @@ private:
 	HINSTANCE m_hinstance;
 	HWND m_hwnd;
 
-	Graphics* m_Graphics;
+	Game m_Game;
 };
 
 

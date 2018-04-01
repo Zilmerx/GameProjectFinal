@@ -37,9 +37,9 @@ void Object::Shutdown()
 {
 }
 
-Model2D* Object::Render(ID3D11Device* device, ID3D11DeviceContext* deviceContext)
+Model2D* Object::Render()
 {
-	return m_ModelManager->Render(device, deviceContext);
+	return m_ModelManager->Render();
 }
 
 BaseModelManager* Object::getBaseModelAnimation() const
